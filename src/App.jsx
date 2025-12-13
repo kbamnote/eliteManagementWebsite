@@ -52,11 +52,11 @@ export default function App() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-zinc-300">
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-red-400" />
-            <span>contact@elitemanagement.com</span>
+            <span>info@elitemanagement.com</span>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-red-400" />
-            <span>+91 90000 00000</span>
+            <span>+91 9730893320</span>
           </div>
         </div>
 

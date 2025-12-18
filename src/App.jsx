@@ -1,5 +1,7 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import SmoothCursor from './components/SmoothCursor';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
 import About from './pages/About';
@@ -10,16 +12,23 @@ import Placements from './pages/Placements';
 import NotFound from './pages/NotFound';
 
 export default function App() {
+  const location = useLocation();
+  
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/courses" element={<Courses />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/career-counseling" element={<CareerCounseling />} />
-      <Route path="/blogs" element={<Blogs />} />
-      <Route path="/placements" element={<Placements />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <div className="cursor-none">
+      <SmoothCursor />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/career-counseling" element={<CareerCounseling />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/placements" element={<Placements />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AnimatePresence>
+    </div>
   );
 }

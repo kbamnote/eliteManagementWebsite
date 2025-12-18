@@ -1,92 +1,58 @@
 import React from 'react';
-import styled from 'styled-components';
-import { Star, Users, Clock } from 'lucide-react';
+import { Star, Users, Clock, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CourseCard = ({ course }) => {
   return (
-    <StyledWrapper>
-      <Link to={`/course/${course.id}`}>
-        <div className="card">
-          <div className="bg" />
-          <div className="content">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex justify-between items-start mb-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-100 to-purple-200 flex items-center justify-center">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-r from-purple-500 to-purple-700"></div>
-                </div>
-                <div className="flex items-center bg-yellow-500/10 px-2 py-1 rounded">
-                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                  <span className="text-sm font-medium ml-1">{course.rating}</span>
-                </div>
-              </div>
-              
-              <h3 className="text-lg font-bold text-gray-800 mb-2">{course.title}</h3>
-              <p className="text-gray-600 text-sm mb-4">by {course.instructor}</p>
-              
-              <div className="flex items-center text-sm text-gray-600 mb-2">
-                <Users className="w-4 h-4 mr-2" />
-                <span>{course.students.toLocaleString()} students</span>
-              </div>
-              
-              <div className="flex items-center text-sm text-gray-600 mb-4">
-                <Clock className="w-4 h-4 mr-2" />
-                <span>{course.duration} • {course.level}</span>
-              </div>
-              
-              <div className="mt-auto flex justify-between items-center">
-                <div className="text-lg font-semibold text-purple-700">${course.price}</div>
-                <button className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-lg hover:from-purple-700 hover:to-purple-900 transition-all duration-300 text-sm">
-                  Enroll
-                </button>
-              </div>
+    <div className="group relative bg-white rounded-2xl overflow-hidden border border-blue-100 transition-all duration-300 hover:border-blue-300 hover:shadow-xl h-full flex flex-col">
+      <Link to={`/course/${course.id}`} className="block h-full flex flex-col">
+        {/* Course Image Header */}
+        <div className="h-40 bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300"></div>
+          <div className="relative z-10 text-center p-4">
+            <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-3">
+              <BookOpen className="w-8 h-8 text-white" />
             </div>
+            <h3 className="text-lg font-bold text-white truncate px-2">{course.title}</h3>
+          </div>
+        </div>
+        
+        {/* Course Content */}
+        <div className="p-6 flex-grow flex flex-col">
+          <div className="flex justify-between items-start mb-3">
+            <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+              <div className="w-6 h-6 rounded-full bg-blue-500"></div>
+            </div>
+            <div className="flex items-center bg-yellow-500/10 px-2 py-1 rounded-lg">
+              <Star className="w-4 h-4 text-yellow-400 fill-current" />
+              <span className="text-sm font-semibold ml-1 text-blue-800">{course.rating}</span>
+            </div>
+          </div>
+          
+          <p className="text-blue-600 text-sm mb-3 line-clamp-2">by {course.instructor}</p>
+          
+          <div className="space-y-2 mb-4 flex-grow">
+            <div className="flex items-center text-sm text-blue-600">
+              <Users className="w-4 h-4 mr-2 text-blue-500" />
+              <span>{course.students.toLocaleString()} students</span>
+            </div>
+            
+            <div className="flex items-center text-sm text-blue-600">
+              <Clock className="w-4 h-4 mr-2 text-blue-500" />
+              <span>{course.duration} • {course.level}</span>
+            </div>
+          </div>
+          
+          <div className="mt-auto pt-4 border-t border-blue-50 flex justify-between items-center">
+            <div className="text-xl font-bold text-blue-700">${course.price}</div>
+            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              Enroll Now
+            </button>
           </div>
         </div>
       </Link>
-    </StyledWrapper>
+    </div>
   );
 };
-
-const StyledWrapper = styled.div`
-  .card {
-    position: relative;
-    width: 100%;
-    height: 320px;
-    border-radius: 14px;
-    z-index: 1111;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-  }
-
-  .bg {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    width: calc(100% - 10px);
-    height: calc(100% - 10px);
-    z-index: 2;
-    background: rgba(255, 255, 255, .95);
-    backdrop-filter: blur(24px);
-    border-radius: 10px;
-    overflow: hidden;
-    outline: 2px solid white;
-  }
-
-  .content {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    height: 100%;
-  }
-
-  a {
-    text-decoration: none;
-  }
-`;
 
 export default CourseCard;

@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
-import Layout from '../components/Layout';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 import FlipCard from '../components/FlipCard';
 import c1 from '../assets/c1.jfif';
@@ -119,7 +118,7 @@ const courses = [
   }
 ];
 
-// Connected Particles Component
+// Connected Particles Component with Green Theme
 function ConnectedParticles() {
   const canvasRef = useRef(null);
   const particlesRef = useRef([]);
@@ -186,7 +185,7 @@ function ConnectedParticles() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(99, 102, 241, 0.6)';
+        ctx.fillStyle = 'rgba(4, 142, 108, 0.6)'; // Teal-green
         ctx.fill();
 
         // Draw connections
@@ -200,7 +199,7 @@ function ConnectedParticles() {
               ctx.beginPath();
               ctx.moveTo(particle.x, particle.y);
               ctx.lineTo(otherParticle.x, otherParticle.y);
-              ctx.strokeStyle = `rgba(99, 102, 241, ${0.3 * (1 - distance / 120)})`;
+              ctx.strokeStyle = `rgba(4, 142, 108, ${0.3 * (1 - distance / 120)})`; // Teal-green
               ctx.lineWidth = 1;
               ctx.stroke();
             }
@@ -241,11 +240,10 @@ function ConnectedParticles() {
 
 export default function Home() {
   return (
-    <Layout>
-      <AnimatedPageWrapper>
-        {/* Enhanced Hero Section with Connected Particles */}
+    <AnimatedPageWrapper>
+      {/* Enhanced Hero Section with Connected Particles */}
         <motion.section 
-          className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden flex items-center"
+          className="min-h-screen bg-primary relative overflow-hidden flex items-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -263,29 +261,29 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 text-primary">
                   Transform Your Career
-                  <span className="block text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent mt-3">
+                  <span className="block text-4xl md:text-5xl lg:text-6xl font-black text-accent mt-3">
                     With Expert Learning
                   </span>
                 </h1>
                                       
-                <p className="text-xl md:text-2xl text-slate-700 font-medium max-w-2xl mb-8 leading-relaxed">
+                <p className="text-xl md:text-2xl text-secondary font-medium max-w-2xl mb-8 leading-relaxed">
                   Join thousands of students who have advanced their careers with our comprehensive online courses designed by industry experts.
                 </p>
                                       
                 <div className="flex flex-col sm:flex-row gap-4">
                   <motion.button
-                    className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center text-base"
+                    className="btn btn-primary px-8 py-4 text-base"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     Explore Courses
                     <ChevronRight className="ml-2 w-5 h-5" />
                   </motion.button>
-                                  
+                              
                   <motion.button
-                    className="px-8 py-4 bg-white text-indigo-700 font-bold border-2 border-indigo-300 rounded-xl hover:bg-indigo-50 transition-all duration-300 flex items-center justify-center text-base shadow-md"
+                    className="btn btn-secondary px-8 py-4 text-base"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -296,20 +294,20 @@ export default function Home() {
               </motion.div>
               
               {/* Floating decorative spheres */}
-              <div className="absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-20 blur-xl"></div>
-              <div className="absolute bottom-20 left-20 w-24 h-24 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full opacity-25 blur-xl"></div>
+              <div className="absolute top-20 right-20 w-32 h-32 bg-accent rounded-full opacity-20 blur-xl"></div>
+              <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent rounded-full opacity-25 blur-xl"></div>
                                   
               <motion.div 
-                className="rounded-3xl overflow-hidden shadow-2xl border border-indigo-200 bg-white relative"
+                className="rounded-3xl overflow-hidden shadow-subtle border border-subtle bg-white relative"
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 min-h-[400px] flex items-center justify-center relative p-8 rounded-2xl">
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.15)_0%,rgba(255,255,255,0)_70%)] rounded-2xl"></div>
+                <div className="bg-primary min-h-[400px] flex items-center justify-center relative p-8 rounded-2xl">
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212, 236, 229,0.15)_0%,rgba(212, 236, 229,0)_70%)] rounded-2xl"></div>
                   
                   <div className="w-full max-w-6xl mx-auto overflow-hidden relative z-20">
-                    <h3 className="text-4xl font-black bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent text-center mb-10">
+                    <h3 className="text-4xl font-black text-accent text-center mb-10">
                       Featured Courses
                     </h3>
                                         
@@ -327,7 +325,7 @@ export default function Home() {
                       {[c1, c2, c3, c1, c2, c3, c1, c2, c3].map((image, index) => (
                         <motion.div
                           key={index}
-                          className="flex-shrink-0 w-72 h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/30"
+                          className="flex-shrink-0 w-72 h-64 rounded-3xl overflow-hidden shadow-subtle border-4 border-white/30"
                           whileHover={{ 
                             y: -12,
                             scale: 1.05,
@@ -351,7 +349,7 @@ export default function Home() {
         
         {/* Stats Section */}
         <motion.section 
-          className="py-12 bg-gradient-to-r from-slate-50 via-indigo-50 to-purple-50"
+          className="py-12 bg-secondary"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -367,19 +365,19 @@ export default function Home() {
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="text-center bg-white rounded-2xl p-6 shadow-lg border border-indigo-200 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                  className="text-center bg-white rounded-2xl p-6 shadow-subtle border border-subtle transform transition-all duration-300 hover:-translate-y-2 hover:shadow-hover"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="text-2xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="text-2xl font-black text-accent">
                       {stat.suffix === '%' ? stat.number + stat.suffix : stat.number.toLocaleString()}
                     </div>
                   </div>
-                  <div className="text-lg font-bold text-slate-800">{stat.label}</div>
+                  <div className="text-lg font-bold text-primary">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -397,18 +395,16 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4"
+                className="text-4xl md:text-5xl font-black mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Why Choose </span>
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Elite Management</span>
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">?</span>
+                Why Choose <span className="text-accent">Elite Management</span>?
               </motion.h2>
               <motion.p 
-                className="mt-4 text-xl text-slate-600 font-medium"
+                className="mt-4 text-xl text-secondary font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -422,21 +418,21 @@ export default function Home() {
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gradient-to-br from-white to-indigo-50 rounded-2xl p-6 border-2 border-indigo-100 hover:border-indigo-400 transition-all duration-300 group shadow-lg hover:shadow-2xl"
+                  className="bg-white rounded-2xl p-6 border-2 border-subtle hover:border-accent transition-all duration-300 group shadow-subtle hover:shadow-hover"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -10 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-300 mx-auto mb-6">
-                    <feature.icon className="w-8 h-8 text-indigo-600" />
+                  <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-accent transition-all duration-300 mx-auto mb-6">
+                    <feature.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-800 text-center mb-3">{feature.title}</h3>
-                  <p className="text-slate-600 text-center mb-4">{feature.description}</p>
-                  <div className="pt-4 border-t border-indigo-100">
-                    <p className="text-sm text-slate-500 text-center mb-3">{feature.details}</p>
-                    <div className="mt-2 inline-block px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full text-xs font-bold w-full text-center">
+                  <h3 className="text-xl font-bold text-primary text-center mb-3">{feature.title}</h3>
+                  <p className="text-secondary text-center mb-4">{feature.description}</p>
+                  <div className="pt-4 border-t border-subtle">
+                    <p className="text-sm text-secondary text-center mb-3">{feature.details}</p>
+                    <div className="mt-2 inline-block px-4 py-2 bg-accent text-white rounded-full text-xs font-bold w-full text-center">
                       {feature.stats}
                     </div>
                   </div>
@@ -448,7 +444,7 @@ export default function Home() {
         
         {/* Popular Courses with Flip Cards */}
         <motion.section 
-          className="py-20 bg-gradient-to-br from-slate-50 to-indigo-50"
+          className="py-20 bg-secondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -458,17 +454,16 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
               <div>
                 <motion.h2 
-                  className="text-4xl md:text-5xl font-black mb-4"
+                  className="text-4xl md:text-5xl font-black mb-4 text-primary"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Popular </span>
-                  <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">Courses</span>
+                  Popular <span className="text-accent">Courses</span>
                 </motion.h2>
                 <motion.p 
-                  className="mt-4 text-slate-600 font-medium max-w-2xl"
+                  className="mt-4 text-secondary font-medium max-w-2xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
@@ -479,7 +474,7 @@ export default function Home() {
               </div>
               <Link 
                 to="/courses" 
-                className="mt-4 md:mt-0 px-6 py-3 bg-white text-indigo-700 rounded-lg hover:bg-indigo-50 transition-all duration-300 border-2 border-indigo-200 flex items-center font-bold shadow-md hover:shadow-lg"
+                className="mt-4 md:mt-0 btn btn-secondary px-6 py-3 shadow-subtle hover:shadow-hover"
               >
                 View All Courses
                 <ChevronRight className="ml-2 w-4 h-4" />
@@ -518,32 +513,32 @@ export default function Home() {
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div 
-              className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-12 shadow-2xl relative overflow-hidden"
+              className="bg-primary rounded-3xl p-12 shadow-subtle relative overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-500 rounded-full opacity-30"></div>
-              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-pink-500 rounded-full opacity-30"></div>
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent rounded-full opacity-30"></div>
+              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent rounded-full opacity-30"></div>
               
               <div className="relative z-10 text-center max-w-3xl mx-auto">
-                <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-                  Ready to Start Your <span className="bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent">Learning Journey</span>?
+                <h2 className="text-4xl md:text-5xl font-black text-primary mb-6 leading-tight">
+                  Ready to Start Your <span className="text-accent">Learning Journey</span>?
                 </h2>
-                <p className="text-xl text-indigo-100 font-medium max-w-2xl mx-auto mb-10">
+                <p className="text-xl text-secondary font-medium max-w-2xl mx-auto mb-10">
                   Join thousands of students who have transformed their careers with our courses.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link 
                     to="/courses" 
-                    className="inline-block px-8 py-4 bg-white text-indigo-700 font-bold rounded-lg hover:bg-indigo-50 transition-all duration-300 shadow-lg transform hover:scale-105"
+                    className="btn btn-primary px-8 py-4"
                   >
                     Get Started Today
                   </Link>
                   <Link 
                     to="/contact" 
-                    className="inline-block px-8 py-4 bg-transparent text-white font-bold rounded-lg hover:bg-white/10 transition-all duration-300 border-2 border-white transform hover:scale-105"
+                    className="btn btn-secondary px-8 py-4"
                   >
                     Contact Us
                   </Link>
@@ -553,6 +548,5 @@ export default function Home() {
           </div>
         </motion.section>
       </AnimatedPageWrapper>
-    </Layout>
-  );
-}
+    );
+  }

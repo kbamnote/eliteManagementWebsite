@@ -14,7 +14,6 @@ import {
   Clock
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Layout from '../components/Layout';
 import FlipCard from '../components/FlipCard';
 import BookCard from '../components/BookCard';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
@@ -160,34 +159,33 @@ export default function Courses() {
   const avgRating = (allCourses.reduce((sum, course) => sum + course.rating, 0) / allCourses.length).toFixed(1);
 
   return (
-    <Layout>
-      <AnimatedPageWrapper>
-        {/* Enhanced Hero Section */}
+    <AnimatedPageWrapper>
+      {/* Enhanced Hero Section */}
         <motion.section 
-          className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50"
+          className="relative py-20 overflow-hidden bg-secondary"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-indigo-300 to-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+            <div className="absolute top-0 right-0 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
           </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-4xl mx-auto">
               <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight"
+                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Expand Your </span>
-                <span className="block text-5xl md:text-6xl font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mt-2">
+                <span className="text-primary">Expand Your </span>
+                <span className="block text-5xl md:text-6xl font-black text-accent mt-2">
                   Knowledge
                 </span>
               </motion.h1>
               <motion.p 
-                className="text-xl md:text-2xl text-slate-700 font-medium max-w-3xl mx-auto mb-10"
+                className="text-xl md:text-2xl text-secondary font-medium max-w-3xl mx-auto mb-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -202,38 +200,38 @@ export default function Courses() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-indigo-100 hover:border-indigo-400 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group">
+                <div className="bg-white rounded-2xl p-6 shadow-subtle border-2 border-subtle hover:border-accent transition-all duration-300 hover:shadow-hover hover:-translate-y-1 group">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-100 to-purple-100 group-hover:from-indigo-200 group-hover:to-purple-200 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                      <GraduationCap className="w-6 h-6 text-indigo-600" />
+                    <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                      <GraduationCap className="w-6 h-6 text-primary" />
                     </div>
                     <div className="ml-4 text-left">
-                      <p className="text-2xl font-black bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">{totalCourses}+</p>
-                      <p className="text-slate-600 font-bold">Courses</p>
+                      <p className="text-2xl font-black text-accent">{totalCourses}+</p>
+                      <p className="text-secondary font-bold">Courses</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-purple-100 hover:border-purple-400 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group">
+                <div className="bg-white rounded-2xl p-6 shadow-subtle border-2 border-subtle hover:border-accent transition-all duration-300 hover:shadow-hover hover:-translate-y-1 group">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-pink-100 group-hover:from-purple-200 group-hover:to-pink-200 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                      <Users className="w-6 h-6 text-purple-600" />
+                    <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                      <Users className="w-6 h-6 text-primary" />
                     </div>
                     <div className="ml-4 text-left">
-                      <p className="text-2xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{Math.round(totalStudents / 1000)}K+</p>
-                      <p className="text-slate-600 font-bold">Students</p>
+                      <p className="text-2xl font-black text-accent">{Math.round(totalStudents / 1000)}K+</p>
+                      <p className="text-secondary font-bold">Students</p>
                     </div>
                   </div>
                 </div>
                 
-                <div className="bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:border-cyan-400 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 group">
+                <div className="bg-white rounded-2xl p-6 shadow-subtle border-2 border-subtle hover:border-accent transition-all duration-300 hover:shadow-hover hover:-translate-y-1 group">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-100 to-teal-100 group-hover:from-cyan-200 group-hover:to-teal-200 flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                      <DollarSign className="w-6 h-6 text-cyan-600" />
+                    <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
+                      <DollarSign className="w-6 h-6 text-primary" />
                     </div>
                     <div className="ml-4 text-left">
-                      <p className="text-2xl font-black bg-gradient-to-r from-cyan-600 to-teal-600 bg-clip-text text-transparent">{avgRating}</p>
-                      <p className="text-slate-600 font-bold">Avg. Rating</p>
+                      <p className="text-2xl font-black text-accent">{avgRating}</p>
+                      <p className="text-secondary font-bold">Avg. Rating</p>
                     </div>
                   </div>
                 </div>
@@ -244,7 +242,7 @@ export default function Courses() {
 
         {/* Course Categories Flip Cards */}
         <motion.section 
-          className="py-16 bg-gradient-to-br from-indigo-50 to-purple-50"
+          className="py-16 bg-secondary"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -252,17 +250,17 @@ export default function Courses() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <motion.h2 
-                className="text-3xl md:text-4xl font-black mb-4"
+                className="text-3xl md:text-4xl font-black mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <span className="bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent">
+                <span className="text-accent">
                   Explore by Category
                 </span>
               </motion.h2>
               <motion.p 
-                className="text-xl text-slate-600 max-w-2xl mx-auto font-medium"
+                className="text-xl text-secondary max-w-2xl mx-auto font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
@@ -294,7 +292,7 @@ export default function Courses() {
 
         {/* Enhanced Filters Section */}
         <motion.section 
-          className="py-8 bg-white border-b-2 border-indigo-100 sticky top-0 z-20 shadow-md backdrop-blur-sm bg-white/95"
+          className="py-8 bg-white border-b-2 border-subtle sticky top-0 z-20 shadow-subtle backdrop-blur-sm bg-white/95"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -309,11 +307,11 @@ export default function Courses() {
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-indigo-400 w-5 h-5" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5" />
                   <input
                     type="text"
                     placeholder="Search courses, instructors..."
-                    className="w-full pl-12 pr-4 py-4 bg-white border-2 border-indigo-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                    className="w-full pl-12 pr-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -327,18 +325,18 @@ export default function Courses() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <label className="block text-sm font-bold text-slate-700 mb-2">Category</label>
+                <label className="block text-sm font-bold text-primary mb-2">Category</label>
                 <div className="relative">
                   <select
-                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-indigo-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
                   >
                     {categories.map(category => (
-                      <option key={category} value={category} className="bg-white text-slate-700">{category}</option>
+                      <option key={category} value={category} className="bg-white text-primary">{category}</option>
                     ))}
                   </select>
-                  <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-indigo-400 w-5 h-5 pointer-events-none" />
+                  <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
                 </div>
               </motion.div>
               
@@ -349,18 +347,18 @@ export default function Courses() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
-                <label className="block text-sm font-bold text-slate-700 mb-2">Level</label>
+                <label className="block text-sm font-bold text-primary mb-2">Level</label>
                 <div className="relative">
                   <select
-                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-purple-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
                     value={selectedLevel}
                     onChange={(e) => setSelectedLevel(e.target.value)}
                   >
                     {levels.map(level => (
-                      <option key={level} value={level} className="bg-white text-slate-700">{level}</option>
+                      <option key={level} value={level} className="bg-white text-primary">{level}</option>
                     ))}
                   </select>
-                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-5 h-5 pointer-events-none" />
+                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
                 </div>
               </motion.div>
               
@@ -371,19 +369,19 @@ export default function Courses() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                <label className="block text-sm font-bold text-slate-700 mb-2">Sort By</label>
+                <label className="block text-sm font-bold text-primary mb-2">Sort By</label>
                 <div className="relative">
                   <select
-                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-cyan-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
                   >
-                    <option value="popular" className="bg-white text-slate-700">Most Popular</option>
-                    <option value="rating" className="bg-white text-slate-700">Highest Rated</option>
-                    <option value="price-low" className="bg-white text-slate-700">Price: Low to High</option>
-                    <option value="price-high" className="bg-white text-slate-700">Price: High to Low</option>
+                    <option value="popular" className="bg-white text-primary">Most Popular</option>
+                    <option value="rating" className="bg-white text-primary">Highest Rated</option>
+                    <option value="price-low" className="bg-white text-primary">Price: Low to High</option>
+                    <option value="price-high" className="bg-white text-primary">Price: High to Low</option>
                   </select>
-                  <ArrowUpDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-cyan-400 w-5 h-5 pointer-events-none" />
+                  <ArrowUpDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
                 </div>
               </motion.div>
             </div>
@@ -392,7 +390,7 @@ export default function Courses() {
 
         {/* Enhanced Courses Grid */}
         <motion.section 
-          className="py-20 bg-gradient-to-br from-slate-50 to-indigo-50"
+          className="py-20 bg-secondary"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
@@ -405,34 +403,34 @@ export default function Courses() {
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               <div>
-                <h2 className="text-4xl font-black mb-2">
-                  <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">
+                <h2 className="text-4xl font-black mb-2 text-primary">
+                  <span className="text-primary">
                     {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''} Found
                   </span>
                 </h2>
-                <p className="text-slate-600 mt-2 font-medium">Choose from our expertly curated selection of courses</p>
+                <p className="text-secondary mt-2 font-medium">Choose from our expertly curated selection of courses</p>
               </div>
             </motion.div>
             
             {sortedCourses.length === 0 ? (
               <motion.div 
-                className="text-center py-20 bg-white rounded-3xl shadow-xl border-2 border-indigo-200 max-w-2xl mx-auto"
+                className="text-center py-20 bg-white rounded-3xl shadow-subtle border-2 border-subtle max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <BookOpen className="w-10 h-10 text-indigo-600" />
+                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <BookOpen className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-2xl font-black text-slate-800 mb-2">No courses found</h3>
-                <p className="text-slate-600 mb-6 font-medium">Try adjusting your filters to see more courses.</p>
+                <h3 className="text-2xl font-black text-primary mb-2">No courses found</h3>
+                <p className="text-secondary mb-6 font-medium">Try adjusting your filters to see more courses.</p>
                 <button 
                   onClick={() => {
                     setSearchTerm('');
                     setSelectedCategory('All Categories');
                     setSelectedLevel('All Levels');
                   }}
-                  className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="px-6 py-3 bg-accent text-white rounded-xl hover:bg-dark transition-all duration-300 font-bold shadow-subtle hover:shadow-hover transform hover:scale-105"
                 >
                   Clear Filters
                 </button>
@@ -466,6 +464,5 @@ export default function Courses() {
           </div>
         </motion.section>
       </AnimatedPageWrapper>
-    </Layout>
-  );
-}
+    );
+  }

@@ -1,106 +1,255 @@
 @import "tailwindcss";
 
-/* Enhanced gradient animations */
-.bg-gradient-animation {
-  background: linear-gradient(-45deg, #957DAD, #E0BBE4, #D291BC, #FEC8D8, #957DAD);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  height: 100%;
-  width: 100%;
+/* Global Styles - Green Theme */
+body {
+  background-color: #F2F8F6; /* Soft off-white with green tint */
+  color: #3E4F4B; /* Soft green-gray for body text */
+  font-family: 'Helvetica Now', 'Helvetica Neue', 'Helvetica', -apple-system, 
+    BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Custom utility classes for modern design */
-.shadow-xl-hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease-in-out;
-}
-
-.shadow-xl-hover:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-5px);
-}
-
-/* Smooth transitions */
-.transition-all-fast {
-  transition: all 0.2s ease-in-out;
-}
-
-.transition-all-medium {
-  transition: all 0.3s ease-in-out;
-}
-
-/* Gradient text */
-.text-gradient {
-  background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Line clamp utilities */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* 3D Transform Utilities */
-.transform-gpu {
-  transform: translateZ(0);
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.translate-z-0 {
-  transform: translateZ(0px);
-}
-
-.translate-z-5 {
-  transform: translateZ(5px);
-}
-
-.translate-z-10 {
-  transform: translateZ(10px);
-}
-
-.translate-z-20 {
-  transform: translateZ(20px);
-}
-
-/* Custom cursor override - ensures all elements use the custom cursor */
-* {
-  cursor: none !important;
-  font-family: 'Neue Montreal', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
-}
-
-/* Exception for disabled elements */
-*:disabled {
-  cursor: not-allowed !important;
-}
-
-/* Heading font styles using Helvetica Now */
+/* Typography */
 h1, h2, h3, h4, h5, h6,
 .heading-font {
   font-family: 'Helvetica Now', 'Helvetica Neue', 'Helvetica', -apple-system,
     BlinkMacSystemFont, sans-serif;
+  color: #023F32; /* Dark green for headings */
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+/* Links */
+a {
+  color: #048E6C; /* Teal-green for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #035642; /* Deep green on hover */
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #035642; /* Deep green */
+  color: #FFFFFF; /* White text */
+}
+
+.btn-primary:hover {
+  background-color: #048E6C; /* Medium teal-green on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(3, 86, 66, 0.2);
+}
+
+.btn-secondary {
+  background-color: #E6F3EF; /* Very light teal-green */
+  color: #035642; /* Deep green text */
+  border: 1px solid #DDEAE6; /* Subtle green border */
+}
+
+.btn-secondary:hover {
+  background-color: #D4ECE5; /* Slightly darker green tint on hover */
+  transform: translateY(-2px);
+}
+
+/* Header & Navigation */
+.header {
+  background-color: #E6F3EF; /* Very light teal-green */
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-link {
+  color: #023F32; /* Dark green */
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #D4ECE5; /* Slightly darker green tint on hover */
+  color: #035642; /* Deep green */
+}
+
+/* Cards */
+.card {
+  background-color: #FFFFFF; /* White background */
+  border: 1px solid #DDEAE6; /* Very subtle green border */
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.card-title {
+  color: #023F32; /* Dark green */
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  color: #3E4F4B; /* Soft green-gray */
+  margin-bottom: 1rem;
+}
+
+/* Sections */
+.section {
+  padding: 5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 7rem 2rem;
+  }
+}
+
+.section-heading {
+  color: #023F32; /* Dark green */
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Highlight/Active States */
+.highlight {
+  color: #048E6C; /* Teal-green */
+}
+
+.active {
+  color: #048E6C; /* Teal-green */
+  font-weight: 600;
+}
+
+/* Dividers */
+.divider {
+  border-top: 1px solid #DDEAE6; /* Very subtle green border */
+  margin: 2rem 0;
+}
+
+/* Utility Classes */
+.bg-primary {
+  background-color: #F2F8F6; /* Soft off-white with green tint */
+}
+
+.bg-secondary {
+  background-color: #E6F3EF; /* Very light teal-green */
+}
+
+.text-primary {
+  color: #023F32; /* Dark green */
+}
+
+.text-secondary {
+  color: #3E4F4B; /* Soft green-gray */
+}
+
+.text-accent {
+  color: #048E6C; /* Teal-green */
+}
+
+.border-subtle {
+  border: 1px solid #DDEAE6; /* Very subtle green border */
+}
+
+.shadow-subtle {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transform-hover:hover {
+  transform: translateY(-5px);
+}
+
+/* Form Elements */
+input, textarea, select {
+  background-color: #FFFFFF; /* White */
+  border: 1px solid #DDEAE6; /* Very subtle green border */
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #3E4F4B; /* Soft green-gray */
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #048E6C; /* Teal-green */
+  box-shadow: 0 0 0 3px rgba(4, 142, 108, 0.1);
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
 }
 
 /* Flip Card Styles */
@@ -148,13 +297,13 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .flip-card-front {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #035642 0%, #048E6C 100%);
   color: white;
 }
 
 .flip-card-back {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
+  background: linear-gradient(135deg, #E6F3EF 0%, #F2F8F6 100%);
+  color: #023F32;
   transform: rotateY(180deg);
 }
 
@@ -201,6 +350,25 @@ h1, h2, h3, h4, h5, h6,
   left: -30px;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+  
+  .section {
+    padding: 3rem 1rem;
+  }
+}
+
 /* Book Card Styles */
 .book-card-wrapper {
   perspective: 2000px;
@@ -226,7 +394,7 @@ h1, h2, h3, h4, h5, h6,
 .cover {
   top: 0;
   position: absolute;
-  background: linear-gradient(135deg, #8A2BE2, #9370DB);
+  background: linear-gradient(135deg, #035642, #048E6C);
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -255,4 +423,23 @@ h1, h2, h3, h4, h5, h6,
 
 .back-text {
   padding: 20px;
+  color: #023F32;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F2F8F6; /* Soft off-white with green tint */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4ECE5; /* Slightly darker green tint */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #048E6C; /* Teal-green */
 }

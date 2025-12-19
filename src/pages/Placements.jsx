@@ -10,7 +10,6 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Layout from '../components/Layout';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 
 const companies = [
@@ -84,18 +83,17 @@ const processSteps = [
 
 export default function Placements() {
   return (
-    <Layout>
-      <AnimatedPageWrapper>
+    <AnimatedPageWrapper>
         {/* Enhanced Hero Section */}
         <motion.section 
-          className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50"
+          className="relative py-20 overflow-hidden bg-secondary"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-indigo-300 to-purple-300 rounded-full opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -105,18 +103,18 @@ export default function Placements() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight">
-                  <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Career </span>
-                  <span className="block text-5xl md:text-6xl font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mt-2">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary">
+                  <span className="text-primary">Career </span>
+                  <span className="block text-5xl md:text-6xl font-black text-accent mt-2">
                     Placement
                   </span>
                 </h1>
-                <p className="mt-6 text-xl text-slate-700 font-medium max-w-2xl leading-relaxed">
+                <p className="mt-6 text-xl text-secondary font-medium max-w-2xl leading-relaxed">
                   We don't just teach skills - we connect you with top companies and help you land your dream job.
                 </p>
                 <div className="mt-10">
                   <motion.button 
-                    className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-xl transform hover:scale-105"
+                    className="px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-dark transition-all duration-300 shadow-subtle transform hover:scale-105"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
@@ -133,16 +131,16 @@ export default function Placements() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-indigo-200">
-                  <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 aspect-video flex items-center justify-center relative">
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_70%)]"></div>
+                <div className="relative rounded-3xl overflow-hidden shadow-subtle border-2 border-subtle">
+                  <div className="bg-primary aspect-video flex items-center justify-center relative">
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212, 236, 229,0.1)_0%,rgba(212, 236, 229,0)_70%)]"></div>
                     
                     <div className="text-center p-8 relative z-10">
-                      <div className="w-24 h-24 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                      <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-subtle">
                         <Building2 className="w-12 h-12 text-white" />
                       </div>
-                      <h3 className="text-2xl font-black text-white mb-2">Industry Partnerships</h3>
-                      <p className="mt-2 text-indigo-200 font-medium">Direct connections to top employers</p>
+                      <h3 className="text-2xl font-black text-primary mb-2">Industry Partnerships</h3>
+                      <p className="mt-2 text-secondary font-medium">Direct connections to top employers</p>
                     </div>
                   </div>
                 </div>
@@ -153,7 +151,7 @@ export default function Placements() {
         
         {/* Enhanced Stats */}
         <motion.section 
-          className="py-16 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 relative overflow-hidden"
+          className="py-16 bg-accent relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -195,17 +193,17 @@ export default function Placements() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4"
+                className="text-4xl md:text-5xl font-black mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Companies </span>
-                <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">Hiring Our Graduates</span>
+                <span className="text-primary">Companies </span>
+                <span className="text-accent">Hiring Our Graduates</span>
               </motion.h2>
               <motion.p 
-                className="mt-4 text-xl text-slate-600 font-medium"
+                className="mt-4 text-xl text-secondary font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -219,18 +217,18 @@ export default function Placements() {
               {companies.map((company, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gradient-to-br from-white to-indigo-50 rounded-3xl p-8 border-2 border-indigo-100 hover:border-indigo-400 transition-all duration-300 flex flex-col items-center justify-center text-center group shadow-xl"
+                  className="bg-secondary rounded-3xl p-8 border-2 border-subtle hover:border-accent transition-all duration-300 flex flex-col items-center justify-center text-center group shadow-subtle"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.05 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-300 mb-4 shadow-md">
-                    <Building2 className="w-8 h-8 text-indigo-600" />
+                  <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center group-hover:bg-accent transition-all duration-300 mb-4 shadow-subtle">
+                    <Building2 className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-lg font-black text-slate-800">{company.name}</h3>
-                  <p className="mt-2 text-indigo-600 text-sm font-bold">{company.positions} positions</p>
+                  <h3 className="text-lg font-black text-primary">{company.name}</h3>
+                  <p className="mt-2 text-accent text-sm font-bold">{company.positions} positions</p>
                 </motion.div>
               ))}
             </div>
@@ -239,7 +237,7 @@ export default function Placements() {
         
         {/* Enhanced Success Stories */}
         <motion.section 
-          className="py-20 bg-gradient-to-br from-slate-50 to-indigo-50"
+          className="py-20 bg-secondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -248,17 +246,17 @@ export default function Placements() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4"
+                className="text-4xl md:text-5xl font-black mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Success </span>
-                <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-rose-600 bg-clip-text text-transparent">Stories</span>
+                <span className="text-primary">Success </span>
+                <span className="text-accent">Stories</span>
               </motion.h2>
               <motion.p 
-                className="mt-4 text-xl text-slate-600 font-medium"
+                className="mt-4 text-xl text-secondary font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -272,7 +270,7 @@ export default function Placements() {
               {successStories.map((story, index) => (
                 <motion.div
                   key={story.id}
-                  className="bg-white rounded-3xl p-8 border-2 border-indigo-100 hover:border-indigo-400 transition-all duration-300 shadow-xl"
+                  className="bg-white rounded-3xl p-8 border-2 border-subtle hover:border-accent transition-all duration-300 shadow-subtle"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
@@ -280,31 +278,31 @@ export default function Placements() {
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center shadow-md">
-                      <Users className="w-8 h-8 text-indigo-600" />
+                    <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center shadow-subtle">
+                      <Users className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-xl font-black text-slate-800">{story.name}</h3>
-                      <p className="text-slate-600 font-bold">{story.role}</p>
+                      <h3 className="text-xl font-black text-primary">{story.name}</h3>
+                      <p className="text-secondary font-bold">{story.role}</p>
                     </div>
                   </div>
                   
                   <div className="mb-6 space-y-2">
-                    <div className="flex items-center text-indigo-600">
+                    <div className="flex items-center text-accent">
                       <Building2 className="w-4 h-4 mr-2" />
                       <span className="font-bold">{story.company}</span>
                     </div>
-                    <div className="flex items-center text-purple-600">
+                    <div className="flex items-center text-accent">
                       <Award className="w-4 h-4 mr-2" />
                       <span className="font-bold">{story.salary}</span>
                     </div>
                   </div>
                   
-                  <p className="text-slate-600 mb-4 font-medium">
-                    <span className="font-black text-slate-800">Course:</span> {story.course}
+                  <p className="text-secondary mb-4 font-medium">
+                    <span className="font-black text-primary">Course:</span> {story.course}
                   </p>
                   
-                  <p className="text-slate-600 italic font-medium">"{story.testimonial}"</p>
+                  <p className="text-secondary italic font-medium">"{story.testimonial}"</p>
                 </motion.div>
               ))}
             </div>
@@ -322,17 +320,17 @@ export default function Placements() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4"
+                className="text-4xl md:text-5xl font-black mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Our </span>
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Placement Process</span>
+                <span className="text-primary">Our </span>
+                <span className="text-accent">Placement Process</span>
               </motion.h2>
               <motion.p 
-                className="mt-4 text-xl text-slate-600 font-medium"
+                className="mt-4 text-xl text-secondary font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -346,18 +344,18 @@ export default function Placements() {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gradient-to-br from-white to-indigo-50 rounded-3xl p-8 border-2 border-indigo-100 hover:border-indigo-400 transition-all duration-300 text-center group shadow-xl"
+                  className="bg-secondary rounded-3xl p-8 border-2 border-subtle hover:border-accent transition-all duration-300 text-center group shadow-subtle"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   whileHover={{ y: -10, scale: 1.05 }}
                   viewport={{ once: true }}
                 >
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center group-hover:from-indigo-200 group-hover:to-purple-200 transition-all duration-300 mx-auto mb-6 shadow-md">
-                    <step.icon className="w-8 h-8 text-indigo-600" />
+                  <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center group-hover:bg-accent transition-all duration-300 mx-auto mb-6 shadow-subtle">
+                    <step.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-black mb-3 text-slate-800">{step.title}</h3>
-                  <p className="text-slate-600 font-medium">{step.description}</p>
+                  <h3 className="text-xl font-black mb-3 text-primary">{step.title}</h3>
+                  <p className="text-secondary font-medium">{step.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -366,7 +364,7 @@ export default function Placements() {
         
         {/* Enhanced CTA */}
         <motion.section 
-          className="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 relative overflow-hidden"
+          className="py-20 bg-accent relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -383,14 +381,14 @@ export default function Placements() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-                Ready to Launch Your <span className="bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent">Career?</span>
+                Ready to Launch Your <span className="bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">Career?</span>
               </h2>
-              <p className="mt-4 text-xl text-indigo-100 font-medium max-w-2xl mx-auto">
+              <p className="mt-4 text-xl text-white/90 font-medium max-w-2xl mx-auto">
                 Join thousands of successful graduates who found their dream jobs through our placement program.
               </p>
               <div className="mt-10">
                 <motion.button 
-                  className="px-8 py-4 bg-white text-indigo-700 font-bold rounded-xl hover:bg-indigo-50 transition-all duration-300 shadow-xl transform hover:scale-105"
+                  className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-secondary transition-all duration-300 shadow-subtle transform hover:scale-105"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -404,6 +402,5 @@ export default function Placements() {
           </div>
         </motion.section>
       </AnimatedPageWrapper>
-    </Layout>
-  );
-}   
+    );
+  }

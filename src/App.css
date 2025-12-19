@@ -5,9 +5,9 @@
   text-align: center;
 }
 
-/* Modern button styles */
+/* Modern button styles - Green Theme */
 .btn-primary {
-  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  background-color: #035642; /* Deep green */
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -15,18 +15,19 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 6px rgba(3, 86, 66, 0.2);
 }
 
 .btn-primary:hover {
+  background-color: #048E6C; /* Medium teal-green */
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 15px rgba(4, 142, 108, 0.3);
 }
 
 .btn-secondary {
-  background: white;
-  color: #3b82f6;
-  border: 2px solid #3b82f6;
+  background-color: #E6F3EF; /* Very light teal-green */
+  color: #035642; /* Deep green */
+  border: 1px solid #DDEAE6; /* Subtle green border */
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 600;
@@ -35,7 +36,7 @@
 }
 
 .btn-secondary:hover {
-  background: #eff6ff;
+  background-color: #D4ECE5; /* Slightly darker green tint */
   transform: translateY(-2px);
 }
 
@@ -45,7 +46,7 @@
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #DDEAE6; /* Very subtle green border */
 }
 
 .card-modern:hover {
@@ -64,9 +65,9 @@
   }
 }
 
-/* Gradient text */
+/* Gradient text - Green Theme */
 .text-gradient {
-  background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+  background: linear-gradient(90deg, #035642, #048E6C, #023F32);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -100,3 +101,22 @@
     display: none;
   }
 }
+
+/* Color utility classes */
+.bg-primary { background-color: #F2F8F6; } /* Soft off-white with green tint */
+.bg-secondary { background-color: #E6F3EF; } /* Very light teal-green */
+.bg-accent { background-color: #048E6C; } /* Teal-green */
+.bg-dark { background-color: #023F32; } /* Dark green */
+.bg-white { background-color: #FFFFFF; } /* White */
+
+.text-primary { color: #023F32; } /* Dark green */
+.text-secondary { color: #3E4F4B; } /* Soft green-gray */
+.text-accent { color: #048E6C; } /* Teal-green */
+.text-white { color: #FFFFFF; } /* White */
+.text-muted { color: #3E4F4B; opacity: 0.7; } /* Muted text */
+
+.border-subtle { border: 1px solid #DDEAE6; } /* Very subtle green border */
+.border-accent { border: 1px solid #048E6C; } /* Teal-green border */
+
+.shadow-subtle { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
+.shadow-hover { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }

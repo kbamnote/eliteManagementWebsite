@@ -8,7 +8,6 @@ import {
   Send
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Layout from '../components/Layout';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 
 export default function Contact() {
@@ -35,33 +34,32 @@ export default function Contact() {
   };
 
   return (
-    <Layout>
-      <AnimatedPageWrapper>
-        {/* Enhanced Hero Section */}
+    <AnimatedPageWrapper>
+      {/* Enhanced Hero Section */}
         <motion.section 
-          className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50"
+          className="relative py-20 overflow-hidden bg-secondary"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-indigo-300 to-purple-300 rounded-full opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto">
               <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight"
+                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Get In </span>
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Touch</span>
+                <span className="text-primary">Get In </span>
+                <span className="text-accent">Touch</span>
               </motion.h1>
               <motion.p 
-                className="mt-6 text-xl text-slate-700 font-medium max-w-2xl mx-auto leading-relaxed"
+                className="mt-6 text-xl text-secondary font-medium max-w-2xl mx-auto leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -89,23 +87,23 @@ export default function Contact() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl font-black mb-8 bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Contact Information</h2>
+                <h2 className="text-4xl font-black mb-8 text-primary">Contact Information</h2>
                 
                 <div className="space-y-6">
                   <motion.div 
-                    className="flex items-start bg-gradient-to-br from-white to-indigo-50 rounded-3xl p-6 shadow-xl border-2 border-indigo-100 transform transition-all duration-300 hover:-translate-y-1"
+                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     whileHover={{ scale: 1.02 }}
                     viewport={{ once: true }}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center flex-shrink-0 shadow-md">
-                      <MapPin className="w-8 h-8 text-indigo-600" />
+                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                      <MapPin className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
-                      <h3 className="text-xl font-black text-slate-800 mb-2">Our Location</h3>
-                      <p className="text-slate-600 font-medium">
+                      <h3 className="text-xl font-black text-primary mb-2">Our Location</h3>
+                      <p className="text-secondary font-medium">
                         123 Education Street<br />
                         San Francisco, CA 94103<br />
                         United States
@@ -114,19 +112,19 @@ export default function Contact() {
                   </motion.div>
                   
                   <motion.div 
-                    className="flex items-start bg-gradient-to-br from-white to-purple-50 rounded-3xl p-6 shadow-xl border-2 border-purple-100 transform transition-all duration-300 hover:-translate-y-1"
+                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     whileHover={{ scale: 1.02 }}
                     viewport={{ once: true }}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center flex-shrink-0 shadow-md">
-                      <Phone className="w-8 h-8 text-purple-600" />
+                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                      <Phone className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
-                      <h3 className="text-xl font-black text-slate-800 mb-2">Phone Number</h3>
-                      <p className="text-slate-600 font-medium">
+                      <h3 className="text-xl font-black text-primary mb-2">Phone Number</h3>
+                      <p className="text-secondary font-medium">
                         +1 (555) 123-4567<br />
                         +1 (555) 987-6543
                       </p>
@@ -134,19 +132,19 @@ export default function Contact() {
                   </motion.div>
                   
                   <motion.div 
-                    className="flex items-start bg-gradient-to-br from-white to-blue-50 rounded-3xl p-6 shadow-xl border-2 border-blue-100 transform transition-all duration-300 hover:-translate-y-1"
+                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                     whileHover={{ scale: 1.02 }}
                     viewport={{ once: true }}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center flex-shrink-0 shadow-md">
-                      <Mail className="w-8 h-8 text-blue-600" />
+                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                      <Mail className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
-                      <h3 className="text-xl font-black text-slate-800 mb-2">Email Address</h3>
-                      <p className="text-slate-600 font-medium">
+                      <h3 className="text-xl font-black text-primary mb-2">Email Address</h3>
+                      <p className="text-secondary font-medium">
                         info@elitemanagement.com<br />
                         support@elitemanagement.com
                       </p>
@@ -154,19 +152,19 @@ export default function Contact() {
                   </motion.div>
                   
                   <motion.div 
-                    className="flex items-start bg-gradient-to-br from-white to-teal-50 rounded-3xl p-6 shadow-xl border-2 border-teal-100 transform transition-all duration-300 hover:-translate-y-1"
+                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                     whileHover={{ scale: 1.02 }}
                     viewport={{ once: true }}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-100 to-cyan-100 flex items-center justify-center flex-shrink-0 shadow-md">
-                      <Clock className="w-8 h-8 text-teal-600" />
+                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                      <Clock className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
-                      <h3 className="text-xl font-black text-slate-800 mb-2">Working Hours</h3>
-                      <p className="text-slate-600 font-medium">
+                      <h3 className="text-xl font-black text-primary mb-2">Working Hours</h3>
+                      <p className="text-secondary font-medium">
                         Monday - Friday: 9:00 AM - 6:00 PM<br />
                         Saturday: 10:00 AM - 4:00 PM<br />
                         Sunday: Closed
@@ -177,19 +175,19 @@ export default function Contact() {
                 
                 {/* Enhanced Map Placeholder */}
                 <motion.div 
-                  className="mt-8 rounded-3xl overflow-hidden border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-purple-50 h-80 flex items-center justify-center shadow-xl"
+                  className="mt-8 rounded-3xl overflow-hidden border-2 border-subtle bg-secondary h-80 flex items-center justify-center shadow-subtle"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.7 }}
                   viewport={{ once: true }}
                 >
                   <div className="text-center p-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                      <MapPin className="w-10 h-10 text-indigo-600" />
+                    <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-subtle">
+                      <MapPin className="w-10 h-10 text-primary" />
                     </div>
-                    <h3 className="text-2xl font-black text-slate-800 mb-2">Interactive Map</h3>
-                    <p className="text-slate-600 mb-4 font-medium">Our location on Google Maps</p>
-                    <button className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 font-bold shadow-lg transform hover:scale-105">
+                    <h3 className="text-2xl font-black text-primary mb-2">Interactive Map</h3>
+                    <p className="text-secondary mb-4 font-medium">Our location on Google Maps</p>
+                    <button className="px-8 py-3 bg-accent text-white rounded-xl hover:bg-dark transition-all duration-300 font-bold shadow-subtle transform hover:scale-105">
                       View on Map
                     </button>
                   </div>
@@ -198,13 +196,13 @@ export default function Contact() {
               
               {/* Enhanced Contact Form */}
               <motion.div
-                className="bg-gradient-to-br from-white to-indigo-50 rounded-3xl p-8 shadow-xl border-2 border-indigo-200"
+                className="bg-secondary rounded-3xl p-8 shadow-subtle border-2 border-subtle"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl font-black mb-8 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Send us a Message</h2>
+                <h2 className="text-4xl font-black mb-8 text-accent">Send us a Message</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <motion.div
@@ -213,7 +211,7 @@ export default function Contact() {
                     transition={{ duration: 0.5, delay: 0.3 }}
                     viewport={{ once: true }}
                   >
-                    <label htmlFor="name" className="block text-sm font-bold text-slate-700 mb-2">
+                    <label htmlFor="name" className="block text-sm font-bold text-primary mb-2">
                       Full Name
                     </label>
                     <input
@@ -223,7 +221,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 bg-white border-2 border-indigo-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 shadow-md font-medium"
+                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 shadow-subtle font-medium"
                       placeholder="Enter your full name"
                     />
                   </motion.div>
@@ -234,7 +232,7 @@ export default function Contact() {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     viewport={{ once: true }}
                   >
-                    <label htmlFor="email" className="block text-sm font-bold text-slate-700 mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-primary mb-2">
                       Email Address
                     </label>
                     <input
@@ -244,7 +242,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 bg-white border-2 border-purple-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 shadow-md font-medium"
+                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 shadow-subtle font-medium"
                       placeholder="Enter your email address"
                     />
                   </motion.div>
@@ -255,7 +253,7 @@ export default function Contact() {
                     transition={{ duration: 0.5, delay: 0.5 }}
                     viewport={{ once: true }}
                   >
-                    <label htmlFor="subject" className="block text-sm font-bold text-slate-700 mb-2">
+                    <label htmlFor="subject" className="block text-sm font-bold text-primary mb-2">
                       Subject
                     </label>
                     <input
@@ -265,7 +263,7 @@ export default function Contact() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 bg-white border-2 border-blue-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 shadow-md font-medium"
+                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 shadow-subtle font-medium"
                       placeholder="Enter subject"
                     />
                   </motion.div>
@@ -276,7 +274,7 @@ export default function Contact() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     viewport={{ once: true }}
                   >
-                    <label htmlFor="message" className="block text-sm font-bold text-slate-700 mb-2">
+                    <label htmlFor="message" className="block text-sm font-bold text-primary mb-2">
                       Message
                     </label>
                     <textarea
@@ -286,14 +284,14 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-4 bg-white border-2 border-cyan-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 resize-none shadow-md font-medium"
+                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 resize-none shadow-subtle font-medium"
                       placeholder="Enter your message"
                     ></textarea>
                   </motion.div>
                   
                   <motion.button
                     type="submit"
-                    className="w-full px-6 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white font-black rounded-xl hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 transition-all duration-300 shadow-xl flex items-center justify-center transform hover:scale-105"
+                    className="w-full px-6 py-4 bg-accent text-white font-black rounded-xl hover:bg-dark transition-all duration-300 shadow-subtle flex items-center justify-center transform hover:scale-105"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.7 }}
@@ -311,7 +309,7 @@ export default function Contact() {
 
         {/* Enhanced FAQ Section */}
         <motion.section 
-          className="py-20 bg-gradient-to-br from-slate-50 to-indigo-50"
+          className="py-20 bg-secondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -320,17 +318,17 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4"
+                className="text-4xl md:text-5xl font-black mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Frequently Asked </span>
-                <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 bg-clip-text text-transparent">Questions</span>
+                <span className="text-primary">Frequently Asked </span>
+                <span className="text-accent">Questions</span>
               </motion.h2>
               <motion.p 
-                className="mt-4 text-xl text-slate-600 font-medium"
+                className="mt-4 text-xl text-secondary font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -361,21 +359,20 @@ export default function Contact() {
               ].map((faq, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-3xl p-8 border-2 border-indigo-100 shadow-xl transform transition-all duration-300 hover:-translate-y-1"
+                  className="bg-white rounded-3xl p-8 border-2 border-subtle shadow-subtle transform transition-all duration-300 hover:-translate-y-1"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-xl font-black text-slate-800 mb-3">{faq.question}</h3>
-                  <p className="text-slate-600 font-medium">{faq.answer}</p>
+                  <h3 className="text-xl font-black text-primary mb-3">{faq.question}</h3>
+                  <p className="text-secondary font-medium">{faq.answer}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </motion.section>
       </AnimatedPageWrapper>
-    </Layout>
-  );
-}
+    );
+  }

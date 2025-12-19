@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+/* Enhanced gradient animations */
+.bg-gradient-animation {
+  background: linear-gradient(-45deg, #957DAD, #E0BBE4, #D291BC, #FEC8D8, #957DAD);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom utility classes for modern design */
+.shadow-xl-hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease-in-out;
+}
+
+.shadow-xl-hover:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-5px);
+}
+
+/* Smooth transitions */
+.transition-all-fast {
+  transition: all 0.2s ease-in-out;
+}
+
+.transition-all-medium {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 3D Transform Utilities */
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.translate-z-0 {
+  transform: translateZ(0px);
+}
+
+.translate-z-5 {
+  transform: translateZ(5px);
+}
+
+.translate-z-10 {
+  transform: translateZ(10px);
+}
+
+.translate-z-20 {
+  transform: translateZ(20px);
+}
+
+/* Custom cursor override - ensures all elements use the custom cursor */
+* {
+  cursor: none !important;
+  font-family: 'Neue Montreal', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+}
+
+/* Exception for disabled elements */
+*:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Heading font styles using Helvetica Now */
+h1, h2, h3, h4, h5, h6,
+.heading-font {
+  font-family: 'Helvetica Now', 'Helvetica Neue', 'Helvetica', -apple-system,
+    BlinkMacSystemFont, sans-serif;
+}
+
+/* Flip Card Styles */
+.flip-card-container {
+  perspective: 1500px;
+  margin: 0 auto;
+  width: 220px;
+  height: 300px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-container:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.flip-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flip-text {
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Add decorative elements */
+.flip-card-front::before,
+.flip-card-back::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.flip-card-front::before {
+  top: -50px;
+  right: -50px;
+}
+
+.flip-card-back::before {
+  bottom: -80px;
+  left: -30px;
+}
+
+/* Book Card Styles */
+.book-card-wrapper {
+  perspective: 2000px;
+  display: inline-block;
+}
+
+.book {
+  position: relative;
+  border-radius: 10px;
+  width: 220px;
+  height: 300px;
+  background-color: whitesmoke;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
+  transform: preserve-3d;
+  perspective: 2000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  margin: 0 auto;
+}
+
+.cover {
+  top: 0;
+  position: absolute;
+  background: linear-gradient(135deg, #8A2BE2, #9370DB);
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  transform-origin: left;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.book:hover .cover {
+  transition: all 0.5s;
+  transform: rotateY(-80deg);
+}
+
+.front-text, .back-text {
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  padding: 20px;
+}
+
+.back-text {
+  padding: 20px;
+}

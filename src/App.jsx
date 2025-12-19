@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import SmoothCursor from './components/SmoothCursor';
+import Layout from './components/Layout';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
 import About from './pages/About';
@@ -17,18 +18,20 @@ export default function App() {
   return (
     <div className="cursor-none">
       <SmoothCursor />
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/career-counseling" element={<CareerCounseling />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/placements" element={<Placements />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </AnimatePresence>
+      <Layout>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/career-counseling" element={<CareerCounseling />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/placements" element={<Placements />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AnimatePresence>
+      </Layout>
     </div>
   );
 }

@@ -10,7 +10,6 @@ import {
   Clock
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Layout from '../components/Layout';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 
 const blogPosts = [
@@ -98,33 +97,32 @@ export default function Blogs() {
   });
 
   return (
-    <Layout>
-      <AnimatedPageWrapper>
-        {/* Enhanced Hero Section */}
+    <AnimatedPageWrapper>
+      {/* Enhanced Hero Section */}
         <motion.section 
-          className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50"
+          className="relative py-20 overflow-hidden bg-secondary"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-br from-indigo-300 to-purple-300 rounded-full opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-300 to-cyan-300 rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto">
               <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight"
+                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <span className="bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent">Our </span>
-                <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Blog</span>
+                <span className="text-primary">Our </span>
+                <span className="text-accent">Blog</span>
               </motion.h1>
               <motion.p 
-                className="mt-6 text-xl text-slate-700 font-medium max-w-2xl mx-auto leading-relaxed"
+                className="mt-6 text-xl text-secondary font-medium max-w-2xl mx-auto leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
@@ -137,7 +135,7 @@ export default function Blogs() {
 
         {/* Enhanced Filters */}
         <motion.section 
-          className="py-8 bg-white border-b-2 border-indigo-100 sticky top-0 z-20 shadow-md backdrop-blur-sm bg-white/95"
+          className="py-8 bg-white border-b-2 border-subtle sticky top-0 z-20 shadow-subtle backdrop-blur-sm bg-white/95"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -151,11 +149,11 @@ export default function Blogs() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-indigo-400 w-5 h-5" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Search articles..."
-                  className="w-full pl-12 pr-4 py-4 bg-white border-2 border-indigo-200 rounded-xl text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                  className="w-full pl-12 pr-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -169,15 +167,15 @@ export default function Blogs() {
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
                 <select
-                  className="appearance-none pl-4 pr-10 py-4 bg-white border-2 border-purple-200 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent shadow-md hover:shadow-lg transition-all duration-300 font-medium"
+                  className="appearance-none pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
                   {categories.map(category => (
-                    <option key={category} value={category} className="bg-white text-slate-700">{category}</option>
+                    <option key={category} value={category} className="bg-white text-primary">{category}</option>
                   ))}
                 </select>
-                <Tag className="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-400 w-5 h-5 pointer-events-none" />
+                <Tag className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
               </motion.div>
             </div>
           </div>
@@ -185,7 +183,7 @@ export default function Blogs() {
 
         {/* Enhanced Blog Posts */}
         <motion.section 
-          className="py-20 bg-gradient-to-br from-slate-50 to-indigo-50"
+          className="py-20 bg-secondary"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -193,16 +191,16 @@ export default function Blogs() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {filteredPosts.length === 0 ? (
               <motion.div 
-                className="text-center py-20 bg-white rounded-3xl shadow-xl border-2 border-indigo-200 max-w-2xl mx-auto"
+                className="text-center py-20 bg-white rounded-3xl shadow-subtle border-2 border-subtle max-w-2xl mx-auto"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Search className="w-10 h-10 text-indigo-600" />
+                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Search className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="text-2xl font-black text-slate-800 mb-2">No articles found</h3>
-                <p className="text-slate-600 font-medium">Try adjusting your search or filter criteria.</p>
+                <h3 className="text-2xl font-black text-primary mb-2">No articles found</h3>
+                <p className="text-secondary font-medium">Try adjusting your search or filter criteria.</p>
               </motion.div>
             ) : (
               <>
@@ -210,48 +208,48 @@ export default function Blogs() {
                   {filteredPosts.map((post, index) => (
                     <motion.div
                       key={post.id}
-                      className="bg-white rounded-3xl overflow-hidden border-2 border-indigo-100 hover:border-indigo-400 transition-all duration-300 group shadow-xl"
+                      className="bg-white rounded-3xl overflow-hidden border-2 border-subtle hover:border-accent transition-all duration-300 group shadow-subtle"
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                       whileHover={{ y: -8 }}
                     >
-                      <div className="h-48 bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex items-center justify-center">
+                      <div className="h-48 bg-secondary flex items-center justify-center">
                         <div className="text-center">
-                          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center mx-auto mb-4 shadow-lg">
+                          <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto mb-4 shadow-subtle">
                             <Calendar className="w-8 h-8 text-white" />
                           </div>
-                          <p className="text-slate-700 font-bold">Blog Image</p>
+                          <p className="text-secondary font-bold">Blog Image</p>
                         </div>
                       </div>
                       <div className="p-6">
                         <div className="flex items-center text-sm mb-3">
-                          <span className="px-3 py-1 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-700 rounded-lg font-bold">{post.category}</span>
-                          <span className="mx-2 text-slate-400">•</span>
-                          <Clock className="w-4 h-4 mr-1 text-slate-500" />
-                          <span className="text-slate-600 font-medium">{post.readTime}</span>
+                          <span className="px-3 py-1 bg-secondary text-primary rounded-lg font-bold">{post.category}</span>
+                          <span className="mx-2 text-secondary">•</span>
+                          <Clock className="w-4 h-4 mr-1 text-secondary" />
+                          <span className="text-secondary font-medium">{post.readTime}</span>
                         </div>
                         
-                        <h3 className="text-xl font-black text-slate-800 group-hover:text-indigo-700 transition-colors duration-300 mb-3 leading-tight">
+                        <h3 className="text-xl font-black text-primary group-hover:text-accent transition-colors duration-300 mb-3 leading-tight">
                           {post.title}
                         </h3>
                         
-                        <p className="text-slate-600 mb-4 font-medium">{post.excerpt}</p>
+                        <p className="text-secondary mb-4 font-medium">{post.excerpt}</p>
                         
-                        <div className="flex items-center justify-between pt-4 border-t-2 border-indigo-50">
+                        <div className="flex items-center justify-between pt-4 border-t-2 border-subtle">
                           <div className="flex items-center">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center shadow-md">
-                              <User className="w-5 h-5 text-indigo-600" />
+                            <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shadow-subtle">
+                              <User className="w-5 h-5 text-primary" />
                             </div>
                             <div className="ml-3">
-                              <p className="text-sm font-bold text-slate-800">{post.author}</p>
-                              <p className="text-xs text-slate-500 font-medium">{post.date}</p>
+                              <p className="text-sm font-bold text-primary">{post.author}</p>
+                              <p className="text-xs text-secondary font-medium">{post.date}</p>
                             </div>
                           </div>
                           
                           <Link 
                             to={`/blog/${post.id}`} 
-                            className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center text-indigo-600 hover:from-indigo-200 hover:to-purple-200 transition-all duration-300 shadow-md"
+                            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-primary hover:bg-accent transition-all duration-300 shadow-subtle"
                           >
                             <ChevronRight className="w-5 h-5" />
                           </Link>
@@ -268,7 +266,7 @@ export default function Blogs() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 1 }}
                 >
-                  <button className="px-8 py-4 bg-white text-indigo-700 rounded-xl hover:bg-indigo-50 transition-all duration-300 border-2 border-indigo-200 font-bold shadow-lg hover:shadow-xl transform hover:scale-105">
+                  <button className="px-8 py-4 bg-white text-primary rounded-xl hover:bg-secondary transition-all duration-300 border-2 border-subtle font-bold shadow-subtle hover:shadow-hover transform hover:scale-105">
                     Load More Articles
                   </button>
                 </motion.div>
@@ -279,7 +277,7 @@ export default function Blogs() {
 
         {/* Enhanced Newsletter CTA */}
         <motion.section 
-          className="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 relative overflow-hidden"
+          className="py-20 bg-accent relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -296,9 +294,9 @@ export default function Blogs() {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-                Stay Updated with <span className="bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent">Our Newsletter</span>
+                Stay Updated with <span className="bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">Our Newsletter</span>
               </h2>
-              <p className="mt-4 text-xl text-indigo-100 font-medium max-w-2xl mx-auto">
+              <p className="mt-4 text-xl text-white/90 font-medium max-w-2xl mx-auto">
                 Subscribe to receive the latest articles, tips, and resources directly to your inbox.
               </p>
               
@@ -315,7 +313,7 @@ export default function Blogs() {
                   />
                   <motion.button
                     type="submit"
-                    className="px-8 py-4 bg-white text-indigo-700 font-bold rounded-xl hover:bg-indigo-50 transition-all duration-300 shadow-xl transform hover:scale-105"
+                    className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-secondary transition-all duration-300 shadow-subtle transform hover:scale-105"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -325,7 +323,7 @@ export default function Blogs() {
                     Subscribe
                   </motion.button>
                 </form>
-                <p className="mt-4 text-sm text-indigo-100 font-medium">
+                <p className="mt-4 text-sm text-white/90 font-medium">
                   We respect your privacy. Unsubscribe at any time.
                 </p>
               </div>
@@ -333,6 +331,5 @@ export default function Blogs() {
           </div>
         </motion.section>
       </AnimatedPageWrapper>
-    </Layout>
-  );
-}
+    );
+  }

@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 /* Global Styles - Green Theme */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #F2F8F6; /* Soft off-white with green tint */
   color: #3E4F4B; /* Soft green-gray for body text */
@@ -10,6 +14,33 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  cursor: none !important;
+}
+
+/* Disable default cursor globally except for inputs */
+* {
+  cursor: none !important;
+}
+
+/* Allow text cursor for input elements */
+input, textarea, select {
+  cursor: text !important;
+}
+
+/* Allow text cursor for contenteditable elements */
+[contenteditable] {
+  cursor: text !important;
+}
+
+/* Reset cursor styles for mobile devices */
+@media (max-width: 768px) {
+  *, body {
+    cursor: auto !important;
+  }
+  
+  input, textarea, select, [contenteditable] {
+    cursor: text !important;
+  }
 }
 
 /* Typography */
@@ -51,6 +82,7 @@ a {
   color: #048E6C; /* Teal-green for links */
   text-decoration: none;
   transition: color 0.3s ease;
+  font-size: 1rem;
 }
 
 a:hover {

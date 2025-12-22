@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   BookOpen, 
@@ -13,7 +13,8 @@ import {
   Star,
   Clock
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import FlipCard from '../components/FlipCard';
 import BookCard from '../components/BookCard';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
@@ -135,6 +136,30 @@ export default function Courses() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [selectedLevel, setSelectedLevel] = useState('All Levels');
   const [sortBy, setSortBy] = useState('popular');
+
+  // Animation controls for filters section
+  const filtersControls = useAnimation();
+  const [filtersRef, filtersInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  // Animation controls for courses grid
+  const coursesControls = useAnimation();
+  const [coursesRef, coursesInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  // Trigger animations when elements come into view
+  useEffect(() => {
+    if (filtersInView) {
+      filtersControls.start({ opacity: 1, y: 0 });
+    }
+    if (coursesInView) {
+      coursesControls.start({ opacity: 1, y: 0 });
+    }
+  }, [filtersInView, coursesInView, filtersControls, coursesControls]);
 
   const filteredCourses = allCourses.filter(course => {
     const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 

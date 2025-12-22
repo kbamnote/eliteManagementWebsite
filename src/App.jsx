@@ -19,7 +19,7 @@ export default function App() {
     <div className="cursor-none">
       <SmoothCursor />
       <Layout>
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait" initial={false}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />

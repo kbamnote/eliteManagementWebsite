@@ -75,11 +75,37 @@ const SmoothCursor = ({
   },
 }) => {
   const [isMoving, setIsMoving] = useState(false)
+  const [isEnabled, setIsEnabled] = useState(true)
   const lastMousePos = useRef({ x: 0, y: 0 })
   const velocity = useRef({ x: 0, y: 0 })
   const lastUpdateTime = useRef(Date.now())
   const previousAngle = useRef(0)
   const accumulatedRotation = useRef(0)
+
+  // Check if device is a touchscreen device (mobile/tablet)
+  const isTouchDevice = () => {
+    // Check for touch capabilities and screen size
+    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    
+    // Enable cursor on laptops/desktops, even if they have touchscreens
+    const isLargeScreen = window.innerWidth >= 1024
+    
+    // Only disable cursor for actual mobile devices or small touchscreens
+    return hasTouch && !isLargeScreen && isMobile
+  }
+
+  useEffect(() => {
+    // Disable cursor for mobile/touch devices
+    const touchDevice = isTouchDevice()
+    setIsEnabled(!touchDevice)
+    
+    if (touchDevice) {
+      document.body.style.cursor = "auto"
+    } else {
+      document.body.style.cursor = "none"
+    }
+  }, [])
 
   const cursorX = useSpring(0, springConfig)
   const cursorY = useSpring(0, springConfig)
@@ -95,6 +121,12 @@ const SmoothCursor = ({
   })
 
   useEffect(() => {
+    // Don't initialize cursor events if disabled (mobile/tablet)
+    if (!isEnabled) {
+      document.body.style.cursor = "auto"
+      return
+    }
+
     const updateVelocity = (currentPos) => {
       const currentTime = Date.now()
       const deltaTime = currentTime - lastUpdateTime.current
@@ -163,9 +195,9 @@ const SmoothCursor = ({
       document.body.style.cursor = "auto"
       if (rafId) cancelAnimationFrame(rafId)
     }
-  }, [cursorX, cursorY, rotation, scale])
+  }, [cursorX, cursorY, rotation, scale, isEnabled])
 
-  return (
+  return isEnabled ? (
     <motion.div
       style={{
         position: "fixed",
@@ -189,7 +221,7 @@ const SmoothCursor = ({
     >
       {cursor}
     </motion.div>
-  )
+  ) : null
 }
 
 export default SmoothCursor

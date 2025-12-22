@@ -10,7 +10,8 @@ import {
   Clock,
   Star
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 import FlipCard from '../components/FlipCard';
@@ -239,6 +240,50 @@ function ConnectedParticles() {
 }
 
 export default function Home() {
+  // Animation controls for stats section
+  const statsControls = useAnimation();
+  const [statsRef, statsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  // Animation controls for features section
+  const featuresControls = useAnimation();
+  const [featuresRef, featuresInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  // Animation controls for courses section
+  const coursesControls = useAnimation();
+  const [coursesRef, coursesInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  // Animation controls for CTA section
+  const ctaControls = useAnimation();
+  const [ctaRef, ctaInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  // Trigger animations when elements come into view
+  useEffect(() => {
+    if (statsInView) {
+      statsControls.start({ opacity: 1, y: 0 });
+    }
+    if (featuresInView) {
+      featuresControls.start({ opacity: 1, y: 0 });
+    }
+    if (coursesInView) {
+      coursesControls.start({ opacity: 1, y: 0 });
+    }
+    if (ctaInView) {
+      ctaControls.start({ opacity: 1, y: 0 });
+    }
+  }, [statsInView, featuresInView, coursesInView, ctaInView, statsControls, featuresControls, coursesControls, ctaControls]);
+
   return (
     <AnimatedPageWrapper>
       {/* Enhanced Hero Section with Connected Particles */}
@@ -349,11 +394,11 @@ export default function Home() {
         
         {/* Stats Section */}
         <motion.section 
+          ref={statsRef}
           className="py-12 bg-secondary"
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={statsControls}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -386,11 +431,11 @@ export default function Home() {
         
         {/* Features Section */}
         <motion.section 
+          ref={featuresRef}
           className="py-20 bg-white"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={featuresControls}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
@@ -444,11 +489,11 @@ export default function Home() {
         
         {/* Popular Courses with Flip Cards */}
         <motion.section 
+          ref={coursesRef}
           className="py-20 bg-secondary"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={coursesControls}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
@@ -505,11 +550,11 @@ export default function Home() {
         
         {/* CTA Section */}
         <motion.section 
+          ref={ctaRef}
           className="py-20 bg-white"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={ctaControls}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div 

@@ -11,7 +11,7 @@ import {
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
-import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations';
+import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations.jsx';
 import CompanyImg from '../assets/Untitled design (1).png';
 
 const teamMembers = [

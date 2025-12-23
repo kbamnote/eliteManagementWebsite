@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';

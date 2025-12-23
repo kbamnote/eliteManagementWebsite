@@ -18,7 +18,7 @@ import { useInView } from 'react-intersection-observer';
 import FlipCard from '../components/FlipCard';
 import BookCard from '../components/BookCard';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
-import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations';
+import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations.jsx';
 
 const allCourses = [
   {

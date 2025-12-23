@@ -461,8 +461,8 @@ export default function Courses() {
                 />
                 <motion.div
                   className="absolute right-5 top-1/2 -translate-y-1/2 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full p-3 group-hover:scale-110 transition-transform duration-300"
-                  // animate={{ rotate: 360 }}
-                  // transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                // animate={{ rotate: 360 }}
+                // transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 >
                   {/* Search Bar Icon */}
                   <Search className="w-5 h-5 text-accent drop-shadow-sm" />
@@ -575,49 +575,144 @@ export default function Courses() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
       >
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Enhanced Header with Stats */}
           <motion.div
-            className="flex justify-between items-center mb-12"
+            className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-16 lg:mb-20 relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <div>
-              <h2 className="text-4xl font-black mb-2 text-primary">
-                <span className="text-primary">
-                  {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''} Found
-                </span>
+            {/* Background shimmer */}
+            <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-primary/5 -skew-x-12 -translate-x-1/2 opacity-50" />
+
+            <div className="relative z-10">
+              <motion.div
+                className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-accent/80 to-primary/80 text-dark text-sm font-bold uppercase tracking-wider mb-4 shadow-lg"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1 }}
+              >
+                {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''} Found
+              </motion.div>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 bg-gradient-to-r from-primary via-accent to-dark bg-clip-text text-transparent leading-tight">
+                Curated Collection
               </h2>
-              <p className="text-secondary mt-2 font-medium">Choose from our expertly curated selection of courses</p>
+              <p className="text-xl text-secondary/90 font-semibold max-w-md">
+                Choose from our expertly curated selection of {sortedCourses.length} premium courses
+              </p>
+            </div>
+
+            {/* Quick Stats */}
+            <div className="flex gap-4 flex-wrap lg:flex-nowrap">
+              <motion.div
+                className="bg-white/70 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-white/50 min-w-[120px] text-center"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1.1 }}
+                whileHover={{ scale: 1.05, y: -4 }}
+              >
+                <div className="text-2xl lg:text-3xl font-black text-primary mb-1">
+                  {sortedCourses.length}
+                </div>
+                <div className="text-xs uppercase tracking-wider text-secondary/80 font-bold">Results</div>
+              </motion.div>
+              <motion.div
+                className="bg-gradient-to-br from-accent/10 to-primary/10 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-accent/20 min-w-[120px] text-center"
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1.2 }}
+                whileHover={{ scale: 1.05, y: -4 }}
+              >
+                <div className="text-2xl lg:text-3xl font-black bg-gradient-to-r from-accent to-primary bg-clip-text mb-1">
+                  4.8⭐
+                </div>
+                <div className="text-xs uppercase tracking-wider text-accent font-bold">Avg Rating</div>
+              </motion.div>
             </div>
           </motion.div>
 
           {sortedCourses.length === 0 ? (
+            /* Premium Empty State */
             <motion.div
-              className="text-center py-20 bg-white rounded-3xl shadow-subtle border-2 border-subtle max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              className="relative bg-gradient-to-br from-white/60 via-white/20 to-secondary/10 backdrop-blur-3xl rounded-3xl shadow-2xl border border-white/30 p-16 lg:p-24 max-w-4xl mx-auto text-center"
+              initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+              animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
             >
-              <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                <BookOpen className="w-10 h-10 text-primary" />
-              </div>
-              <h3 className="text-2xl font-black text-primary mb-2">No courses found</h3>
-              <p className="text-secondary mb-6 font-medium">Try adjusting your filters to see more courses.</p>
-              <button
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedCategory('All Categories');
-                  setSelectedLevel('All Levels');
-                }}
-                className="px-6 py-3 bg-accent text-white rounded-xl hover:bg-dark transition-all duration-300 font-bold shadow-subtle hover:shadow-hover transform hover:scale-105"
+              {/* Animated background elements */}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-accent/20 to-primary/10 rounded-3xl blur-3xl animate-pulse" />
+              <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-gradient-to-tr from-secondary/20 to-accent/10 rounded-2xl blur-2xl animate-pulse delay-1000" />
+
+              <motion.div
+                className="relative w-28 h-28 bg-gradient-to-br from-accent/20 via-primary/10 to-secondary/20 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl border-4 border-white/50 backdrop-blur-xl group"
+                initial={{ scale: 0, rotate: 180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ type: "spring", bounce: 0.4, delay: 0.6 }}
+                whileHover={{ scale: 1.1, rotate: 5 }}
               >
-                Clear Filters
-              </button>
+                <BookOpen className="w-14 h-14 text-accent drop-shadow-xl group-hover:scale-110 transition-transform duration-300" />
+              </motion.div>
+
+              <motion.h3
+                className="text-3xl lg:text-4xl font-black bg-gradient-to-r from-primary via-accent to-dark bg-clip-text text-transparent mb-4"
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                No courses match your search
+              </motion.h3>
+
+              <motion.p
+                className="text-xl text-secondary/90 mb-8 max-w-lg mx-auto font-semibold leading-relaxed"
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.9 }}
+              >
+                Try adjusting your filters or explore our full catalog of premium courses
+              </motion.p>
+
+              <motion.button
+                className="group relative px-8 py-4 bg-gradient-to-r from-accent via-primary to-dark text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl border-2 border-transparent hover:border-white/50 overflow-hidden transition-all duration-400 transform hover:scale-105 hover:-translate-y-1"
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Clear All Filters
+                  <ArrowLeft className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent -skew-x-12 transform -rotate-2 scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+              </motion.button>
+
+              <motion.div
+                className="mt-12 flex flex-wrap gap-3 justify-center"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2 }}
+              >
+                {categories.slice(0, 4).map((category, i) => (
+                  <motion.button
+                    key={category}
+                    className="px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full text-sm font-semibold text-primary border border-white/50 hover:bg-white hover:shadow-md transition-all duration-300"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.3 + i * 0.1 }}
+                  >
+                    {category}
+                  </motion.button>
+                ))}
+              </motion.div>
             </motion.div>
           ) : (
+            /* Enhanced Grid */
             <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.9 }}
@@ -625,10 +720,24 @@ export default function Courses() {
               {sortedCourses.map((course, index) => (
                 <motion.div
                   key={course.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-                  whileHover={{ y: -8 }}
+                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: {
+                      duration: 0.5,
+                      delay: 1 + index * 0.08,
+                      type: "spring",
+                      bounce: 0.3
+                    }
+                  }}
+                  whileHover={{
+                    y: -12,
+                    scale: 1.02,
+                    transition: { duration: 0.3 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <FlipCard
                     frontTitle={course.title}
@@ -642,6 +751,8 @@ export default function Courses() {
             </motion.div>
           )}
         </div>
+
+
       </motion.section>
     </AnimatedPageWrapper>
   );

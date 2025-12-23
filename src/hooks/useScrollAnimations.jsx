@@ -7,11 +7,13 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 export const useScrollAnimations = () => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, threshold: 0.1 });
+  const inView = useInView(ref, { once: false, threshold: 0.05 }); // Changed to trigger more frequently and repeat on scroll
 
   useEffect(() => {
     if (inView) {
       controls.start('visible');
+    } else {
+      controls.start('hidden');
     }
   }, [controls, inView]);
 
@@ -23,7 +25,7 @@ export const AnimatedOnScroll = ({
   children, 
   className = '', 
   delay = 0, 
-  duration = 0.6,
+  duration = 0.3, // Quicker animation
   direction = 'up',
   ...props 
 }) => {
@@ -86,7 +88,7 @@ export const ParallaxElement = ({
         visible: { 
           y: [0, -20 * speed, 0],
           transition: { 
-            duration: 2, 
+            duration: 1.5, // Quicker animation
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut"
@@ -105,7 +107,7 @@ export const ParallaxElement = ({
 export const StaggerContainer = ({ 
   children, 
   className = '',
-  staggerDelay = 0.1,
+  staggerDelay = 0.05, // Quicker stagger
   ...props 
 }) => {
   return (
@@ -113,7 +115,7 @@ export const StaggerContainer = ({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
+      viewport={{ once: false, amount: 0.05 }} // Trigger more frequently and repeat
       variants={{
         visible: {
           transition: {
@@ -140,7 +142,7 @@ export const StaggerItem = ({ children, className = '', delay = 0, ...props }) =
           x: 0,
           scale: 1,
           transition: { 
-            duration: 0.5, 
+            duration: 0.3, // Quicker animation
             delay,
             ease: [0.25, 0.1, 0.25, 1]
           }

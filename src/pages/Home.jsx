@@ -15,6 +15,7 @@ import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
 import FlipCard from '../components/FlipCard';
+import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations';
 import c1 from '../assets/c1.jfif';
 import c2 from '../assets/c2.jfif';
 import c3 from '../assets/c3.jfif';
@@ -287,24 +288,20 @@ export default function Home() {
   return (
     <AnimatedPageWrapper>
       {/* Enhanced Hero Section with Connected Particles */}
-        <motion.section 
+        <ParallaxElement 
           className="min-h-screen bg-primary relative overflow-hidden flex items-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
         >
           {/* Connected Particle Background */}
           <div className="absolute inset-0 z-0">
             <ConnectedParticles />
           </div>
-          
+                  
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[500px]">
-              <motion.div
+              <AnimatedOnScroll
                 className="flex flex-col justify-center"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                direction="left"
+                delay={0.2}
               >
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 text-primary">
                   Transform Your Career
@@ -312,50 +309,55 @@ export default function Home() {
                     With Expert Learning
                   </span>
                 </h1>
-                                      
+                                               
                 <p className="text-xl md:text-2xl text-secondary font-medium max-w-2xl mb-8 leading-relaxed">
                   Join thousands of students who have advanced their careers with our comprehensive online courses designed by industry experts.
                 </p>
-                                      
+                                               
                 <div className="flex flex-col sm:flex-row gap-4">
                   <motion.button
                     className="btn btn-primary px-8 py-4 text-base"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
                   >
                     Explore Courses
                     <ChevronRight className="ml-2 w-5 h-5" />
                   </motion.button>
-                              
+                                      
                   <motion.button
                     className="btn btn-secondary px-8 py-4 text-base"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
                   >
                     <PlayCircle className="mr-2 w-5 h-5" />
                     Watch Demo
                   </motion.button>
                 </div>
-              </motion.div>
-              
+              </AnimatedOnScroll>
+                      
               {/* Floating decorative spheres */}
-              <div className="absolute top-20 right-20 w-32 h-32 bg-accent rounded-full opacity-20 blur-xl"></div>
-              <div className="absolute bottom-20 left-20 w-24 h-24 bg-accent rounded-full opacity-25 blur-xl"></div>
-                                  
-              <motion.div 
+              <ParallaxElement speed={0.3} className="absolute top-20 right-20 w-32 h-32 bg-accent rounded-full opacity-20 blur-xl"></ParallaxElement>
+              <ParallaxElement speed={0.5} className="absolute bottom-20 left-20 w-24 h-24 bg-accent rounded-full opacity-25 blur-xl"></ParallaxElement>
+                                          
+              <AnimatedOnScroll 
                 className="rounded-3xl overflow-hidden shadow-subtle border border-subtle bg-white relative"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                direction="right"
+                delay={0.4}
               >
                 <div className="bg-primary min-h-[400px] flex items-center justify-center relative p-8 rounded-2xl">
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212, 236, 229,0.15)_0%,rgba(212, 236, 229,0)_70%)] rounded-2xl"></div>
-                  
+                          
                   <div className="w-full max-w-6xl mx-auto overflow-hidden relative z-20">
                     <h3 className="text-4xl font-black text-accent text-center mb-10">
                       Featured Courses
                     </h3>
-                                        
+                                                
                     <motion.div
                       className="flex gap-8"
                       animate={{ x: [0, -350 * 3] }}
@@ -387,211 +389,209 @@ export default function Home() {
                     </motion.div>
                   </div>
                 </div>
-              </motion.div>
+              </AnimatedOnScroll>
             </div>
           </div>
-        </motion.section>
+        </ParallaxElement>
         
         {/* Stats Section */}
-        <motion.section 
-          ref={statsRef}
+        <AnimatedOnScroll 
           className="py-12 bg-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          animate={statsControls}
-          transition={{ duration: 0.6 }}
+          direction="up"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { number: 10000, label: 'Students Enrolled', suffix: '+' },
-                { number: 200, label: 'Courses Available', suffix: '+' },
-                { number: 95, label: 'Job Placement Rate', suffix: '%' },
-                { number: 50, label: 'Industry Experts', suffix: '+' }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center bg-white rounded-2xl p-6 shadow-subtle border border-subtle transform transition-all duration-300 hover:-translate-y-2 hover:shadow-hover"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="text-2xl font-black text-accent">
-                      {stat.suffix === '%' ? stat.number + stat.suffix : stat.number.toLocaleString()}
-                    </div>
-                  </div>
-                  <div className="text-lg font-bold text-primary">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
+            <StaggerContainer staggerDelay={0.1}>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                {[
+                  { number: 10000, label: 'Students Enrolled', suffix: '+' },
+                  { number: 200, label: 'Courses Available', suffix: '+' },
+                  { number: 95, label: 'Job Placement Rate', suffix: '%' },
+                  { number: 50, label: 'Industry Experts', suffix: '+' }
+                ].map((stat, index) => (
+                  <StaggerItem key={index} delay={index * 0.1}>
+                    <motion.div
+                      className="text-center bg-white rounded-2xl p-6 shadow-subtle border border-subtle transform transition-all duration-300 hover:-translate-y-2 hover:shadow-hover"
+                      whileHover={{ scale: 1.05 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div className="text-2xl font-black text-accent">
+                          {stat.suffix === '%' ? stat.number + stat.suffix : stat.number.toLocaleString()}
+                        </div>
+                      </div>
+                      <div className="text-lg font-bold text-primary">{stat.label}</div>
+                    </motion.div>
+                  </StaggerItem>
+                ))}
+              </div>
+            </StaggerContainer>
           </div>
-        </motion.section>
+        </AnimatedOnScroll>
         
         {/* Features Section */}
-        <motion.section 
-          ref={featuresRef}
+        <AnimatedOnScroll 
           className="py-20 bg-white"
-          initial={{ opacity: 0, y: 30 }}
-          animate={featuresControls}
-          transition={{ duration: 0.6 }}
+          direction="up"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <motion.h2 
+              <AnimatedOnScroll 
                 className="text-4xl md:text-5xl font-black mb-4 text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
+                direction="up"
+                delay={0}
               >
                 Why Choose <span className="text-accent">Elite Management</span>?
-              </motion.h2>
-              <motion.p 
+              </AnimatedOnScroll>
+              <AnimatedOnScroll 
                 className="mt-4 text-xl text-secondary font-medium"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
+                direction="up"
+                delay={0.1}
               >
                 We provide everything you need to advance your career and achieve your goals.
-              </motion.p>
+              </AnimatedOnScroll>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white rounded-2xl p-6 border-2 border-subtle hover:border-accent transition-all duration-300 group shadow-subtle hover:shadow-hover"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -10 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-accent transition-all duration-300 mx-auto mb-6">
-                    <feature.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-primary text-center mb-3">{feature.title}</h3>
-                  <p className="text-secondary text-center mb-4">{feature.description}</p>
-                  <div className="pt-4 border-t border-subtle">
-                    <p className="text-sm text-secondary text-center mb-3">{feature.details}</p>
-                    <div className="mt-2 inline-block px-4 py-2 bg-accent text-white rounded-full text-xs font-bold w-full text-center">
-                      {feature.stats}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <StaggerContainer staggerDelay={0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {features.map((feature, index) => (
+                  <StaggerItem key={index} delay={index * 0.1}>
+                    <motion.div
+                      className="bg-white rounded-2xl p-6 border-2 border-subtle hover:border-accent transition-all duration-300 group shadow-subtle hover:shadow-hover"
+                      whileHover={{ y: -10 }}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-accent transition-all duration-300 mx-auto mb-6">
+                        <feature.icon className="w-8 h-8 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-bold text-primary text-center mb-3">{feature.title}</h3>
+                      <p className="text-secondary text-center mb-4">{feature.description}</p>
+                      <div className="pt-4 border-t border-subtle">
+                        <p className="text-sm text-secondary text-center mb-3">{feature.details}</p>
+                        <div className="mt-2 inline-block px-4 py-2 bg-accent text-white rounded-full text-xs font-bold w-full text-center">
+                          {feature.stats}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </StaggerItem>
+                ))}
+              </div>
+            </StaggerContainer>
           </div>
-        </motion.section>
+        </AnimatedOnScroll>
         
         {/* Popular Courses with Flip Cards */}
-        <motion.section 
-          ref={coursesRef}
+        <AnimatedOnScroll 
           className="py-20 bg-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          animate={coursesControls}
-          transition={{ duration: 0.6 }}
+          direction="up"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
               <div>
-                <motion.h2 
+                <AnimatedOnScroll 
                   className="text-4xl md:text-5xl font-black mb-4 text-primary"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
+                  direction="up"
+                  delay={0}
                 >
                   Popular <span className="text-accent">Courses</span>
-                </motion.h2>
-                <motion.p 
+                </AnimatedOnScroll>
+                <AnimatedOnScroll 
                   className="mt-4 text-secondary font-medium max-w-2xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
+                  direction="up"
+                  delay={0.1}
                 >
                   Discover our most sought-after courses that have helped thousands of students achieve their career goals.
-                </motion.p>
+                </AnimatedOnScroll>
               </div>
-              <Link 
-                to="/courses" 
-                className="mt-4 md:mt-0 btn btn-secondary px-6 py-3 shadow-subtle hover:shadow-hover"
+              <AnimatedOnScroll 
+                className="mt-4 md:mt-0"
+                direction="up"
+                delay={0.2}
               >
-                View All Courses
-                <ChevronRight className="ml-2 w-4 h-4" />
-              </Link>
+                <Link 
+                  to="/courses" 
+                  className="btn btn-secondary px-6 py-3 shadow-subtle hover:shadow-hover"
+                >
+                  View All Courses
+                  <ChevronRight className="ml-2 w-4 h-4" />
+                </Link>
+              </AnimatedOnScroll>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {courses.map((course, index) => (
-                <motion.div
-                  key={course.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <FlipCard 
-                    frontTitle={course.title}
-                    frontText={`${course.level} • ${course.duration}`}
-                    backTitle="Course Details"
-                    backText={`${course.students} students • Rating: ${course.rating}/5 • Instructor: ${course.instructor} • ${course.description}`}
-                    icon={<BookOpen size={32} />}
-                  />
-                </motion.div>
-              ))}
-            </div>
+            <StaggerContainer staggerDelay={0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {courses.map((course, index) => (
+                  <StaggerItem key={course.id} delay={index * 0.1}>
+                    <FlipCard 
+                      frontTitle={course.title}
+                      frontText={`${course.level} • ${course.duration}`}
+                      backTitle="Course Details"
+                      backText={`${course.students} students • Rating: ${course.rating}/5 • Instructor: ${course.instructor} • ${course.description}`}
+                      icon={<BookOpen size={32} />}
+                    />
+                  </StaggerItem>
+                ))}
+              </div>
+            </StaggerContainer>
           </div>
-        </motion.section>
+        </AnimatedOnScroll>
         
         {/* CTA Section */}
-        <motion.section 
-          ref={ctaRef}
+        <AnimatedOnScroll 
           className="py-20 bg-white"
-          initial={{ opacity: 0, y: 30 }}
-          animate={ctaControls}
-          transition={{ duration: 0.6 }}
+          direction="up"
         >
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.div 
+            <AnimatedOnScroll 
               className="bg-primary rounded-3xl p-12 shadow-subtle relative overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              direction="up"
+              delay={0}
             >
               <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent rounded-full opacity-30"></div>
               <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-accent rounded-full opacity-30"></div>
               
               <div className="relative z-10 text-center max-w-3xl mx-auto">
-                <h2 className="text-4xl md:text-5xl font-black text-primary mb-6 leading-tight">
+                <AnimatedOnScroll 
+                  className="text-4xl md:text-5xl font-black text-primary mb-6 leading-tight"
+                  direction="up"
+                  delay={0.1}
+                >
                   Ready to Start Your <span className="text-accent">Learning Journey</span>?
-                </h2>
-                <p className="text-xl text-secondary font-medium max-w-2xl mx-auto mb-10">
+                </AnimatedOnScroll>
+                <AnimatedOnScroll 
+                  className="text-xl text-secondary font-medium max-w-2xl mx-auto mb-10"
+                  direction="up"
+                  delay={0.2}
+                >
                   Join thousands of students who have transformed their careers with our courses.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link 
-                    to="/courses" 
-                    className="btn btn-primary px-8 py-4"
-                  >
-                    Get Started Today
-                  </Link>
-                  <Link 
-                    to="/contact" 
-                    className="btn btn-secondary px-8 py-4"
-                  >
-                    Contact Us
-                  </Link>
-                </div>
+                </AnimatedOnScroll>
+                <StaggerContainer staggerDelay={0.1}>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <StaggerItem delay={0.3}>
+                      <Link 
+                        to="/courses" 
+                        className="btn btn-primary px-8 py-4"
+                      >
+                        Get Started Today
+                      </Link>
+                    </StaggerItem>
+                    <StaggerItem delay={0.4}>
+                      <Link 
+                        to="/contact" 
+                        className="btn btn-secondary px-8 py-4"
+                      >
+                        Contact Us
+                      </Link>
+                    </StaggerItem>
+                  </div>
+                </StaggerContainer>
               </div>
-            </motion.div>
+            </AnimatedOnScroll>
           </div>
-        </motion.section>
+        </AnimatedOnScroll>
       </AnimatedPageWrapper>
     );
   }

@@ -18,7 +18,7 @@ import { useInView } from 'react-intersection-observer';
 import FlipCard from '../components/FlipCard';
 import BookCard from '../components/BookCard';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
-import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations';
+import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations.jsx';
 
 const allCourses = [
   {
@@ -558,69 +558,26 @@ export default function Courses() {
         direction="up"
         delay={0.6}
       >
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+          <AnimatedOnScroll
             className="flex justify-between items-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            direction="up"
+            delay={0.8}
           >
-            {/* Background shimmer */}
-            <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-primary/5 -skew-x-12 -translate-x-1/2 opacity-50" />
-
-            <div className="relative z-10">
-              <motion.div
-                className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-accent/80 to-primary/80 text-dark text-sm font-bold uppercase tracking-wider mb-4 shadow-lg"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1 }}
-              >
-                {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''} Found
-              </motion.div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-3 bg-gradient-to-r from-primary via-accent to-dark bg-clip-text text-transparent leading-tight">
-                Curated Collection
+            <div>
+              <h2 className="text-4xl font-black mb-2 text-primary">
+                <span className="text-primary">
+                  {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''} Found
+                </span>
               </h2>
-              <p className="text-xl text-secondary/90 font-semibold max-w-md">
-                Choose from our expertly curated selection of {sortedCourses.length} premium courses
-              </p>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="flex gap-4 flex-wrap lg:flex-nowrap">
-              <motion.div
-                className="bg-white/70 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-white/50 min-w-[120px] text-center"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1.1 }}
-                whileHover={{ scale: 1.05, y: -4 }}
-              >
-                <div className="text-2xl lg:text-3xl font-black text-primary mb-1">
-                  {sortedCourses.length}
-                </div>
-                <div className="text-xs uppercase tracking-wider text-secondary/80 font-bold">Results</div>
-              </motion.div>
-              <motion.div
-                className="bg-gradient-to-br from-accent/10 to-primary/10 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-accent/20 min-w-[120px] text-center"
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1.2 }}
-                whileHover={{ scale: 1.05, y: -4 }}
-              >
-                <div className="text-2xl lg:text-3xl font-black bg-gradient-to-r from-accent to-primary bg-clip-text mb-1">
-                  4.8⭐
-                </div>
-                <div className="text-xs uppercase tracking-wider text-accent font-bold">Avg Rating</div>
-              </motion.div>
+              <p className="text-secondary mt-2 font-medium">Choose from our expertly curated selection of courses</p>
             </div>
           </AnimatedOnScroll>
 
           {sortedCourses.length === 0 ? (
-            <motion.div
+            <AnimatedOnScroll
               className="text-center py-20 bg-white rounded-3xl shadow-subtle border-2 border-subtle max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              direction="up"
             >
               <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
                 <BookOpen className="w-10 h-10 text-primary" />
@@ -637,35 +594,30 @@ export default function Courses() {
               >
                 Clear Filters
               </button>
-            </motion.div>
+            </AnimatedOnScroll>
           ) : (
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
-            >
-              {sortedCourses.map((course, index) => (
-                <motion.div
-                  key={course.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-                  whileHover={{ y: -8 }}
-                >
-                  <FlipCard
-                    frontTitle={course.title}
-                    frontText={`by ${course.instructor}`}
-                    backTitle="Course Details"
-                    backText={`${course.students.toLocaleString()} students • ${course.duration} • ${course.level} • Rating: ${course.rating}/5`}
-                    icon={<BookOpen size={32} />}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
+            <StaggerContainer staggerDelay={0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {sortedCourses.map((course, index) => (
+                  <StaggerItem key={course.id} delay={1 + index * 0.1}>
+                    <motion.div
+                      whileHover={{ y: -8 }}
+                    >
+                      <FlipCard
+                        frontTitle={course.title}
+                        frontText={`by ${course.instructor}`}
+                        backTitle="Course Details"
+                        backText={`${course.students.toLocaleString()} students • ${course.duration} • ${course.level} • Rating: ${course.rating}/5`}
+                        icon={<BookOpen size={32} />}
+                      />
+                    </motion.div>
+                  </StaggerItem>
+                ))}
+              </div>
+            </StaggerContainer>
           )}
         </div>
-      </motion.section>
+      </AnimatedOnScroll>
     </AnimatedPageWrapper>
   );
 }
@@ -675,7 +627,7 @@ function CategoryCard({ icon, title, chips, description }) {
   return (
     <StaggerItem>
       <div className="w-full max-w-[260px]">
-        <motion.div 
+        <motion.div
           className="relative bg-white rounded-2xl p-6 shadow-subtle border border-subtle/70
                           hover:border-accent hover:shadow-hover transition-all duration-300
                           group overflow-hidden cursor-pointer h-full"

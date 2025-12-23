@@ -11,7 +11,7 @@ import {
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
-import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations';
+import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations.jsx';
 import CompanyImg from '../assets/Untitled design (1).png';
 
 const teamMembers = [
@@ -441,9 +441,9 @@ export default function About() {
           <StaggerContainer staggerDelay={0.1}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {[{ number: 10000, label: "Students Enrolled", icon: Users, suffix: "+" },
-                { number: 200, label: "Courses Available", icon: Award, suffix: "+" },
-                { number: 50, label: "Expert Instructors", icon: Users, suffix: "+" },
-                { number: 95, label: "Job Placement Rate", icon: Target, suffix: "%" },
+              { number: 200, label: "Courses Available", icon: Award, suffix: "+" },
+              { number: 50, label: "Expert Instructors", icon: Users, suffix: "+" },
+              { number: 95, label: "Job Placement Rate", icon: Target, suffix: "%" },
               ].map((stat, index) => (
                 <StaggerItem key={index} delay={index * 0.1}>
                   <motion.div

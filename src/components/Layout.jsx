@@ -19,7 +19,7 @@ export default function Layout({ children }) {
       <Navbar />
       
       {/* Main Content with top padding to account for fixed navbar */}
-      <main className="pt-16 h-full">
+      <main className=" h-full">
         {children}
       </main>
       

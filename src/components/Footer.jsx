@@ -2,14 +2,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  HomeIcon, 
-  BookOpenIcon, 
-  UserIcon, 
-  PhoneIcon, 
-  BriefcaseIcon, 
-  NewspaperIcon, 
-  ChartBarIcon
+import {
+  HomeIcon,
+  BookOpenIcon,
+  UserIcon,
+  PhoneIcon,
+  BriefcaseIcon,
+  NewspaperIcon,
+  ChartBarIcon,
+  TwitterIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  InstagramIcon,
 } from 'lucide-react';
 
 const navItems = [
@@ -28,90 +32,97 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <motion.h3 
-              className="text-2xl font-black text-accent"
+            <motion.h3
+              className="text-2xl font-black text-accent pb-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               Elite Management
             </motion.h3>
-            <p className="text-secondary">Test Footer Content</p>
-            <motion.p 
+            <p className="text-secondary" style={{ margin: 0 }}>Test Footer Content</p>
+            <motion.p
               className="mt-4 text-secondary max-w-md font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
+              style={{ margin: 0 }}
             >
               Empowering students with quality education and career guidance. Join thousands of successful learners today.
             </motion.p>
-            
+
             {/* Social Media Links */}
-            <motion.div 
+            <motion.div
               className="flex space-x-4 mt-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              {['twitter', 'facebook', 'linkedin', 'instagram'].map((social, index) => (
+              {[
+                { name: 'twitter', icon: TwitterIcon },
+                { name: 'facebook', icon: FacebookIcon },
+                { name: 'linkedin', icon: LinkedinIcon },
+                { name: 'instagram', icon: InstagramIcon },
+              ].map(({ name, icon: Icon }, index) => (
                 <motion.a
-                  key={social}
+                  key={name}
                   href="#"
-                  className="w-11 h-11 rounded-full bg-secondary border-2 border-subtle flex items-center justify-center text-accent hover:bg-accent hover:text-white hover:border-accent transition-all duration-300 shadow-subtle hover:shadow-hover"
+                  className="w-11 h-11 rounded-full bg-secondary border-2 border-subtle flex items-center justify-center
+                 text-accent hover:bg-accent hover:text-white hover:border-accent transition-all duration-300
+                 shadow-subtle hover:shadow-hover"
                   whileHover={{ y: -5, scale: 1.1 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  transition={{ duration: 0.25 }}
                 >
-                  <div className="w-5 h-5 bg-current rounded-full"></div>
+                  <Icon className="w-5 h-5" />
                 </motion.a>
               ))}
             </motion.div>
+
           </div>
-          
+
           <div>
             <h4 className="text-sm font-black uppercase tracking-wider text-primary mb-1">
               Navigation
             </h4>
             <div className="w-12 h-1 bg-accent rounded-full mb-4"></div>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 space-y-3" style={{ padding: 0 }}>
               {navItems.slice(0, 4).map((item, index) => (
-                <motion.li 
+                <motion.li
                   key={item.name}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <Link 
-                    to={item.path} 
+                  <Link
+                    to={item.path}
                     className="text-secondary hover:text-accent transition-colors duration-300 flex items-center font-medium group"
                   >
-                    <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></span>
+                    {/* <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300">-</span> */}
                     {item.name}
                   </Link>
                 </motion.li>
               ))}
             </ul>
           </div>
-          
+
           <div>
             <h4 className="text-sm font-black uppercase tracking-wider text-primary mb-1">
               Resources
             </h4>
             <div className="w-12 h-1 bg-accent rounded-full mb-4"></div>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-4 space-y-3" style={{ padding: 0 }}>
               {navItems.slice(4).map((item, index) => (
-                <motion.li 
+                <motion.li
                   key={item.name}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <Link 
-                    to={item.path} 
+                  <Link
+                    to={item.path}
                     className="text-secondary hover:text-accent transition-colors duration-300 flex items-center font-medium group"
                   >
-                    <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></span>
+                    {/* <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></span> */}
                     {item.name}
                   </Link>
                 </motion.li>
@@ -119,14 +130,14 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        
-        <motion.div 
-          className="mt-8 border-t-2 border-subtle pt-8 flex flex-col md:flex-row justify-between items-center"
+
+        <motion.div
+          className="mt-8 border-t-2 borderTop pt-8 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <motion.p 
+          <motion.p
             className="text-secondary text-sm font-medium"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,21 +145,21 @@ export default function Footer() {
           >
             © {new Date().getFullYear()} Elite Management. All rights reserved.
           </motion.p>
-          <motion.div 
+          <motion.div
             className="mt-4 md:mt-0 flex space-x-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-secondary hover:text-accent transition-colors duration-300 font-bold"
               whileHover={{ x: 5 }}
             >
               Privacy Policy
             </motion.a>
-            <motion.a 
-              href="#" 
+            <motion.a
+              href="#"
               className="text-secondary hover:text-accent transition-colors duration-300 font-bold"
               whileHover={{ x: 5 }}
             >

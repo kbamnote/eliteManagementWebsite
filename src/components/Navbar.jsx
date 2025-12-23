@@ -58,7 +58,7 @@ export default function Navbar() {
   return (
     <nav 
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-secondary/95 backdrop-blur-md shadow-subtle py-2' : 'bg-secondary py-4 shadow-subtle'
+        scrolled ? 'bg-secondary/95 backdrop-blur-md shadow-subtle py-2' : 'bg-secondary py-2 shadow-subtle'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

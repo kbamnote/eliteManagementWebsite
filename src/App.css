@@ -116,6 +116,7 @@
 .text-muted { color: #3E4F4B; opacity: 0.7; } /* Muted text */
 
 .border-subtle { border: 1px solid #DDEAE6; } /* Very subtle green border */
+.borderTop { border-top: 1px solid #DDEAE6!important; } /* Very subtle green border */
 .border-accent { border: 1px solid #048E6C; } /* Teal-green border */
 
 .shadow-subtle { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }

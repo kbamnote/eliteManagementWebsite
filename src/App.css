@@ -125,3 +125,19 @@
 
 .shadow-subtle { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
 .shadow-hover { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+  display: inline-block;
+  width: fit-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

@@ -80,64 +80,107 @@ export default function CareerCounseling() {
     <AnimatedPageWrapper>
         {/* Enhanced Hero Section */}
         <motion.section 
-          className="relative py-20 overflow-hidden bg-secondary"
+          className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-secondary to-white"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent rounded-full opacity-10 blur-3xl transform translate-x-1/3 -translate-y-1/3"></div>
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent rounded-full opacity-10 blur-3xl transform -translate-x-1/3 translate-y-1/3"></div>
+            <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent rounded-full opacity-5 blur-3xl"></div>
           </div>
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="space-y-8"
               >
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary">
-                  <span className="text-primary">Career </span>
-                  <span className="block text-5xl md:text-6xl font-black text-accent mt-2">
-                    Counseling
+                <div className="inline-block px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
+                  <span className="text-accent font-semibold text-sm">PROFESSIONAL CAREER GUIDANCE</span>
+                </div>
+                
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-primary">
+                  <span className="block text-primary mb-2">Transform Your</span>
+                  <span className="block text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-accent to-dark bg-clip-text text-transparent">
+                    Career Journey
                   </span>
                 </h1>
-                <p className="mt-6 text-xl text-secondary font-medium max-w-2xl leading-relaxed">
-                  Unlock your potential with personalized career guidance from industry experts. Navigate your professional journey with confidence.
+                
+                <p className="text-lg md:text-xl text-secondary font-medium max-w-2xl leading-relaxed">
+                  Unlock your potential with personalized career guidance from industry experts. Navigate your professional journey with confidence through our comprehensive counseling services.
                 </p>
-                <div className="mt-10">
+                
+                <div className="flex flex-wrap gap-4">
                   <motion.button 
-                    className="px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-dark transition-all duration-300 shadow-subtle transform hover:scale-105"
+                    className="px-8 py-4 bg-gradient-to-r from-accent to-dark text-white font-bold rounded-xl hover:from-accent hover:to-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     whileHover={{ y: -2 }}
                   >
-                    Schedule Free Consultation
+                    Book Free Consultation
                   </motion.button>
+                  
+                  <motion.button 
+                    className="px-8 py-4 bg-white text-primary font-bold rounded-xl border-2 border-subtle hover:border-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    whileHover={{ y: -2 }}
+                  >
+                    Explore Services
+                  </motion.button>
+                </div>
+                
+                <div className="flex items-center space-x-8 pt-4">
+                  <div className="text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-accent">500+</div>
+                    <div className="text-secondary text-sm mt-1">Students Guided</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-accent">95%</div>
+                    <div className="text-secondary text-sm mt-1">Success Rate</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-3xl md:text-4xl font-bold text-accent">10+</div>
+                    <div className="text-secondary text-sm mt-1">Years Experience</div>
+                  </div>
                 </div>
               </motion.div>
               
               <motion.div 
                 className="relative"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <div className="relative rounded-3xl overflow-hidden shadow-subtle border-2 border-subtle">
-                  <div className="bg-primary aspect-video flex items-center justify-center relative">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                  <div className="bg-gradient-to-br from-primary to-secondary aspect-video flex items-center justify-center relative p-8">
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212, 236, 229,0.1)_0%,rgba(212, 236, 229,0)_70%)]"></div>
                     
-                    <div className="text-center p-8 relative z-10">
-                      <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <Briefcase className="w-12 h-12 text-white" />
+                    <div className="text-center relative z-10 space-y-6">
+                      <div className="w-32 h-32 bg-gradient-to-br from-accent to-dark rounded-full flex items-center justify-center mx-auto shadow-2xl">
+                        <Briefcase className="w-16 h-16 text-white" />
                       </div>
-                      <h3 className="text-2xl font-black text-primary mb-2">Professional Career Guidance</h3>
-                      <p className="mt-2 text-secondary font-medium">Personalized plans for your success</p>
+                      <div>
+                        <h3 className="text-2xl font-bold text-primary mb-3">Professional Career Guidance</h3>
+                        <p className="text-secondary font-medium text-lg mb-6">Personalized plans for your success journey</p>
+                        <div className="flex justify-center space-x-4">
+                          <div className="w-3 h-3 bg-accent rounded-full"></div>
+                          <div className="w-3 h-3 bg-accent/60 rounded-full"></div>
+                          <div className="w-3 h-3 bg-accent/30 rounded-full"></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+                
+                <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent/20 rounded-full blur-xl"></div>
+                <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-accent/20 rounded-full blur-xl"></div>
               </motion.div>
             </div>
           </div>
@@ -145,7 +188,7 @@ export default function CareerCounseling() {
         
         {/* Enhanced Services */}
         <motion.section 
-          className="py-20 bg-white"
+          className="py-16 md:py-20 bg-white"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -154,17 +197,17 @@ export default function CareerCounseling() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4 text-primary"
+                className="text-3xl md:text-4xl font-bold mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="text-primary">Our </span>
+                <span className="text-primary">Our Professional </span>
                 <span className="text-accent">Services</span>
               </motion.h2>
               <motion.p 
-                className="mt-4 text-xl text-secondary font-medium"
+                className="mt-4 text-lg md:text-xl text-secondary font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -178,27 +221,32 @@ export default function CareerCounseling() {
               {services.map((service, index) => (
                 <motion.div
                   key={index}
-                  className="bg-secondary rounded-3xl overflow-hidden border-2 border-subtle hover:border-accent transition-all duration-300 group shadow-subtle"
+                  className="bg-white rounded-2xl overflow-hidden border border-subtle hover:border-accent transition-all duration-300 group shadow-lg hover:shadow-2xl"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  whileHover={{ y: -10 }}
+                  whileHover={{ y: -8 }}
                   viewport={{ once: true }}
                 >
                   <div className="p-8">
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center group-hover:bg-accent transition-all duration-300 shadow-subtle">
-                      <service.icon className="w-8 h-8 text-primary" />
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-secondary to-accent flex items-center justify-center group-hover:from-accent group-hover:to-dark transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                      <service.icon className="w-8 h-8 text-primary group-hover:text-white" />
                     </div>
-                    <h3 className="mt-6 text-xl font-black text-primary">{service.title}</h3>
+                    <h3 className="mt-6 text-xl font-bold text-primary">{service.title}</h3>
                     <p className="mt-3 text-secondary font-medium">{service.description}</p>
-                    <ul className="mt-6 space-y-3">
+                    <ul className="mt-5 space-y-3">
                       {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center">
-                          <CheckCircle className="w-5 h-5 text-accent mr-3 flex-shrink-0" />
+                        <li key={featureIndex} className="flex items-start">
+                          <CheckCircle className="w-5 h-5 text-accent mr-3 mt-0.5 flex-shrink-0" />
                           <span className="text-secondary font-medium">{feature}</span>
                         </li>
                       ))}
                     </ul>
+                    <div className="mt-6 pt-4 border-t border-subtle">
+                      <div className="flex justify-center">
+                        <div className="w-12 h-1 bg-accent rounded-full"></div>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -208,7 +256,7 @@ export default function CareerCounseling() {
         
         {/* Enhanced Flip Cards Section */}
         <motion.section 
-          className="py-20 bg-secondary"
+          className="py-16 md:py-20 bg-gradient-to-br from-white to-secondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -217,7 +265,7 @@ export default function CareerCounseling() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4 text-primary"
+                className="text-3xl md:text-4xl font-bold mb-4 text-primary"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -227,7 +275,7 @@ export default function CareerCounseling() {
                 <span className="text-accent">Insights</span>
               </motion.h2>
               <motion.p 
-                className="mt-4 text-xl text-secondary font-medium"
+                className="mt-4 text-lg md:text-xl text-secondary font-medium"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -238,118 +286,139 @@ export default function CareerCounseling() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              <FlipCard 
-                frontTitle="Skills" 
-                frontText="Essential abilities for career success" 
-                backTitle="Development" 
-                backText="Continuous learning and improvement strategies" 
-                icon={<Zap size={40} />}
-              />
-              <FlipCard 
-                frontTitle="Networking" 
-                frontText="Building professional relationships" 
-                backTitle="Opportunities" 
-                backText="Creating valuable connections in your field" 
-                icon={<Network size={40} />}
-              />
-              <FlipCard 
-                frontTitle="Growth" 
-                frontText="Advancing in your career path" 
-                backTitle="Strategies" 
-                backText="Effective approaches for professional advancement" 
-                icon={<GrowthIcon size={40} />}
-              />
-              <FlipCard 
-                frontTitle="Balance" 
-                frontText="Managing work and personal life" 
-                backTitle="Wellness" 
-                backText="Maintaining health and satisfaction in all areas" 
-                icon={<Heart size={40} />}
-              />
+              <div className="flex justify-center">
+                <FlipCard 
+                  frontTitle="Skills" 
+                  frontText="Essential abilities for career success" 
+                  backTitle="Development" 
+                  backText="Continuous learning and improvement strategies" 
+                  icon={<Zap className="text-accent" size={35} />}
+                />
+              </div>
+              <div className="flex justify-center">
+                <FlipCard 
+                  frontTitle="Networking" 
+                  frontText="Building professional relationships" 
+                  backTitle="Opportunities" 
+                  backText="Creating valuable connections in your field" 
+                  icon={<Network className="text-accent" size={35} />}
+                />
+              </div>
+              <div className="flex justify-center">
+                <FlipCard 
+                  frontTitle="Growth" 
+                  frontText="Advancing in your career path" 
+                  backTitle="Strategies" 
+                  backText="Effective approaches for professional advancement" 
+                  icon={<GrowthIcon className="text-accent" size={35} />}
+                />
+              </div>
+              <div className="flex justify-center">
+                <FlipCard 
+                  frontTitle="Balance" 
+                  frontText="Managing work and personal life" 
+                  backTitle="Wellness" 
+                  backText="Maintaining health and satisfaction in all areas" 
+                  icon={<Heart className="text-accent" size={35} />}
+                />
+              </div>
             </div>
           </div>
         </motion.section>
         
         {/* Enhanced Process */}
         <motion.section 
-          className="py-20 bg-white"
+          className="py-20 md:py-32 relative overflow-hidden bg-gradient-to-br from-white to-secondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4 text-primary"
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl transform translate-x-1/4 -translate-y-1/4"></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl transform -translate-x-1/4 translate-y-1/4"></div>
+          </div>
+                  
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center max-w-4xl mx-auto mb-20">
+              <motion.div
+                className="inline-block px-6 py-3 bg-accent/10 rounded-full border border-accent/20 mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
-                <span className="text-primary">Our </span>
-                <span className="text-accent">Process</span>
-              </motion.h2>
-              <motion.p 
-                className="mt-4 text-xl text-secondary font-medium"
+                <span className="text-accent font-bold text-lg">OUR METHOD</span>
+              </motion.div>
+                      
+              <motion.h2 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                A structured approach to career development that delivers results
+                Our Professional Process
+              </motion.h2>
+                      
+              <motion.p 
+                className="text-lg md:text-xl text-secondary font-medium max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                A structured approach to career development that delivers exceptional results
               </motion.p>
             </div>
-            
+                    
             <div className="relative">
               {/* Enhanced Timeline line */}
-              <div className="absolute left-8 top-12 bottom-12 w-1 bg-accent hidden md:block rounded-full"></div>
-              
-              <div className="space-y-12">
+              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-accent to-transparent hidden md:block transform -translate-x-1/2"></div>
+                      
+              <div className="space-y-16">
                 {processSteps.map((step, index) => (
                   <motion.div
                     key={index}
-                    className="relative grid grid-cols-1 md:grid-cols-12 gap-8"
-                    initial={{ opacity: 0, y: 30 }}
+                    className="relative flex flex-col md:flex-row items-center gap-8 md:gap-0"
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
                     viewport={{ once: true }}
                   >
-                    <div className="md:col-span-5 flex items-center">
-                      <div className={`flex items-center ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
-                        <div className="md:text-right md:pr-8">
-                          <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center text-white font-black text-xl shadow-subtle">
-                            {step.number}
-                          </div>
-                          <h3 className="mt-4 text-xl font-black text-primary">{step.title}</h3>
-                          <p className="mt-2 text-secondary font-medium">{step.description}</p>
+                    <div className="md:w-5/12 flex justify-center">
+                      <div className="text-center md:text-right max-w-sm">
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent to-dark flex items-center justify-center text-white font-bold text-3xl shadow-2xl mx-auto md:mx-0">
+                          {step.number}
                         </div>
+                        <h3 className="mt-6 text-xl md:text-2xl font-bold text-primary">{step.title}</h3>
+                        <p className="mt-3 text-secondary font-medium">{step.description}</p>
                       </div>
                     </div>
-                    
-                    <div className="md:col-span-2 hidden md:flex items-center justify-center">
-                      <div className="w-5 h-5 rounded-full bg-accent border-4 border-white shadow-subtle z-10"></div>
+                            
+                    <div className="md:w-2/12 flex justify-center">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white to-secondary border-4 border-accent shadow-2xl z-10 flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-full bg-accent"></div>
+                      </div>
                     </div>
-                    
-                    <div className="md:col-span-5 flex items-center">
-                      <div className="md:pl-8">
-                        <div className="bg-secondary rounded-3xl p-6 border-2 border-subtle h-full shadow-subtle hover:shadow-hover transition-all duration-300">
-                          <div className="flex items-center mb-4">
-                            <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center shadow-subtle">
-                              {index === 0 && <Calendar className="w-6 h-6 text-primary" />}
-                              {index === 1 && <TrendingUp className="w-6 h-6 text-primary" />}
-                              {index === 2 && <Briefcase className="w-6 h-6 text-primary" />}
-                              {index === 3 && <Users className="w-6 h-6 text-primary" />}
-                            </div>
-                            <h4 className="ml-4 font-black text-primary">What to Expect</h4>
+                            
+                    <div className="md:w-5/12 flex justify-center">
+                      <div className="bg-gradient-to-br from-white to-secondary rounded-3xl p-8 border border-subtle shadow-2xl hover:shadow-2xl transition-all duration-500 max-w-md w-full">
+                        <div className="flex items-center mb-6">
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-dark flex items-center justify-center shadow-xl mr-4">
+                            {index === 0 && <Calendar className="w-7 h-7 text-white" />}
+                            {index === 1 && <TrendingUp className="w-7 h-7 text-white" />}
+                            {index === 2 && <Briefcase className="w-7 h-7 text-white" />}
+                            {index === 3 && <Users className="w-7 h-7 text-white" />}
                           </div>
-                          <p className="text-secondary font-medium">
-                            {index === 0 && "During our initial meeting, we'll discuss your career aspirations, current challenges, and what you hope to achieve through counseling."}
-                            {index === 1 && "We'll conduct a thorough assessment using validated tools to understand your strengths, weaknesses, interests, and values."}
-                            {index === 2 && "Based on our findings, we'll create a customized career development plan with actionable steps and timelines."}
-                            {index === 3 && "We'll provide ongoing support as you implement your plan, with regular check-ins and adjustments as needed."}
-                          </p>
+                          <h4 className="font-bold text-primary text-xl">What to Expect</h4>
                         </div>
+                        <p className="text-secondary font-medium text-lg">
+                          {index === 0 && "During our initial meeting, we'll discuss your career aspirations, current challenges, and what you hope to achieve through counseling."}
+                          {index === 1 && "We'll conduct a thorough assessment using validated tools to understand your strengths, weaknesses, interests, and values."}
+                          {index === 2 && "Based on our findings, we'll create a customized career development plan with actionable steps and timelines."}
+                          {index === 3 && "We'll provide ongoing support as you implement your plan, with regular check-ins and adjustments as needed."}
+                        </p>
                       </div>
                     </div>
                   </motion.div>
@@ -361,15 +430,15 @@ export default function CareerCounseling() {
         
         {/* Enhanced CTA */}
         <motion.section 
-          className="py-20 bg-accent relative overflow-hidden"
+          className="py-16 md:py-20 bg-gradient-to-br from-accent to-primary relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           {/* Decorative elements */}
-          <div className="absolute top-10 right-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
           
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div
@@ -378,15 +447,15 @@ export default function CareerCounseling() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-                Ready to Transform Your <span className="bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">Career?</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                Ready to Transform Your <span className="bg-gradient-to-r from-white to-secondary bg-clip-text text-transparent">Career?</span>
               </h2>
-              <p className="mt-4 text-xl text-white/90 font-medium max-w-2xl mx-auto">
+              <p className="mt-3 text-lg text-white/90 font-medium max-w-2xl mx-auto">
                 Take the first step towards a fulfilling career with our expert guidance.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
                 <motion.button 
-                  className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-secondary transition-all duration-300 shadow-subtle flex items-center justify-center transform hover:scale-105"
+                  className="px-8 py-4 bg-gradient-to-r from-white to-secondary text-primary font-bold rounded-xl hover:from-white hover:to-secondary transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center transform hover:scale-105"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -394,7 +463,7 @@ export default function CareerCounseling() {
                   viewport={{ once: true }}
                 >
                   Schedule Free Consultation
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <ArrowRight className="ml-3 w-5 h-5" />
                 </motion.button>
                 <motion.button 
                   className="px-8 py-4 bg-transparent text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 border-2 border-white transform hover:scale-105"

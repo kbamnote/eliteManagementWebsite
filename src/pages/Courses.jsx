@@ -11,7 +11,7 @@ import {
   Users,
   DollarSign,
   Star,
-  Clock, Code2, LineChart, PenTool, Briefcase
+  Clock, Code2, LineChart, PenTool, Briefcase, Gauge
 } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -558,58 +558,220 @@ export default function Courses() {
         direction="up"
         delay={0.6}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedOnScroll
-            className="flex justify-between items-center mb-12"
-            direction="up"
-            delay={0.8}
-          >
-            <div>
-              <h2 className="text-4xl font-black mb-2 text-primary">
-                <span className="text-primary">
-                  {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''} Found
-                </span>
-              </h2>
-              <p className="text-secondary mt-2 font-medium">Choose from our expertly curated selection of courses</p>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+          {/* Premium Stats Header */}
+          <AnimatedOnScroll className="flex flex-wrap gap-6 mb-12 lg:mb-20" direction="up" delay={0.6}>
+            <motion.div
+              className="glass-card p-4 lg:p-6 rounded-2xl flex items-center gap-3 shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center shadow-lg">
+                <BookOpen className="w-7 h-7 text-dark" />
+              </div>
+              <div>
+                <h2 className="text-3xl lg:text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-secondary">
+                  {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''}
+                </h2>
+                <p className="text-secondary text-sm font-medium">Expertly curated selection</p>
+              </div>
+            </motion.div>
+
+            {/* Quick Stats */} 
+            <div className="flex gap-6 flex-1 justify-end items-center">
+              {/* Animated Rating Stat */}
+              <motion.div
+                className="glass-card group relative p-4 lg:p-5 rounded-2xl shadow-xl backdrop-blur-xl border border-white/20 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/20 transition-all duration-500 overflow-hidden"
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+              >
+                {/* Glow orb */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-amber-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+
+                <div className="relative z-10 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-xl flex items-center justify-center shadow-lg drop-shadow-xl">
+                    <Star className="w-5 h-5 text-white drop-shadow-sm" />
+                  </div>
+                  <div>
+                    <div className="text-2xl lg:text-3xl font-black bg-gradient-to-r from-primary via-yellow-500 to-accent bg-clip-text text-transparent">
+                      4.8
+                    </div>
+                    <div className="text-xs uppercase tracking-wider font-bold text-secondary/80">Avg Rating</div>
+                  </div>
+                </div>
+
+                {/* Sparkle badge */}
+                <motion.div
+                  className="absolute bottom-2 right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full shadow-lg flex items-center justify-center"
+                  animate={{ rotate: [0, 180, 360] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                >
+                  <Star className="w-3 h-3 text-white" />
+                </motion.div>
+              </motion.div>
+
+              {/* Animated Students Stat */}
+              <motion.div
+                className="glass-card group relative p-4 lg:p-5 rounded-2xl shadow-xl backdrop-blur-xl border border-white/20 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/20 transition-all duration-500 overflow-hidden"
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ delay: 0.5, type: "spring", stiffness: 300 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+              >
+                {/* Glow orb */}
+                <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-emerald-400/20 to-teal-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+
+                <div className="relative z-10 flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center shadow-lg drop-shadow-xl">
+                    <Users className="w-5 h-5 text-white drop-shadow-sm" />
+                  </div>
+                  <div>
+                    <div className="text-2xl lg:text-3xl font-black bg-gradient-to-r from-primary via-emerald-500 to-accent bg-clip-text text-transparent">
+                      12K+
+                    </div>
+                    <div className="text-xs uppercase tracking-wider font-bold text-secondary/80">Students</div>
+                  </div>
+                </div>
+
+                {/* Pulsing dot */}
+                <motion.div
+                  className="absolute bottom-2 left-3 w-3 h-3 bg-emerald-400 rounded-full shadow-lg"
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </motion.div>
             </div>
+
           </AnimatedOnScroll>
 
           {sortedCourses.length === 0 ? (
-            <AnimatedOnScroll
-              className="text-center py-20 bg-white rounded-3xl shadow-subtle border-2 border-subtle max-w-2xl mx-auto"
-              direction="up"
-            >
-              <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                <BookOpen className="w-10 h-10 text-primary" />
+            /* Dynamic Empty State with Category Chips */
+            <AnimatedOnScroll className="glass-card py-20 px-12 max-w-3xl mx-auto text-center shadow-2xl" direction="up" delay={0.8}>
+              <motion.div
+                className="w-28 h-28 bg-gradient-to-br from-secondary/30 to-accent/20 rounded-3xl flex items-center justify-center mx-auto mb-8 backdrop-blur-xl shadow-2xl"
+                animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.05, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                <BookOpen className="w-16 h-16 text-primary drop-shadow-lg" />
+              </motion.div>
+              <motion.h3
+                className="text-3xl lg:text-4xl font-black text-primary mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                No courses match your search
+              </motion.h3>
+              <p className="text-xl text-secondary mb-8 font-medium max-w-md mx-auto leading-relaxed">
+                Discover amazing courses. Try popular categories below.
+              </p>
+
+              {/* Interactive Category Suggestions */}
+              <div className="flex flex-wrap gap-3 justify-center mb-10">
+                {['React Native', 'Tailwind CSS', 'Java Spring', 'UI/UX Design'].map((cat, i) => (
+                  <motion.button
+                    key={cat}
+                    className="glass-card px-6 py-3 rounded-full font-semibold text-primary hover:bg-accent/20 hover:scale-105 backdrop-blur-xl transition-all duration-300 border border-accent/30 shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 + i * 0.1 }}
+                    onClick={() => {/* Handle category filter */ }}
+                  >
+                    {cat}
+                  </motion.button>
+                ))}
               </div>
-              <h3 className="text-2xl font-black text-primary mb-2">No courses found</h3>
-              <p className="text-secondary mb-6 font-medium">Try adjusting your filters to see more courses.</p>
-              <button
+
+              <motion.button
+                className="group relative px-8 py-4 bg-gradient-to-r from-accent to-primary text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 1.4 }}
                 onClick={() => {
                   setSearchTerm('');
                   setSelectedCategory('All Categories');
                   setSelectedLevel('All Levels');
                 }}
-                className="px-6 py-3 bg-accent text-white rounded-xl hover:bg-dark transition-all duration-300 font-bold shadow-subtle hover:shadow-hover transform hover:scale-105"
               >
-                Clear Filters
-              </button>
+                <span>Clear All Filters</span>
+                <motion.div
+                  className="absolute inset-0 bg-white/20 -skew-x-12 transform group-hover:translate-x-2 transition-transform duration-500"
+                  initial={{ x: -100 }}
+                  animate={{ x: '100%' }}
+                />
+              </motion.button>
             </AnimatedOnScroll>
           ) : (
-            <StaggerContainer staggerDelay={0.1}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            /* Enhanced Glassmorphism Grid */
+            <StaggerContainer staggerDelay={0.08}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                 {sortedCourses.map((course, index) => (
-                  <StaggerItem key={course.id} delay={1 + index * 0.1}>
+                  <StaggerItem key={course.id} delay={1 + index * 0.08}>
                     <motion.div
-                      whileHover={{ y: -8 }}
+                      className="group relative"
+                      whileHover={{ y: -12, rotateX: 5, rotateY: 5 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
                       <FlipCard
-                        frontTitle={course.title}
-                        frontText={`by ${course.instructor}`}
-                        backTitle="Course Details"
-                        backText={`${course.students.toLocaleString()} students • ${course.duration} • ${course.level} • Rating: ${course.rating}/5`}
-                        icon={<BookOpen size={32} />}
+                        frontTitle={
+                          <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-xl font-black">
+                            {course.title}
+                          </span>
+                        }
+                        frontText={
+                          <span className="text-secondary font-semibold bg-gradient-to-r from-secondary/50 to-accent/50 bg-clip-text text-transparent">
+                            by {course.instructor}
+                          </span>
+                        }
+                        backTitle={
+                          <span className="text-2xl font-black text-primary drop-shadow-lg">
+                            Course Details
+                          </span>
+                        }
+                        backText={
+                          <div className="space-y-3 text-lg">
+                            <div className="flex items-center gap-2 text-accent font-bold">
+                              <Users className="w-5 h-5" />
+                              {course.students.toLocaleString()} students
+                            </div>
+                            <div className="flex items-center gap-2 text-secondary">
+                              <Clock className="w-5 h-5" />
+                              {course.duration}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Gauge className="w-5 h-5 text-accent" />
+                              <span className="font-bold text-primary">{course.level}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-yellow-500 font-bold">
+                              <Star className="w-5 h-5 fill-current" />
+                              {course.rating}/5
+                            </div>
+                          </div>
+                        }
+                        icon={
+                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-primary/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl group-hover:bg-accent/40 transition-all duration-500 border-2 border-accent/30">
+                            <BookOpen className="w-10 h-10 text-white group-hover:text-white transition-colors duration-300 drop-shadow-lg" />
+                          </div>
+                        }
+                        className="glass-card h-[320px] shadow-2xl backdrop-blur-xl border border-white/20 hover:border-accent/50 hover:shadow-3xl hover:shadow-accent/25 transition-all duration-500 group-hover:scale-[1.02] overflow-hidden relative"
                       />
+
+                      {/* Progress Badge */}
+                      <motion.div
+                        className="absolute -top-3 right-4 w-20 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full text-white text-xs font-bold flex items-center justify-center shadow-lg drop-shadow-xl"
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ delay: 1.2 + index * 0.08, type: "spring" }}
+                      >
+                        New
+                      </motion.div>
                     </motion.div>
                   </StaggerItem>
                 ))}
@@ -617,6 +779,7 @@ export default function Courses() {
             </StaggerContainer>
           )}
         </div>
+
       </AnimatedOnScroll>
     </AnimatedPageWrapper>
   );
@@ -626,11 +789,11 @@ export default function Courses() {
 function CategoryCard({ icon, title, chips, description }) {
   return (
     <StaggerItem>
-      <div className="w-full max-w-[260px]">
+      <div className="w-full max-w-[260px] ">
         <motion.div
           className="relative bg-white rounded-2xl p-6 shadow-subtle border border-subtle/70
                           hover:border-accent hover:shadow-hover transition-all duration-300
-                          group overflow-hidden cursor-pointer h-full"
+                          group overflow-hidden cursor-pointer "
           whileHover={{ y: -8, scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
@@ -649,7 +812,7 @@ function CategoryCard({ icon, title, chips, description }) {
             {chips.map((chip) => (
               <span
                 key={chip}
-                className="px-2.5 py-1 rounded-full bg-secondary/70 text-[11px] font-semibold text-primary/90"
+                className="px-2 py-1 rounded-full bg-secondary/70 text-[11px] font-semibold text-primary/90"
               >
                 {chip}
               </span>

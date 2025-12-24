@@ -80,7 +80,7 @@ export default function CareerCounseling() {
     <AnimatedPageWrapper>
         {/* Enhanced Hero Section */}
         <motion.section 
-          className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-secondary to-white"
+          className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-secondary to-primary"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -116,7 +116,7 @@ export default function CareerCounseling() {
                 
                 <div className="flex flex-wrap gap-4">
                   <motion.button 
-                    className="px-8 py-4 bg-gradient-to-r from-accent to-dark text-white font-bold rounded-xl hover:from-accent hover:to-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="px-8 py-4 bg-gradient-to-r from-accent to-dark font-bold rounded-xl hover:from-accent hover:to-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
@@ -164,7 +164,7 @@ export default function CareerCounseling() {
                     
                     <div className="text-center relative z-10 space-y-6">
                       <div className="w-32 h-32 bg-gradient-to-br from-accent to-dark rounded-full flex items-center justify-center mx-auto shadow-2xl">
-                        <Briefcase className="w-16 h-16 text-white" />
+                        <Briefcase className="w-16 h-16" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-primary mb-3">Professional Career Guidance</h3>
@@ -242,9 +242,9 @@ export default function CareerCounseling() {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6 pt-4 border-t border-subtle">
+                    <div className="mt-6 pt-4">
                       <div className="flex justify-center">
-                        <div className="w-12 h-1 bg-accent rounded-full"></div>
+                        <div className="w-12 h-1 rounded-full" style={{backgroundColor:'#069a3cff'}}></div>
                       </div>
                     </div>
                   </div>
@@ -256,7 +256,7 @@ export default function CareerCounseling() {
         
         {/* Enhanced Flip Cards Section */}
         <motion.section 
-          className="py-16 md:py-20 bg-gradient-to-br from-white to-secondary"
+          className="py-16 md:py-20 bg-gradient-to-br from-primary to-secondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
@@ -292,7 +292,7 @@ export default function CareerCounseling() {
                   frontText="Essential abilities for career success" 
                   backTitle="Development" 
                   backText="Continuous learning and improvement strategies" 
-                  icon={<Zap className="text-accent" size={35} />}
+                  icon={<Zap className="text-[#ffe300]" size={35} />}
                 />
               </div>
               <div className="flex justify-center">
@@ -301,7 +301,7 @@ export default function CareerCounseling() {
                   frontText="Building professional relationships" 
                   backTitle="Opportunities" 
                   backText="Creating valuable connections in your field" 
-                  icon={<Network className="text-accent" size={35} />}
+                  icon={<Network className="text-[#10cfb0]" size={35} />}
                 />
               </div>
               <div className="flex justify-center">
@@ -310,7 +310,7 @@ export default function CareerCounseling() {
                   frontText="Advancing in your career path" 
                   backTitle="Strategies" 
                   backText="Effective approaches for professional advancement" 
-                  icon={<GrowthIcon className="text-accent" size={35} />}
+                  icon={<GrowthIcon className="text-[#fd6a49]" size={35} />}
                 />
               </div>
               <div className="flex justify-center">
@@ -319,7 +319,7 @@ export default function CareerCounseling() {
                   frontText="Managing work and personal life" 
                   backTitle="Wellness" 
                   backText="Maintaining health and satisfaction in all areas" 
-                  icon={<Heart className="text-accent" size={35} />}
+                  icon={<Heart className="text-[#ff0000]" size={35} />}
                 />
               </div>
             </div>
@@ -388,7 +388,7 @@ export default function CareerCounseling() {
                   >
                     <div className="md:w-5/12 flex justify-center">
                       <div className="text-center md:text-right max-w-sm">
-                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent to-dark flex items-center justify-center text-white font-bold text-3xl shadow-2xl mx-auto md:mx-0">
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent to-dark flex items-center justify-center font-bold text-3xl shadow-2xl mx-auto md:mx-0">
                           {step.number}
                         </div>
                         <h3 className="mt-6 text-xl md:text-2xl font-bold text-primary">{step.title}</h3>
@@ -397,8 +397,8 @@ export default function CareerCounseling() {
                     </div>
                             
                     <div className="md:w-2/12 flex justify-center">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white to-secondary border-4 border-accent shadow-2xl z-10 flex items-center justify-center">
-                        <div className="w-6 h-6 rounded-full bg-accent"></div>
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white to-secondary border-4 border-accent shadow-2xl z-10 flex items-center justify-center" style={{backgroundColor:'#4ecf95ff', borderColor: '#11a85fff'}}>
+                        <div className="w-6 h-6 rounded-full bg-accent" style={{backgroundColor:'#39c586ff'}}></div>
                       </div>
                     </div>
                             
@@ -406,10 +406,10 @@ export default function CareerCounseling() {
                       <div className="bg-gradient-to-br from-white to-secondary rounded-3xl p-8 border border-subtle shadow-2xl hover:shadow-2xl transition-all duration-500 max-w-md w-full">
                         <div className="flex items-center mb-6">
                           <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-dark flex items-center justify-center shadow-xl mr-4">
-                            {index === 0 && <Calendar className="w-7 h-7 text-white" />}
-                            {index === 1 && <TrendingUp className="w-7 h-7 text-white" />}
-                            {index === 2 && <Briefcase className="w-7 h-7 text-white" />}
-                            {index === 3 && <Users className="w-7 h-7 text-white" />}
+                            {index === 0 && <Calendar className="w-7 h-7" />}
+                            {index === 1 && <TrendingUp className="w-7 h-7" />}
+                            {index === 2 && <Briefcase className="w-7 h-7" />}
+                            {index === 3 && <Users className="w-7 h-7" />}
                           </div>
                           <h4 className="font-bold text-primary text-xl">What to Expect</h4>
                         </div>
@@ -430,15 +430,15 @@ export default function CareerCounseling() {
         
         {/* Enhanced CTA */}
         <motion.section 
-          className="py-16 md:py-20 bg-gradient-to-br from-accent to-primary relative overflow-hidden"
+          className="py-16 md:py-20 bg-gradient-to-br from-secondary to-primary relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
           {/* Decorative elements */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full opacity-10 blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#00f5b3] rounded-full opacity-10 blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00f5b3] rounded-full opacity-10 blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
           
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <motion.div
@@ -447,10 +447,10 @@ export default function CareerCounseling() {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                Ready to Transform Your <span className="bg-gradient-to-r from-white to-secondary bg-clip-text text-transparent">Career?</span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                Ready to Transform Your <span className="bg-gradient-to-r from-white to-secondary bg-clip-text" style={{color:'#23ccccff'}}>Career?</span>
               </h2>
-              <p className="mt-3 text-lg text-white/90 font-medium max-w-2xl mx-auto">
+              <p className="mt-3 text-lg text-dark/90 font-medium max-w-2xl mx-auto">
                 Take the first step towards a fulfilling career with our expert guidance.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -466,7 +466,7 @@ export default function CareerCounseling() {
                   <ArrowRight className="ml-3 w-5 h-5" />
                 </motion.button>
                 <motion.button 
-                  className="px-8 py-4 bg-transparent text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 border-2 border-white transform hover:scale-105"
+                  className="px-8 py-4 bg-transparent font-bold rounded-xl hover:bg-white/10 transition-all duration-300 border-2 border-dark transform hover:scale-105"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}

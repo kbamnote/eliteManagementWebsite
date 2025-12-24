@@ -291,7 +291,7 @@ export default function About() {
                 <StaggerItem key={index} delay={0.2 + index * 0.1}>
                   <motion.div
                     className="relative bg-white rounded-3xl p-8 border border-subtle/70
-                       shadow-subtle hover:shadow-hover group text-center
+                       shadow-subtle h-full hover:shadow-hover group text-center
                        transition-all duration-300"
                     whileHover={{ y: -8, scale: 1.02 }}
                   >
@@ -361,7 +361,7 @@ export default function About() {
                 <StaggerItem key={index} delay={0.2 + index * 0.1}>
                   <motion.div
                     key={index}
-                    className="relative bg-secondary rounded-3xl overflow-hidden border border-subtle/70
+                    className="relative bg-secondary h-full rounded-3xl overflow-hidden border border-subtle/70
                        shadow-subtle group transition-all duration-300"
                     whileHover={{ y: -8, scale: 1.02 }}
                   >
@@ -419,7 +419,7 @@ export default function About() {
           {/* Heading */}
           <div className="text-center mb-12">
             <AnimatedOnScroll
-              className="text-4xl md:text-5xl font-black text-white mb-3"
+              className="text-4xl md:text-5xl font-black text-dark mb-3"
               direction="up"
               delay={0}
             >
@@ -441,9 +441,9 @@ export default function About() {
           <StaggerContainer staggerDelay={0.1}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {[{ number: 10000, label: "Students Enrolled", icon: Users, suffix: "+" },
-                { number: 200, label: "Courses Available", icon: Award, suffix: "+" },
-                { number: 50, label: "Expert Instructors", icon: Users, suffix: "+" },
-                { number: 95, label: "Job Placement Rate", icon: Target, suffix: "%" },
+              { number: 200, label: "Courses Available", icon: Award, suffix: "+" },
+              { number: 50, label: "Expert Instructors", icon: Users, suffix: "+" },
+              { number: 95, label: "Job Placement Rate", icon: Target, suffix: "%" },
               ].map((stat, index) => (
                 <StaggerItem key={index} delay={index * 0.1}>
                   <motion.div

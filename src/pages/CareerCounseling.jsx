@@ -116,7 +116,7 @@ export default function CareerCounseling() {
                 
                 <div className="flex flex-wrap gap-4">
                   <motion.button 
-                    className="px-8 py-4 bg-gradient-to-r from-accent to-dark font-bold rounded-xl hover:from-accent hover:to-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="px-8 py-4 bg-gradient-to-r from-[#08ff86] to-[#187648] text-white font-bold rounded-xl hover:from-accent hover:to-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}

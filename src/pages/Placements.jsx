@@ -164,7 +164,8 @@ export default function Placements() {
                 
                 <div className="flex flex-wrap gap-4">
                   <motion.button 
-                    className="px-8 py-4 bg-gradient-to-r from-accent to-dark text-white font-bold rounded-xl hover:from-accent hover:to-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    className="px-8 py-4 bg-gradient-to-l from-[#08ff86] to-[#187648] text-white font-bold rounded-xl hover:from-accent hover:to-accent transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                    style={{backgroundColor:'#187648ff'}}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
@@ -212,7 +213,7 @@ export default function Placements() {
                     
                     <div className="text-center relative z-10 space-y-6">
                       <div className="w-32 h-32 bg-gradient-to-br from-accent to-dark rounded-full flex items-center justify-center mx-auto shadow-2xl">
-                        <Building2 className="w-16 h-16 text-white" />
+                        <Building2 className="w-16 h-16" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-primary mb-3">Professional Placement Support</h3>
@@ -290,9 +291,9 @@ export default function Placements() {
                         </li>
                       ))}
                     </ul>
-                    <div className="mt-6 pt-4 border-t border-subtle">
+                    <div className="mt-6 pt-4">
                       <div className="flex justify-center">
-                        <div className="w-12 h-1 bg-accent rounded-full"></div>
+                        <div className="w-12 h-1 rounded-full" style={{backgroundColor:'#069a3c'}}></div>
                       </div>
                     </div>
                   </div>
@@ -340,7 +341,7 @@ export default function Placements() {
                   frontText="Essential abilities for placement success" 
                   backTitle="Development" 
                   backText="Continuous learning and improvement strategies" 
-                  icon={<Zap className="text-accent" size={35} />}
+                  icon={<Zap className="text-[#ffe300]" size={35} />}
                 />
               </div>
               <div className="flex justify-center">
@@ -349,7 +350,7 @@ export default function Placements() {
                   frontText="Mastering the interview process" 
                   backTitle="Preparation" 
                   backText="Tips and techniques for interview success" 
-                  icon={<Network className="text-accent" size={35} />}
+                  icon={<Network className="text-[#10cfb0]" size={35} />}
                 />
               </div>
               <div className="flex justify-center">
@@ -358,7 +359,7 @@ export default function Placements() {
                   frontText="Crafting the perfect resume" 
                   backTitle="Optimization" 
                   backText="Making your resume stand out to recruiters" 
-                  icon={<GrowthIcon className="text-accent" size={35} />}
+                  icon={<GrowthIcon className="text-[#fd6a49]" size={35} />}
                 />
               </div>
               <div className="flex justify-center">
@@ -367,7 +368,7 @@ export default function Placements() {
                   frontText="Securing your dream job" 
                   backTitle="Success" 
                   backText="Strategies for successful job placement" 
-                  icon={<Heart className="text-accent" size={35} />}
+                  icon={<Heart className="text-[#ff0000]" size={35} />}
                 />
               </div>
             </div>
@@ -456,7 +457,7 @@ export default function Placements() {
                     whileHover={{ y: -5, scale: 1.05 }}
                   >
                     <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent to-dark flex items-center justify-center group-hover:from-dark group-hover:to-accent transition-all duration-300 mb-4 shadow-lg group-hover:shadow-xl">
-                      <Building2 className="w-8 h-8 text-white" />
+                      <Building2 className="w-8 h-8 text-dark" />
                     </div>
                     <h3 className="text-lg font-bold text-primary">{company.name}</h3>
                     <p className="mt-2 text-accent text-sm font-bold">{company.positions} positions</p>
@@ -605,7 +606,7 @@ export default function Placements() {
                   >
                     <div className="md:w-5/12 flex justify-center">
                       <div className="text-center md:text-right max-w-sm">
-                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent to-dark flex items-center justify-center text-white font-bold text-3xl shadow-2xl mx-auto md:mx-0">
+                        <div className="w-24 h-24 rounded-full bg-gradient-to-br from-accent to-dark flex items-center justify-center text-dark font-bold text-3xl shadow-2xl mx-auto md:mx-0">
                           {step.number}
                         </div>
                         <h3 className="mt-6 text-xl md:text-2xl font-bold text-primary">{step.title}</h3>
@@ -614,8 +615,8 @@ export default function Placements() {
                     </div>
                                         
                     <div className="md:w-2/12 flex justify-center">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white to-secondary border-4 border-accent shadow-2xl z-10 flex items-center justify-center">
-                        <div className="w-6 h-6 rounded-full bg-accent"></div>
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#ff9134] to-secondary border-4 border-[#ff9134] shadow-2xl z-10 flex items-center justify-center">
+                        <div className="w-6 h-6 rounded-full bg-[#ff9134]"></div>
                       </div>
                     </div>
                                         
@@ -623,10 +624,10 @@ export default function Placements() {
                       <div className="bg-gradient-to-br from-white to-secondary rounded-3xl p-8 border border-subtle shadow-2xl hover:shadow-2xl transition-all duration-500 max-w-md w-full">
                         <div className="flex items-center mb-6">
                           <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-dark flex items-center justify-center shadow-xl mr-4">
-                            {index === 0 && <TrendingUp className="w-7 h-7 text-white" />}
-                            {index === 1 && <Users className="w-7 h-7 text-white" />}
-                            {index === 2 && <Building2 className="w-7 h-7 text-white" />}
-                            {index === 3 && <Calendar className="w-7 h-7 text-white" />}
+                            {index === 0 && <TrendingUp className="w-7 h-7 text-dark" />}
+                            {index === 1 && <Users className="w-7 h-7 text-dark" />}
+                            {index === 2 && <Building2 className="w-7 h-7 text-dark" />}
+                            {index === 3 && <Calendar className="w-7 h-7 text-dark" />}
                           </div>
                           <h4 className="font-bold text-primary text-xl">What to Expect</h4>
                         </div>
@@ -665,9 +666,9 @@ export default function Placements() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                Ready to Launch Your <span className="bg-gradient-to-r from-white to-secondary bg-clip-text text-transparent">Dream Job?</span>
+                Ready to Launch Your <span className="bg-gradient-to-r from-white to-secondary bg-clip-text text-[#23cccc]">Dream Job?</span>
               </h2>
-              <p className="mt-3 text-lg text-white/90 font-medium max-w-2xl mx-auto">
+              <p className="mt-3 text-lg text-dark/90 font-medium max-w-2xl mx-auto">
                 Join thousands of successful graduates who found their dream jobs through our placement program.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -683,7 +684,7 @@ export default function Placements() {
                   <ArrowRight className="ml-3 w-5 h-5" />
                 </motion.button>
                 <motion.button 
-                  className="px-8 py-4 bg-transparent text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 border-2 border-white transform hover:scale-105"
+                  className="px-8 py-4 bg-transparent text-dark font-bold rounded-xl hover:bg-white/10 transition-all duration-300 border-2 border-primary transform hover:scale-105"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}

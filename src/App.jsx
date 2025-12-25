@@ -12,6 +12,7 @@ import CareerCounseling from './pages/CareerCounseling';
 import Blogs from './pages/Blogs';
 import Placements from './pages/Placements';
 import NotFound from './pages/NotFound';
+import BlogDetail from './pages/BlogDetail';
 
 export default function App() {
   const location = useLocation();
@@ -117,6 +118,20 @@ export default function App() {
                   transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
                 >
                   <Placements />
+                </motion.div>
+              } 
+            />
+            <Route 
+              path="/blog/:id" 
+              element={
+                <motion.div
+                  key="blog-detail"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                >
+                  <BlogDetail />
                 </motion.div>
               } 
             />

@@ -15,6 +15,7 @@ import {
   LinkedinIcon,
   InstagramIcon,
 } from 'lucide-react';
+import webPlacement from '../assets/WebPlacement.webp';
 
 const navItems = [
   { name: 'Home', path: '/', icon: HomeIcon },
@@ -28,22 +29,22 @@ const navItems = [
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary border-t-2 border-subtle" style={{ minHeight: '300px', backgroundColor: '#2298739e' }}>
+    <footer className=" bg-[#E6F3EF]" style={{ minHeight: '300px', backgroundImage: `url(${webPlacement})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
           <div className="col-span-1 md:col-span-2">
             <motion.h3
               className="text-2xl font-black pb-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              style={{color:'cornsilk'}}
+              style={{color:'white'}}
             >
               Elite Management
             </motion.h3>
-            <p className="text-secondary" style={{ margin: 0 }}>Test Footer Content</p>
+            <p className="text-white" style={{ margin: 0 }}>Providing quality education since 2025</p>
             <motion.p
-              className="mt-4 text-secondary max-w-md font-medium"
+              className="mt-4 text-white max-w-md font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -68,8 +69,8 @@ export default function Footer() {
                 <motion.a
                   key={name}
                   href="#"
-                  className="w-11 h-11 rounded-full bg-secondary border-2 border-subtle flex items-center justify-center
-                 text-accent hover:bg-accent hover:text-white hover:border-accent transition-all duration-300
+                  className="w-11 h-11 rounded-full bg-[#F2F8F6] backdrop-blur-sm border-2 border-white/30 flex items-center justify-center
+                 text-white hover:bg-accent hover:text-white hover:border-accent transition-all duration-300
                  shadow-subtle hover:shadow-hover"
                   whileHover={{ y: -5, scale: 1.1 }}
                   transition={{ duration: 0.25 }}
@@ -82,10 +83,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-black uppercase tracking-wider text-primary mb-1">
-              Navigation
+            <h4 className="text-sm font-black uppercase tracking-wider text-white mb-1">
+              Quick Links
             </h4>
-            <div className="w-12 h-1 bg-accent rounded-full mb-4"></div>
+            <div className="w-12 h-1 bg-white rounded-full mb-4"></div>
             <ul className="mt-4 space-y-3" style={{ padding: 0 }}>
               {navItems.slice(0, 4).map((item, index) => (
                 <motion.li
@@ -96,7 +97,7 @@ export default function Footer() {
                 >
                   <Link
                     to={item.path}
-                    className="text-secondary hover:text-accent transition-colors duration-300 flex items-center font-medium group"
+                    className="text-white hover:text-accent transition-colors duration-300 flex items-center font-medium group"
                   >
                     {/* <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300">-</span> */}
                     {item.name}
@@ -107,10 +108,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-black uppercase tracking-wider text-primary mb-1">
-              Resources
+            <h4 className="text-sm font-black uppercase tracking-wider text-white mb-1">
+              More
             </h4>
-            <div className="w-12 h-1 bg-accent rounded-full mb-4"></div>
+            <div className="w-12 h-1 bg-white rounded-full mb-4"></div>
             <ul className="mt-4 space-y-3" style={{ padding: 0 }}>
               {navItems.slice(4).map((item, index) => (
                 <motion.li
@@ -121,7 +122,7 @@ export default function Footer() {
                 >
                   <Link
                     to={item.path}
-                    className="text-secondary hover:text-accent transition-colors duration-300 flex items-center font-medium group"
+                    className="text-white hover:text-accent transition-colors duration-300 flex items-center font-medium group"
                   >
                     {/* <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></span> */}
                     {item.name}
@@ -133,13 +134,13 @@ export default function Footer() {
         </div>
 
         <motion.div
-          className="mt-8 border-t-2 borderTop pt-8 flex flex-col md:flex-row justify-between items-center"
+          className="mt-8 border-t-2 border-white/30 pt-8 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           <motion.p
-            className="text-secondary text-sm font-medium"
+            className="text-white text-sm font-medium"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -154,14 +155,14 @@ export default function Footer() {
           >
             <motion.a
               href="#"
-              className="text-secondary hover:text-accent transition-colors duration-300 font-bold"
+              className="text-white hover:text-accent transition-colors duration-300 font-bold"
               whileHover={{ x: 5 }}
             >
               Privacy Policy
             </motion.a>
             <motion.a
               href="#"
-              className="text-secondary hover:text-accent transition-colors duration-300 font-bold"
+              className="text-white hover:text-accent transition-colors duration-300 font-bold"
               whileHover={{ x: 5 }}
             >
               Terms of Service

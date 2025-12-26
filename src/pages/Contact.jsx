@@ -38,7 +38,7 @@ export default function Contact() {
     <AnimatedPageWrapper>
       {/* Enhanced Hero Section */}
         <AnimatedOnScroll 
-          className="relative py-20 overflow-hidden bg-secondary"
+          className="relative content-center py-40 overflow-hidden bg-secondary"
           direction="up"
           delay={0}
         >
@@ -47,7 +47,7 @@ export default function Contact() {
             <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
           </div>
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl py-18 mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-3xl mx-auto">
               <AnimatedOnScroll 
                 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
@@ -55,7 +55,7 @@ export default function Contact() {
                 delay={0.1}
               >
                 <span className="text-primary">Get In </span>
-                <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Touch</span>
+                <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-[#2ab07f]">Touch</span>
               </AnimatedOnScroll>
               <AnimatedOnScroll 
                 className="mt-6 text-xl text-secondary font-medium max-w-2xl mx-auto leading-relaxed"
@@ -174,7 +174,7 @@ export default function Contact() {
                     </div>
                     <h3 className="text-2xl font-black text-primary mb-2">Interactive Map</h3>
                     <p className="text-secondary mb-4 font-medium">Our location on Google Maps</p>
-                    <button className="px-8 py-3 bg-accent text-white rounded-xl hover:bg-dark transition-all duration-150 font-bold shadow-subtle transform hover:scale-105">
+                    <button className="px-8 py-3 bg-[#008248] text-white rounded-xl hover:bg-dark transition-all duration-150 font-bold shadow-subtle transform hover:scale-105">
                       View on Map
                     </button>
                   </div>
@@ -278,11 +278,11 @@ export default function Contact() {
                   </AnimatedOnScroll>
                   
                   <AnimatedOnScroll
-                    className="w-full px-6 py-4 bg-accent text-white font-black rounded-xl hover:bg-dark transition-all duration-150 shadow-subtle flex items-center justify-center transform hover:scale-105"
+                    className="w-full px-6 py-4 bg-[#008248] text-white font-black rounded-xl hover:bg-dark transition-all duration-150 shadow-subtle flex items-center justify-center transform hover:scale-105"
                     direction="up"
                     delay={0.7}
                   >
-                    <button type="submit" className="w-full">
+                    <button type="submit" className="w-full justify-center flex">
                       Send Message
                       <Send className="ml-2 w-5 h-5" />
                     </button>
@@ -307,7 +307,7 @@ export default function Contact() {
                 delay={0.1}
               >
                 <span className="text-primary">Frequently Asked </span>
-                <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Questions</span>
+                <span className="text-gradient bg-gradient-to-r from-[#008248] to-accent bg-clip-text text-transparent">Questions</span>
               </AnimatedOnScroll>
               <AnimatedOnScroll 
                 className="mt-4 text-xl text-secondary font-medium"
@@ -363,7 +363,7 @@ export default function Contact() {
                 delay={0.1}
               >
                 <span className="text-primary">What Our </span>
-                <span className="text-gradient bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Students Say</span>
+                <span className="text-gradient bg-gradient-to-r from-[#008248] to-accent bg-clip-text text-transparent">Students Say</span>
               </AnimatedOnScroll>
               <AnimatedOnScroll 
                 className="mt-4 text-xl text-secondary font-medium max-w-2xl mx-auto"

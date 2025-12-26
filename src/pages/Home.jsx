@@ -25,6 +25,235 @@ import c1 from '../assets/c1.jfif';
 import c2 from '../assets/c2.jfif';
 import c3 from '../assets/c3.jfif';
 
+const HeroSection = () => {
+  // Sample course images - replace with your actual images
+  const courses = [
+    { id: 1, title: "Web Development", students: "2.5k", rating: 4.9 },
+    { id: 2, title: "Data Science", students: "1.8k", rating: 4.8 },
+    { id: 3, title: "UI/UX Design", students: "3.2k", rating: 4.9 },
+    { id: 4, title: "Digital Marketing", students: "2.1k", rating: 4.7 },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-[#F2F8F6] via-[#E6F3EF] to-[#D4ECE5] relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute top-20 right-20 w-72 h-72 bg-[#048E6C] rounded-full opacity-5 blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-96 h-96 bg-[#035642] rounded-full opacity-5 blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, -90, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-[#DDEAE6] shadow-sm"
+            >
+              <TrendingUp className="w-4 h-4 text-[#048E6C]" />
+              <span className="text-sm font-semibold text-[#023F32]">
+                #1 Online Learning Platform
+              </span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <div>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-black text-[#023F32] leading-tight"
+              >
+                Learn Today,
+                <span className="block mt-2 bg-gradient-to-r from-[#035642] to-[#048E6C] bg-clip-text text-transparent">
+                  Lead Tomorrow
+                </span>
+              </motion.h1>
+            </div>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg md:text-xl text-[#3E4F4B] leading-relaxed max-w-xl"
+            >
+              Master in-demand skills with expert-led courses. Join 50,000+ learners transforming their careers through quality education.
+            </motion.p>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap gap-8"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#035642] to-[#048E6C] flex items-center justify-center">
+                  <Users className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-[#023F32]">50k+</div>
+                  <div className="text-sm text-[#3E4F4B]">Active Students</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#035642] to-[#048E6C] flex items-center justify-center">
+                  <Award className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-[#023F32]">200+</div>
+                  <div className="text-sm text-[#3E4F4B]">Expert Courses</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(3, 86, 66, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                className="group bg-gradient-to-r from-[#035642] to-[#048E6C] text-white px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-2xl transition-all"
+              >
+                Get Started Free
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="group bg-white/60 backdrop-blur-sm text-[#035642] px-8 py-4 rounded-xl font-semibold text-lg flex items-center justify-center gap-2 border-2 border-[#DDEAE6] hover:border-[#048E6C] hover:bg-white transition-all"
+              >
+                <PlayCircle className="w-5 h-5" />
+                Watch Demo
+              </motion.button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Content - Course Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="grid grid-cols-2 gap-6">
+              {courses.map((course, index) => (
+                <motion.div
+                  key={course.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
+                  whileHover={{ y: -10, scale: 1.05 }}
+                  className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all border border-[#DDEAE6] overflow-hidden"
+                >
+                  {/* Gradient Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#035642]/5 to-[#048E6C]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  
+                  <div className="relative z-10">
+                    {/* Icon/Image Placeholder */}
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#035642] to-[#048E6C] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <Award className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    {/* Course Title */}
+                    <h3 className="text-lg font-bold text-[#023F32] mb-3">
+                      {course.title}
+                    </h3>
+                    
+                    {/* Stats */}
+                    <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center gap-1 text-[#3E4F4B]">
+                        <Users className="w-4 h-4" />
+                        <span>{course.students}</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-[#048E6C] font-semibold">
+                        <Star className="w-4 h-4 fill-current" />
+                        <span>{course.rating}</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Floating Elements */}
+            <motion.div
+              animate={{
+                y: [0, -20, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-[#048E6C] to-[#035642] rounded-2xl rotate-12 opacity-20 blur-sm"
+            />
+            <motion.div
+              animate={{
+                y: [0, 20, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-br from-[#035642] to-[#048E6C] rounded-full opacity-20 blur-sm"
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Wave Decoration at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+            fill="white"
+            fillOpacity="0.3"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+};
+
 const features = [
   {
     icon: BookOpen,
@@ -173,112 +402,7 @@ export default function Home() {
 
   return (
     <AnimatedPageWrapper>
-      {/* Enhanced Hero Section without Particles */}
-      <ParallaxElement
-        className="min-h-screen bg-gradient-to-br from-primary to-secondary relative overflow-hidden flex items-center"
-      >
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('../assets/c1.jfif')] bg-cover bg-center opacity-10 mix-blend-multiply"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-accent/10 to-primary/5"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[500px]">
-            <AnimatedOnScroll
-              className="flex flex-col justify-center"
-              direction="left"
-              delay={0.2}
-            >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 text-primary">
-                Transform Your Career
-                <span className="block text-4xl md:text-5xl lg:text-6xl font-black text-accent mt-3">
-                  With Expert Learning
-                </span>
-              </h1>
-
-              <p className="text-xl md:text-2xl text-secondary font-medium max-w-2xl mb-8 leading-relaxed">
-                Join thousands of students who have advanced their careers with our comprehensive online courses designed by industry experts.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  className="btn btn-primary px-8 py-4 text-base"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                >
-                  Explore Courses
-                  <ChevronRight className="ml-2 w-5 h-5" />
-                </motion.button>
-
-                <motion.button
-                  className="btn btn-secondary px-8 py-4 text-base"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                >
-                  <PlayCircle className="mr-2 w-5 h-5" />
-                  Watch Demo
-                </motion.button>
-              </div>
-            </AnimatedOnScroll>
-
-            {/* Floating decorative spheres */}
-            <ParallaxElement speed={0.3} className="absolute top-20 right-20 w-32 h-32 bg-accent rounded-full opacity-20 blur-xl"></ParallaxElement>
-            <ParallaxElement speed={0.5} className="absolute bottom-20 left-20 w-24 h-24 bg-accent rounded-full opacity-25 blur-xl"></ParallaxElement>
-
-            <AnimatedOnScroll
-              className="rounded-3xl overflow-hidden shadow-subtle border border-subtle bg-white/90 backdrop-blur-sm relative"
-              direction="right"
-              delay={0.4}
-            >
-              <div className="bg-primary min-h-[400px] flex items-center justify-center relative p-8 rounded-2xl">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212, 236, 229,0.15)_0%,rgba(212, 236, 229,0)_70%)] rounded-2xl"></div>
-
-                <div className="w-full max-w-6xl mx-auto overflow-hidden relative z-20">
-                  <h3 className="text-4xl font-black text-accent text-center mb-10">
-                    Featured Courses
-                  </h3>
-
-                  <motion.div
-                    className="flex gap-8"
-                    animate={{ x: [0, -350 * 3] }}
-                    transition={{
-                      x: {
-                        duration: 10,
-                        repeat: Infinity,
-                        ease: 'linear'
-                      }
-                    }}
-                  >
-                    {[c1, c2, c3, c1, c2, c3, c1, c2, c3].map((image, index) => (
-                      <motion.div
-                        key={index}
-                        className="flex-shrink-0 w-72 h-64 rounded-3xl overflow-hidden shadow-subtle border-4 border-white/30"
-                        whileHover={{
-                          y: -12,
-                          scale: 1.05,
-                          transition: { duration: 0.3 }
-                        }}
-                      >
-                        <img
-                          src={image}
-                          alt={`Course ${index + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </div>
-              </div>
-            </AnimatedOnScroll>
-          </div>
-        </div>
-      </ParallaxElement>
+      <HeroSection />
 
       {/* Stats Section */}
       <AnimatedOnScroll

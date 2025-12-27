@@ -38,15 +38,11 @@ export default function Footer() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              style={{color:'white'}}
+              style={{ color: 'white' }}
             >
               Elite Management
             </motion.h3>
-<<<<<<< HEAD
-            <p className="text-secondary font-bold" style={{ margin: 0 }}>Test Footer Content</p>
-=======
             <p className="text-white" style={{ margin: 0 }}>Providing quality education since 2025</p>
->>>>>>> 24bf2690d7f9860f225356e17d4899ef7b144a3d
             <motion.p
               className="mt-4 text-white max-w-md font-medium"
               initial={{ opacity: 0, y: 20 }}

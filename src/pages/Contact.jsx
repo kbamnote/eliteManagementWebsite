@@ -96,7 +96,7 @@ export default function Contact() {
                     direction="up"
                     delay={0.3}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                    <div className="w-16 h-16 rounded-2xl bg-[aliceblue] flex items-center justify-center flex-shrink-0 shadow-subtle">
                       <MapPin className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
@@ -114,7 +114,7 @@ export default function Contact() {
                     direction="up"
                     delay={0.4}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                    <div className="w-16 h-16 rounded-2xl bg-[aliceblue] flex items-center justify-center flex-shrink-0 shadow-subtle">
                       <Phone className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
@@ -131,7 +131,7 @@ export default function Contact() {
                     direction="up"
                     delay={0.5}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                    <div className="w-16 h-16 rounded-2xl bg-[aliceblue] flex items-center justify-center flex-shrink-0 shadow-subtle">
                       <Mail className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
@@ -148,7 +148,7 @@ export default function Contact() {
                     direction="up"
                     delay={0.6}
                   >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
+                    <div className="w-16 h-16 rounded-2xl bg-[aliceblue] flex items-center justify-center flex-shrink-0 shadow-subtle">
                       <Clock className="w-8 h-8 text-primary" />
                     </div>
                     <div className="ml-6">
@@ -169,7 +169,7 @@ export default function Contact() {
                   delay={0.7}
                 >
                   <div className="text-center p-8">
-                    <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-subtle">
+                    <div className="w-20 h-20 bg-[aliceblue] rounded-full flex items-center justify-center mx-auto mb-4 shadow-subtle">
                       <MapPin className="w-10 h-10 text-primary" />
                     </div>
                     <h3 className="text-2xl font-black text-primary mb-2">Interactive Map</h3>
@@ -183,7 +183,7 @@ export default function Contact() {
               
               {/* Enhanced Contact Form */}
               <AnimatedOnScroll
-                className="bg-secondary rounded-3xl p-8 shadow-subtle border-2 border-subtle"
+                className="bg-secondary h-fit rounded-3xl p-8 shadow-subtle border-2 border-subtle"
                 direction="right"
                 delay={0.1}
               >
@@ -307,7 +307,7 @@ export default function Contact() {
                 delay={0.1}
               >
                 <span className="text-primary">Frequently Asked </span>
-                <span className="text-gradient bg-gradient-to-r from-[#008248] to-accent bg-clip-text text-transparent">Questions</span>
+                <span className="text-gradient bg-gradient-to-r from-[#008248] to-[#3a9f0866] bg-clip-text text-transparent">Questions</span>
               </AnimatedOnScroll>
               <AnimatedOnScroll 
                 className="mt-4 text-xl text-secondary font-medium"
@@ -363,7 +363,7 @@ export default function Contact() {
                 delay={0.1}
               >
                 <span className="text-primary">What Our </span>
-                <span className="text-gradient bg-gradient-to-r from-[#008248] to-accent bg-clip-text text-transparent">Students Say</span>
+                <span className="text-gradient bg-gradient-to-r from-[#008248] to-[#3a9f0866] bg-clip-text text-transparent">Students Say</span>
               </AnimatedOnScroll>
               <AnimatedOnScroll 
                 className="mt-4 text-xl text-secondary font-medium max-w-2xl mx-auto"

@@ -41,7 +41,7 @@ export default function Footer() {
             >
               Elite Management
             </motion.h3>
-            <p className="text-secondary" style={{ margin: 0 }}>Test Footer Content</p>
+            <p className="text-secondary font-bold" style={{ margin: 0 }}>Test Footer Content</p>
             <motion.p
               className="mt-4 text-secondary max-w-md font-medium"
               initial={{ opacity: 0, y: 20 }}

@@ -208,7 +208,7 @@ export default function Placements() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white/50 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                  <div className="bg-gradient-to-br from-primary to-secondary aspect-video flex items-center justify-center relative p-8">
+                  <div className="bg-gradient-to-br from-[#5f9ea017] to-secondary aspect-video flex items-center justify-center relative p-8">
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212, 236, 229,0.1)_0%,rgba(212, 236, 229,0)_70%)]"></div>
                     
                     <div className="text-center relative z-10 space-y-6">

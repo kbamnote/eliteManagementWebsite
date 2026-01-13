@@ -100,27 +100,25 @@ const Blogs = () => {
       src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1920&q=80"
       alt="Elite Management"
       className="w-full h-full object-cover opacity-30"
-      style={{ transform: `translateY(${scrollY * 0.3}px)` }}
     />
   </div>
 
 
-
   {/* Content */}
   <div className="relative z-10 text-center px-6 max-w-4xl">
-    <span className="inline-block mb-6 px-5 py-2 rounded-full bg-white/10 text-white text-sm tracking-widest uppercase animate-fade-up">
+    <span className="inline-block mb-6 px-5 py-2 rounded-full bg-white/10 text-white text-sm tracking-widest uppercase">
       Knowledge Hub
     </span>
 
-    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-up delay-150">
+    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
       Insights & Articles
     </h1>
 
-    <p className="text-xl text-white/90 mb-8 animate-fade-up delay-300">
+    <p className="text-xl text-white/90 mb-8">
       Practical knowledge, expert insights & career guidance
     </p>
 
-    <button className="px-10 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-lg animate-fade-up delay-450">
+    <button className="px-10 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-lg">
       Explore Articles
     </button>
   </div>
@@ -144,7 +142,6 @@ const Blogs = () => {
     .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
   `}</style>
 </section>
-
 
 
 

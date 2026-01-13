@@ -8,7 +8,6 @@ const Courses = () => {
   const [scrollY, setScrollY] = useState(0);
 
   
-
   const courseCategories = [
     { id: 'all', name: 'All Courses', icon: '📚' },
     { id: 'management', name: 'Management', icon: '📊' },
@@ -143,7 +142,6 @@ const Courses = () => {
         </div>
 
        
-        
         {/* Content */}
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <span className="inline-block mb-6 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm tracking-widest uppercase font-semibold animate-fade-in">

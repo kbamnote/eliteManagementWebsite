@@ -97,7 +97,6 @@ const Contact = () => {
     />
 
 
-
     {/* Content */}
     <div className="relative z-10 text-center px-6 max-w-4xl">
       <span className="inline-block mb-6 px-6 py-2 rounded-full bg-white/10 text-white text-sm tracking-widest uppercase">

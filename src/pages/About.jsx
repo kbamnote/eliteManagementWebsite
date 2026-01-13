@@ -91,7 +91,6 @@ const About = () => {
         </div>
 
         
-
         {/* Content */}
         <div className="relative z-10 text-center max-w-5xl px-6">
           <span className="inline-block mb-6 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm tracking-widest uppercase font-semibold animate-fade-in">
@@ -104,7 +103,6 @@ const About = () => {
           </h1>
 
         
-
           <div className="flex gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <button className="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 hover:scale-105 transition-all shadow-xl">
               Explore Courses

@@ -1,468 +1,435 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  BookOpen, 
-  Search, 
-  Filter,
-  ChevronDown,
-  ArrowUpDown,
-  GraduationCap,
-  Users,
-  DollarSign,
-  Star,
-  Clock
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-import FlipCard from '../components/FlipCard';
-import BookCard from '../components/BookCard';
-import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
+import { useState} from 'react';
+import Footer from '../components/Footer';
 
-const allCourses = [
-  {
-    id: 1,
-    title: 'Complete Web Development Bootcamp',
-    instructor: 'John Smith',
-    rating: 4.8,
-    students: 12500,
-    duration: '24 weeks',
-    level: 'Beginner',
-    price: 89,
-    category: 'Programming',
-    image: 'web-dev'
-  },
-  {
-    id: 2,
-    title: 'Data Science with Python',
-    instructor: 'Sarah Johnson',
-    rating: 4.9,
-    students: 9800,
-    duration: '18 weeks',
-    level: 'Intermediate',
-    price: 129,
-    category: 'Data Science',
-    image: 'data-science'
-  },
-  {
-    id: 3,
-    title: 'UI/UX Design Masterclass',
-    instructor: 'Michael Chen',
-    rating: 4.7,
-    students: 7600,
-    duration: '12 weeks',
-    level: 'Beginner',
-    price: 79,
-    category: 'Design',
-    image: 'design'
-  },
-  {
-    id: 4,
-    title: 'Cloud Computing with AWS',
-    instructor: 'David Wilson',
-    rating: 4.6,
-    students: 5400,
-    duration: '16 weeks',
-    level: 'Advanced',
-    price: 149,
-    category: 'Cloud',
-    image: 'cloud'
-  },
-  {
-    id: 5,
-    title: 'Digital Marketing Strategy',
-    instructor: 'Emma Rodriguez',
-    rating: 4.8,
-    students: 11200,
-    duration: '10 weeks',
-    level: 'Beginner',
-    price: 69,
-    category: 'Marketing',
-    image: 'marketing'
-  },
-  {
-    id: 6,
-    title: 'Mobile App Development with React Native',
-    instructor: 'Alex Thompson',
-    rating: 4.7,
-    students: 8300,
-    duration: '20 weeks',
-    level: 'Intermediate',
-    price: 99,
-    category: 'Programming',
-    image: 'mobile'
-  },
-  {
-    id: 7,
-    title: 'Machine Learning Fundamentals',
-    instructor: 'Dr. Priya Sharma',
-    rating: 4.9,
-    students: 6700,
-    duration: '22 weeks',
-    level: 'Advanced',
-    price: 159,
-    category: 'AI',
-    image: 'ai'
-  },
-  {
-    id: 8,
-    title: 'Cybersecurity Essentials',
-    instructor: 'Robert Davis',
-    rating: 4.6,
-    students: 4500,
-    duration: '14 weeks',
-    level: 'Intermediate',
-    price: 119,
-    category: 'Security',
-    image: 'security'
-  }
-];
+const Courses = () => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [scrollY, setScrollY] = useState(0);
 
-const categories = [
-  'All Categories',
-  'Programming',
-  'Data Science',
-  'Design',
-  'Cloud',
-  'Marketing',
-  'AI',
-  'Security'
-];
+  
 
-const levels = ['All Levels', 'Beginner', 'Intermediate', 'Advanced'];
+  const courseCategories = [
+    { id: 'all', name: 'All Courses', icon: '📚' },
+    { id: 'management', name: 'Management', icon: '📊' },
+    { id: 'leadership', name: 'Leadership', icon: '👔' },
+    { id: 'marketing', name: 'Marketing', icon: '📱' },
+    { id: 'finance', name: 'Finance', icon: '💰' },
+    { id: 'hr', name: 'HR Management', icon: '👥' }
+  ];
 
-export default function Courses() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const [selectedLevel, setSelectedLevel] = useState('All Levels');
-  const [sortBy, setSortBy] = useState('popular');
+  const courses = [
+    {
+      id: 1,
+      title: 'Strategic Management',
+      category: 'management',
+      instructor: 'Dr. Sarah Johnson',
+      duration: '12 weeks',
+      level: 'Advanced',
+      rating: 4.8,
+      students: 1250,
+      price: 299,
+      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Master strategic planning and implementation techniques for business success.',
+      tags: ['Strategy', 'Planning', 'Leadership']
+    },
+    {
+      id: 2,
+      title: 'Leadership Excellence',
+      category: 'leadership',
+      instructor: 'Prof. Michael Chen',
+      duration: '8 weeks',
+      level: 'Intermediate',
+      rating: 4.9,
+      students: 980,
+      price: 249,
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Develop essential leadership skills for modern business environments.',
+      tags: ['Leadership', 'Communication', 'Team Management']
+    },
+    {
+      id: 3,
+      title: 'Digital Marketing Mastery',
+      category: 'marketing',
+      instructor: 'Emma Rodriguez',
+      duration: '10 weeks',
+      level: 'Beginner',
+      rating: 4.7,
+      students: 1500,
+      price: 199,
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Comprehensive digital marketing strategies for the modern era.',
+      tags: ['SEO', 'Social Media', 'Content Marketing']
+    },
+    {
+      id: 4,
+      title: 'Financial Management',
+      category: 'finance',
+      instructor: 'Dr. Robert Williams',
+      duration: '14 weeks',
+      level: 'Advanced',
+      rating: 4.6,
+      students: 870,
+      price: 349,
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f',
+      description: 'Advanced financial planning and management techniques.',
+      tags: ['Finance', 'Investment', 'Analysis']
+    },
+    {
+      id: 5,
+      title: 'HR Management Essentials',
+      category: 'hr',
+      instructor: 'Dr. Lisa Anderson',
+      duration: '6 weeks',
+      level: 'Beginner',
+      rating: 4.8,
+      students: 1100,
+      price: 179,
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Essential HR management skills for modern workplaces.',
+      tags: ['HR', 'Recruitment', 'Employee Relations']
+    },
+    {
+      id: 6,
+      title: 'Project Management',
+      category: 'management',
+      instructor: 'James Wilson',
+      duration: '9 weeks',
+      level: 'Intermediate',
+      rating: 4.7,
+      students: 1320,
+      price: 229,
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Master project planning, execution, and delivery techniques.',
+      tags: ['Project Management', 'Planning', 'Execution']
+    }
+  ];
 
-  const filteredCourses = allCourses.filter(course => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          course.instructor.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All Categories' || course.category === selectedCategory;
-    const matchesLevel = selectedLevel === 'All Levels' || course.level === selectedLevel;
-    
-    return matchesSearch && matchesCategory && matchesLevel;
-  });
+  const filteredCourses = selectedCategory === 'all' 
+    ? courses 
+    : courses.filter(course => course.category === selectedCategory);
 
-  const sortedCourses = [...filteredCourses].sort((a, b) => {
-    if (sortBy === 'popular') return b.students - a.students;
-    if (sortBy === 'rating') return b.rating - a.rating;
-    if (sortBy === 'price-low') return a.price - b.price;
-    if (sortBy === 'price-high') return b.price - a.price;
-    return 0;
-  });
+  const handleEnroll = (courseId) => {
+    if (!enrolledCourses.includes(courseId)) {
+      setEnrolledCourses([...enrolledCourses, courseId]);
+      alert('Successfully enrolled in the course!');
+    }
+  };
 
-  // Stats for the hero section
-  const totalCourses = allCourses.length;
-  const totalStudents = allCourses.reduce((sum, course) => sum + course.students, 0);
-  const avgRating = (allCourses.reduce((sum, course) => sum + course.rating, 0) / allCourses.length).toFixed(1);
+  const renderStars = (rating) => {
+    return [...Array(5)].map((_, i) => (
+      <span key={i} className={i < rating ? 'text-yellow-500' : 'text-muted-foreground'}>★</span>
+    ));
+  };
 
   return (
-    <AnimatedPageWrapper>
-      {/* Enhanced Hero Section */}
-        <motion.section 
-          className="relative py-20 overflow-hidden bg-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-0 right-0 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center max-w-4xl mx-auto">
-              <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <span className="text-primary">Expand Your </span>
-                <span className="block text-5xl md:text-6xl font-black text-accent mt-2">
-                  Knowledge
-                </span>
-              </motion.h1>
-              <motion.p 
-                className="text-xl md:text-2xl text-secondary font-medium max-w-3xl mx-auto mb-10"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                Discover hundreds of expert-led courses designed to help you master new skills and advance your career.
-              </motion.p>
-              
-              {/* Enhanced Stats Cards */}
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-              >
-                <div className="bg-white rounded-2xl p-6 shadow-subtle border-2 border-subtle hover:border-accent transition-all duration-300 hover:shadow-hover hover:-translate-y-1 group">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                      <GraduationCap className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="ml-4 text-left">
-                      <p className="text-2xl font-black text-accent">{totalCourses}+</p>
-                      <p className="text-secondary font-bold">Courses</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white rounded-2xl p-6 shadow-subtle border-2 border-subtle hover:border-accent transition-all duration-300 hover:shadow-hover hover:-translate-y-1 group">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                      <Users className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="ml-4 text-left">
-                      <p className="text-2xl font-black text-accent">{Math.round(totalStudents / 1000)}K+</p>
-                      <p className="text-secondary font-bold">Students</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-white rounded-2xl p-6 shadow-subtle border-2 border-subtle hover:border-accent transition-all duration-300 hover:shadow-hover hover:-translate-y-1 group">
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-xl bg-secondary group-hover:bg-accent flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                      <DollarSign className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="ml-4 text-left">
-                      <p className="text-2xl font-black text-accent">{avgRating}</p>
-                      <p className="text-secondary font-bold">Avg. Rating</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
+    <div className="max-h-screen ">
+      
+      {/* ENHANCED HERO BANNER */}
+      <section className="relative h-[100vh] flex items-center justify-center overflow-hidden">
+        {/* Background with Parallax */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-black opacity-90" />
+          <img
+            src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1920&q=80"
+            alt="Courses"
+            className="w-full h-full object-cover opacity-30"
+            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+          />
+          
+          {/* Animated gradient orbs */}
+          <div className="absolute top-20 right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        </div>
 
-        {/* Course Categories Flip Cards */}
-        <motion.section 
-          className="py-16 bg-secondary"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <motion.h2 
-                className="text-3xl md:text-4xl font-black mb-4 text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <span className="text-accent">
-                  Explore by Category
-                </span>
-              </motion.h2>
-              <motion.p 
-                className="text-xl text-secondary max-w-2xl mx-auto font-medium"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                Discover courses tailored to your interests and career goals
-              </motion.p>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-              <BookCard 
-                frontText="Programming" 
-                backText="Web, Mobile & Software Dev - JavaScript, Python, React, and more"
-              />
-              <BookCard 
-                frontText="Data Science" 
-                backText="Analytics & Machine Learning - Python, R, SQL, and Big Data"
-              />
-              <BookCard 
-                frontText="Design" 
-                backText="UI/UX & Graphic Design - Figma, Adobe Suite, Prototyping"
-              />
-              <BookCard 
-                frontText="Business" 
-                backText="Marketing & Management - Digital Marketing, Leadership, Finance"
-              />
-            </div>
-          </div>
-        </motion.section>
+       
+        
+        {/* Content */}
+        <div className="relative z-10 text-center px-6 max-w-5xl">
+          <span className="inline-block mb-6 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm tracking-widest uppercase font-semibold animate-fade-in">
+            Explore Our Courses
+          </span>
 
-        {/* Enhanced Filters Section */}
-        <motion.section 
-          className="py-8 bg-white border-b-2 border-subtle sticky top-0 z-20 shadow-subtle backdrop-blur-sm bg-white/95"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row gap-4 items-end">
-              {/* Search */}
-              <motion.div 
-                className="relative flex-1"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Transform Your Career <br />
+            <span className="text-blue-600">With Expert Training</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            Choose from 500+ expertly designed courses to master new skills and advance your professional journey
+          </p>
+        </div>
+
+        {/* Bottom gradient fade */}
+      </section>
+
+      {/* COURSE CATEGORIES */}
+      <section className="py-20 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Browse by Category
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Explore Course Categories</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Choose from a wide range of expertly designed courses to advance your career
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
+            {courseCategories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`group px-6 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                  selectedCategory === category.id
+                    ? 'bg-primary text-primary-foreground shadow-xl scale-105'
+                    : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary hover:shadow-lg hover:-translate-y-1'
+                }`}
               >
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5" />
-                  <input
-                    type="text"
-                    placeholder="Search courses, instructors..."
-                    className="w-full pl-12 pr-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                <span className="text-2xl">{category.icon}</span>
+                {category.name}
+              </button>
+            ))}
+          </div>
+
+          {/* COURSE GRID */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCourses.map((course, index) => (
+              <div 
+                key={course.id} 
+                className="group bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={course.image} 
+                    alt={course.title} 
+                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                      {course.level}
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full flex items-center gap-1">
+                    <span className="text-yellow-500 text-lg">★</span>
+                    <span className="font-bold text-foreground">{course.rating}</span>
+                  </div>
                 </div>
-              </motion.div>
-              
-              {/* Category Filter */}
-              <motion.div 
-                className="relative w-full lg:w-auto"
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <label className="block text-sm font-bold text-primary mb-2">Category</label>
-                <div className="relative">
-                  <select
-                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                  >
-                    {categories.map(category => (
-                      <option key={category} value={category} className="bg-white text-primary">{category}</option>
+                
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {course.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{course.description}</p>
+                  
+                  <div className="flex items-center text-sm text-muted-foreground mb-4 gap-2">
+                    <span className="text-primary">👨‍🏫</span>
+                    <span className="font-medium">{course.instructor}</span>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {course.tags.slice(0, 3).map((tag, index) => (
+                      <span key={index} className="bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
                     ))}
-                  </select>
-                  <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
+                  </div>
+                  
+                  <div className="flex justify-between items-center mb-6 text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <span>⏱️</span>
+                      <span>{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span>👥</span>
+                      <span>{course.students} students</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center pt-4 border-t border-border">
+                    <span className="text-3xl font-bold text-primary">${course.price}</span>
+                    <button 
+                      onClick={() => handleEnroll(course.id)}
+                      disabled={enrolledCourses.includes(course.id)}
+                      className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                        enrolledCourses.includes(course.id)
+                          ? 'bg-green-600 text-white cursor-not-allowed'
+                          : 'bg-primary hover:bg-primary/90 text-primary-foreground hover:scale-105 shadow-lg'
+                      }`}
+                    >
+                      {enrolledCourses.includes(course.id) ? '✓ Enrolled' : 'Enroll Now'}
+                    </button>
+                  </div>
                 </div>
-              </motion.div>
-              
-              {/* Level Filter */}
-              <motion.div 
-                className="relative w-full lg:w-auto"
-                initial={{ opacity: 0, x: 0 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED COURSES SECTION */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Top Rated
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Featured Courses</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Our most popular and highly-rated courses chosen by thousands of students
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {courses.slice(0, 3).map((course, index) => (
+              <div 
+                key={course.id} 
+                className={`group bg-card border-2 border-border rounded-3xl shadow-xl p-8 hover:shadow-2xl hover:border-primary transition-all duration-500 ${index === 1 ? 'md:scale-105' : 'hover:scale-105'}`}
               >
-                <label className="block text-sm font-bold text-primary mb-2">Level</label>
-                <div className="relative">
-                  <select
-                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
-                    value={selectedLevel}
-                    onChange={(e) => setSelectedLevel(e.target.value)}
+                <div className="text-center">
+                  <div className="relative mb-6 overflow-hidden rounded-2xl">
+                    <img 
+                      src={course.image} 
+                      alt={course.title} 
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {index === 1 && (
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold">
+                          🏆 BEST SELLER
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {course.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{course.description}</p>
+                  
+                  <div className="flex justify-center items-center mb-6 gap-2">
+                    <div className="flex text-yellow-500 text-lg">
+                      {renderStars(Math.floor(course.rating))}
+                    </div>
+                    <span className="text-muted-foreground font-semibold">({course.rating})</span>
+                  </div>
+                  
+                  <div className="mb-6 flex justify-center gap-6 text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <span>⏱️</span>
+                      <span className="text-sm">{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span>👥</span>
+                      <span className="text-sm">{course.students}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <span className="text-3xl font-bold text-primary">${course.price}</span>
+                  </div>
+                  
+                  <button 
+                    onClick={() => handleEnroll(course.id)}
+                    disabled={enrolledCourses.includes(course.id)}
+                    className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${
+                      enrolledCourses.includes(course.id)
+                        ? 'bg-green-600 text-white cursor-not-allowed'
+                        : 'bg-primary hover:bg-primary/90 text-primary-foreground hover:scale-105 shadow-lg'
+                    }`}
                   >
-                    {levels.map(level => (
-                      <option key={level} value={level} className="bg-white text-primary">{level}</option>
-                    ))}
-                  </select>
-                  <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
+                    {enrolledCourses.includes(course.id) ? '✓ Enrolled' : 'Start Learning'}
+                  </button>
                 </div>
-              </motion.div>
-              
-              {/* Sort By */}
-              <motion.div 
-                className="relative w-full lg:w-auto"
-                initial={{ opacity: 0, x: 10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Our Benefits
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Why Choose Our Courses?</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              We provide the highest quality education with industry experts and practical learning
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: '👨‍🏫', title: 'Expert Instructors', desc: 'Learn from industry professionals with real-world experience' },
+              { icon: '⚡', title: 'Flexible Learning', desc: 'Study at your own pace with 24/7 access' },
+              { icon: '🎓', title: 'Certification', desc: 'Earn certificates to boost your career' },
+              { icon: '💼', title: 'Career Support', desc: 'Get career guidance and job placement assistance' }
+            ].map((feature, index) => (
+              <div 
+                key={index} 
+                className="group text-center bg-card border border-border rounded-2xl p-8 hover:border-primary hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
               >
-                <label className="block text-sm font-bold text-primary mb-2">Sort By</label>
-                <div className="relative">
-                  <select
-                    className="appearance-none w-full pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                  >
-                    <option value="popular" className="bg-white text-primary">Most Popular</option>
-                    <option value="rating" className="bg-white text-primary">Highest Rated</option>
-                    <option value="price-low" className="bg-white text-primary">Price: Low to High</option>
-                    <option value="price-high" className="bg-white text-primary">Price: High to Low</option>
-                  </select>
-                  <ArrowUpDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
+                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform">
+                  {feature.icon}
                 </div>
-              </motion.div>
+                <h3 className="text-xl font-bold text-foreground mb-4">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-3xl opacity-20" />
+            <div className="relative bg-card border-2 border-primary/20 rounded-3xl p-12 md:p-16 text-center hover:border-primary/50 transition-all">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Ready to Start Learning?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Join over 10,000 students who are already transforming their careers with Elite Management
+              </p>
+              <button className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">
+                Browse All Courses
+              </button>
             </div>
           </div>
-        </motion.section>
+        </div>
+      </section>
 
-        {/* Enhanced Courses Grid */}
-        <motion.section 
-          className="py-20 bg-secondary"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div 
-              className="flex justify-between items-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
-              <div>
-                <h2 className="text-4xl font-black mb-2 text-primary">
-                  <span className="text-primary">
-                    {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''} Found
-                  </span>
-                </h2>
-                <p className="text-secondary mt-2 font-medium">Choose from our expertly curated selection of courses</p>
-              </div>
-            </motion.div>
-            
-            {sortedCourses.length === 0 ? (
-              <motion.div 
-                className="text-center py-20 bg-white rounded-3xl shadow-subtle border-2 border-subtle max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <BookOpen className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-2xl font-black text-primary mb-2">No courses found</h3>
-                <p className="text-secondary mb-6 font-medium">Try adjusting your filters to see more courses.</p>
-                <button 
-                  onClick={() => {
-                    setSearchTerm('');
-                    setSelectedCategory('All Categories');
-                    setSelectedLevel('All Levels');
-                  }}
-                  className="px-6 py-3 bg-accent text-white rounded-xl hover:bg-dark transition-all duration-300 font-bold shadow-subtle hover:shadow-hover transform hover:scale-105"
-                >
-                  Clear Filters
-                </button>
-              </motion.div>
-            ) : (
-              <motion.div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-              >
-                {sortedCourses.map((course, index) => (
-                  <motion.div
-                    key={course.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: 1 + index * 0.1 }}
-                    whileHover={{ y: -8 }}
-                  >
-                    <FlipCard 
-                      frontTitle={course.title}
-                      frontText={`by ${course.instructor}`}
-                      backTitle="Course Details"
-                      backText={`${course.students.toLocaleString()} students • ${course.duration} • ${course.level} • Rating: ${course.rating}/5`}
-                      icon={<BookOpen size={32} />}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </div>
-        </motion.section>
-      </AnimatedPageWrapper>
-    );
-  }
+      <Footer />
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default Courses;

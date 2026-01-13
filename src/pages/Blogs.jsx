@@ -1,335 +1,310 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  Calendar, 
-  User, 
-  Tag,
-  Search,
-  ChevronRight,
-  Clock
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
+import Footer from '../components/Footer';
 
-const blogPosts = [
-  {
-    id: 1,
-    title: 'The Future of Online Learning: Trends to Watch in 2024',
-    excerpt: 'Explore the emerging trends in online education that are reshaping how we learn and teach in the digital age.',
-    author: 'Alex Johnson',
-    date: 'March 15, 2024',
-    readTime: '5 min read',
-    category: 'Education',
-    image: 'blog-1'
-  },
-  {
-    id: 2,
-    title: 'Mastering Time Management for Online Students',
-    excerpt: 'Discover proven strategies to balance your studies, work, and personal life while pursuing online education.',
-    author: 'Sarah Williams',
-    date: 'March 10, 2024',
-    readTime: '7 min read',
-    category: 'Study Tips',
-    image: 'blog-2'
-  },
-  {
-    id: 3,
-    title: 'Top 10 Highest Paying Tech Skills in 2024',
-    excerpt: 'Which technical skills command the highest salaries? We break down the most in-demand skills for tech professionals.',
-    author: 'Michael Chen',
-    date: 'March 5, 2024',
-    readTime: '6 min read',
-    category: 'Career',
-    image: 'blog-3'
-  },
-  {
-    id: 4,
-    title: 'Building a Successful Career in Data Science',
-    excerpt: 'A comprehensive guide to entering and thriving in the rapidly growing field of data science.',
-    author: 'Priya Sharma',
-    date: 'February 28, 2024',
-    readTime: '8 min read',
-    category: 'Career',
-    image: 'blog-4'
-  },
-  {
-    id: 5,
-    title: 'The Psychology of Effective Learning',
-    excerpt: 'Understanding how the brain learns can help you optimize your study habits and retain information better.',
-    author: 'Dr. Emma Rodriguez',
-    date: 'February 22, 2024',
-    readTime: '6 min read',
-    category: 'Learning',
-    image: 'blog-5'
-  },
-  {
-    id: 6,
-    title: 'Remote Work Skills Every Professional Needs',
-    excerpt: 'Essential skills for thriving in remote work environments and advancing your career in distributed teams.',
-    author: 'Robert Davis',
-    date: 'February 18, 2024',
-    readTime: '5 min read',
-    category: 'Career',
-    image: 'blog-6'
-  }
-];
+const Blogs = () => {
+  const blogPosts = [
+    {
+      id: 1,
+      title: 'The Future of Online Learning: Trends to Watch in 2024',
+      excerpt:
+        'Exploring the latest trends in online education and how they are shaping the future of learning.',
+      date: 'January 15, 2024',
+      author: 'Dr. Sarah Johnson',
+      category: 'Education Trends',
+      readTime: '5 min read',
+      image:
+        'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 2,
+      title: 'How to Choose the Right Course for Your Career Goals',
+      excerpt:
+        'Learn proven strategies to select courses that align with your professional objectives.',
+      date: 'January 10, 2024',
+      author: 'Michael Chen',
+      category: 'Career Guidance',
+      readTime: '7 min read',
+      image:
+        'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 3,
+      title: 'Building a Strong Professional Portfolio',
+      excerpt:
+        'Discover how to create a compelling portfolio that showcases your skills and achievements.',
+      date: 'January 5, 2024',
+      author: 'Emma Rodriguez',
+      category: 'Professional Development',
+      readTime: '6 min read',
+      image:
+        'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 4,
+      title: 'The Art of Effective Learning: Best Practices',
+      excerpt:
+        'Essential tips for maximizing your learning efficiency and retention.',
+      date: 'December 28, 2023',
+      author: 'Robert Williams',
+      category: 'Learning Tips',
+      readTime: '4 min read',
+      image:
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 5,
+      title: 'Remote Work: Skills That Matter Most',
+      excerpt:
+        'How to develop the skills needed to succeed in remote work environments.',
+      date: 'December 20, 2023',
+      author: 'Lisa Anderson',
+      category: 'Remote Work',
+      readTime: '8 min read',
+      image:
+        'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+      id: 6,
+      title: 'Digital Marketing in the AI Era',
+      excerpt:
+        'Understanding how artificial intelligence is changing the digital marketing landscape.',
+      date: 'December 15, 2023',
+      author: 'James Wilson',
+      category: 'Marketing',
+      readTime: '6 min read',
+      image:
+        'https://images.unsplash.com/photo-1451187580459-401b681d5e8c?auto=format&fit=crop&w=800&q=80'
+    }
+  ];
 
-const categories = [
-  'All Categories',
-  'Education',
-  'Study Tips',
-  'Career',
-  'Learning',
-  'Technology'
-];
+  const categories = [
+    'All Posts',
+    'Education Trends',
+    'Career Guidance',
+    'Professional Development',
+    'Learning Tips',
+    'Remote Work',
+    'Marketing'
+  ];
 
-export default function Blogs() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
-
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All Categories' || post.category === selectedCategory;
-    
-    return matchesSearch && matchesCategory;
-  });
+  const recentPosts = blogPosts.slice(0, 4);
 
   return (
-    <AnimatedPageWrapper>
-      {/* Enhanced Hero Section */}
-        <motion.section 
-          className="relative py-20 overflow-hidden bg-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <span className="text-primary">Our </span>
-                <span className="text-accent">Blog</span>
-              </motion.h1>
-              <motion.p 
-                className="mt-6 text-xl text-secondary font-medium max-w-2xl mx-auto leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                Insights, tips, and inspiration to help you grow personally and professionally.
-              </motion.p>
+    <div className="min-h-screen bg-muted">
+
+{/* HERO */}
+<section className="relative h-screen flex items-center justify-center overflow-hidden">
+  {/* Background Image + Overlay */}
+  <div className="absolute inset-0">
+    <div className="absolute inset-0 bg-black/80" />
+    <img 
+      src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1920&q=80"
+      alt="Elite Management"
+      className="w-full h-full object-cover opacity-30"
+      style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+    />
+  </div>
+
+
+
+  {/* Content */}
+  <div className="relative z-10 text-center px-6 max-w-4xl">
+    <span className="inline-block mb-6 px-5 py-2 rounded-full bg-white/10 text-white text-sm tracking-widest uppercase animate-fade-up">
+      Knowledge Hub
+    </span>
+
+    <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-up delay-150">
+      Insights & Articles
+    </h1>
+
+    <p className="text-xl text-white/90 mb-8 animate-fade-up delay-300">
+      Practical knowledge, expert insights & career guidance
+    </p>
+
+    <button className="px-10 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-lg animate-fade-up delay-450">
+      Explore Articles
+    </button>
+  </div>
+
+  {/* Bottom gradient fade */}
+
+  {/* Tailwind Animations */}
+  <style>{`
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fade-up 1s ease-out forwards; opacity: 0; }
+    .delay-150 { animation-delay: 0.15s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-450 { animation-delay: 0.45s; }
+    @keyframes bounce-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    .animate-bounce-slow { animation: bounce-slow 6s ease-in-out infinite; }
+  `}</style>
+</section>
+
+
+
+
+      {/* CONTENT */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-10">
+
+          {/* MAIN */}
+          <div className="lg:col-span-3">
+
+            {/* CATEGORY FILTER */}
+            <div className="flex flex-wrap gap-3 mb-10">
+              {categories.map((cat, i) => (
+                <button
+                  key={i}
+                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
+                    i === 0
+                      ? 'bg-primary text-white shadow-lg'
+                      : 'bg-card border hover:border-primary hover:text-primary'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            {/* BLOG GRID */}
+            <div className="grid md:grid-cols-2 gap-8">
+              {blogPosts.map(post => (
+                <article
+                  key={post.id}
+                  className="group bg-card border rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <span className="absolute top-4 left-4 bg-primary text-white text-xs px-3 py-1 rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="flex items-center text-xs text-muted-foreground mb-3 gap-2">
+                      <span>{post.date}</span>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+
+                    <h2 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h2>
+
+                    <p className="text-muted-foreground mb-6">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-muted-foreground">
+                        By {post.author}
+                      </span>
+                      <button className="text-primary font-semibold hover:underline">
+                        Read More →
+                      </button>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* LOAD MORE */}
+            <div className="text-center mt-14">
+              <button className="px-10 py-4 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">
+                Load More Articles
+              </button>
             </div>
           </div>
-        </motion.section>
 
-        {/* Enhanced Filters */}
-        <motion.section 
-          className="py-8 bg-white border-b-2 border-subtle sticky top-0 z-20 shadow-subtle backdrop-blur-sm bg-white/95"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row gap-6">
-              {/* Search */}
-              <motion.div 
-                className="relative flex-1"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  className="w-full pl-12 pr-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </motion.div>
-              
-              {/* Category Filter */}
-              <motion.div 
-                className="relative"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <select
-                  className="appearance-none pl-4 pr-10 py-4 bg-white border-2 border-subtle rounded-xl text-primary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent shadow-subtle hover:shadow-hover transition-all duration-300 font-medium"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  {categories.map(category => (
-                    <option key={category} value={category} className="bg-white text-primary">{category}</option>
-                  ))}
-                </select>
-                <Tag className="absolute right-3 top-1/2 transform -translate-y-1/2 text-accent w-5 h-5 pointer-events-none" />
-              </motion.div>
+          {/* SIDEBAR */}
+          <aside className="space-y-8">
+
+            {/* SEARCH */}
+            <div className="bg-card border rounded-2xl p-6 shadow-lg">
+              <h3 className="text-lg font-bold mb-4">Search Articles</h3>
+              <input
+                type="text"
+                placeholder="Search blogs..."
+                className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary outline-none"
+              />
             </div>
-          </div>
-        </motion.section>
 
-        {/* Enhanced Blog Posts */}
-        <motion.section 
-          className="py-20 bg-secondary"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {filteredPosts.length === 0 ? (
-              <motion.div 
-                className="text-center py-20 bg-white rounded-3xl shadow-subtle border-2 border-subtle max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Search className="w-10 h-10 text-primary" />
-                </div>
-                <h3 className="text-2xl font-black text-primary mb-2">No articles found</h3>
-                <p className="text-secondary font-medium">Try adjusting your search or filter criteria.</p>
-              </motion.div>
-            ) : (
-              <>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredPosts.map((post, index) => (
-                    <motion.div
-                      key={post.id}
-                      className="bg-white rounded-3xl overflow-hidden border-2 border-subtle hover:border-accent transition-all duration-300 group shadow-subtle"
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                      whileHover={{ y: -8 }}
-                    >
-                      <div className="h-48 bg-secondary flex items-center justify-center">
-                        <div className="text-center">
-                          <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto mb-4 shadow-subtle">
-                            <Calendar className="w-8 h-8 text-white" />
-                          </div>
-                          <p className="text-secondary font-bold">Blog Image</p>
-                        </div>
-                      </div>
-                      <div className="p-6">
-                        <div className="flex items-center text-sm mb-3">
-                          <span className="px-3 py-1 bg-secondary text-primary rounded-lg font-bold">{post.category}</span>
-                          <span className="mx-2 text-secondary">•</span>
-                          <Clock className="w-4 h-4 mr-1 text-secondary" />
-                          <span className="text-secondary font-medium">{post.readTime}</span>
-                        </div>
-                        
-                        <h3 className="text-xl font-black text-primary group-hover:text-accent transition-colors duration-300 mb-3 leading-tight">
-                          {post.title}
-                        </h3>
-                        
-                        <p className="text-secondary mb-4 font-medium">{post.excerpt}</p>
-                        
-                        <div className="flex items-center justify-between pt-4 border-t-2 border-subtle">
-                          <div className="flex items-center">
-                            <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shadow-subtle">
-                              <User className="w-5 h-5 text-primary" />
-                            </div>
-                            <div className="ml-3">
-                              <p className="text-sm font-bold text-primary">{post.author}</p>
-                              <p className="text-xs text-secondary font-medium">{post.date}</p>
-                            </div>
-                          </div>
-                          
-                          <Link 
-                            to={`/blog/${post.id}`} 
-                            className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-primary hover:bg-accent transition-all duration-300 shadow-subtle"
-                          >
-                            <ChevronRight className="w-5 h-5" />
-                          </Link>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-                
-                {/* Enhanced Load More Button */}
-                <motion.div 
-                  className="mt-12 text-center"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 1 }}
-                >
-                  <button className="px-8 py-4 bg-white text-primary rounded-xl hover:bg-secondary transition-all duration-300 border-2 border-subtle font-bold shadow-subtle hover:shadow-hover transform hover:scale-105">
-                    Load More Articles
-                  </button>
-                </motion.div>
-              </>
-            )}
-          </div>
-        </motion.section>
+            {/* CATEGORIES */}
+            <div className="bg-card border rounded-2xl p-6 shadow-lg">
+              <h3 className="text-lg font-bold mb-4">Categories</h3>
+              <ul className="space-y-3">
+                {categories.slice(1).map((cat, i) => (
+                  <li key={i} className="flex justify-between hover:text-primary cursor-pointer">
+                    <span>{cat}</span>
+                    <span className="text-xs bg-muted px-2 py-1 rounded-full">
+                      {i + 1}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-        {/* Enhanced Newsletter CTA */}
-        <motion.section 
-          className="py-20 bg-accent relative overflow-hidden"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="absolute top-10 right-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
-          
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-                Stay Updated with <span className="bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">Our Newsletter</span>
-              </h2>
-              <p className="mt-4 text-xl text-white/90 font-medium max-w-2xl mx-auto">
-                Subscribe to receive the latest articles, tips, and resources directly to your inbox.
-              </p>
-              
-              <div className="mt-10 max-w-md mx-auto">
-                <form className="flex flex-col sm:flex-row gap-4">
-                  <motion.input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 px-4 py-4 bg-white/10 backdrop-blur-sm border-2 border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent font-medium"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    viewport={{ once: true }}
-                  />
-                  <motion.button
-                    type="submit"
-                    className="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-secondary transition-all duration-300 shadow-subtle transform hover:scale-105"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    whileHover={{ y: -2 }}
-                    viewport={{ once: true }}
-                  >
-                    Subscribe
-                  </motion.button>
-                </form>
-                <p className="mt-4 text-sm text-white/90 font-medium">
-                  We respect your privacy. Unsubscribe at any time.
-                </p>
+            {/* RECENT POSTS */}
+            <div className="bg-card border rounded-2xl p-6 shadow-lg">
+              <h3 className="text-lg font-bold mb-4">Recent Posts</h3>
+              <div className="space-y-4">
+                {recentPosts.map(post => (
+                  <div key={post.id} className="flex gap-4">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-16 h-16 rounded-lg object-cover"
+                    />
+                    <div>
+                      <h4 className="text-sm font-semibold hover:text-primary cursor-pointer">
+                        {post.title}
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        {post.date}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </motion.div>
-          </div>
-        </motion.section>
-      </AnimatedPageWrapper>
-    );
-  }
+            </div>
+
+            {/* NEWSLETTER */}
+            <div className="relative bg-primary rounded-2xl p-6 text-white shadow-xl overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-accent opacity-30" />
+              <div className="relative">
+                <h3 className="text-lg font-bold mb-2">
+                  Subscribe to Newsletter
+                </h3>
+                <p className="text-sm mb-4 opacity-90">
+                  Get insights & updates directly in your inbox.
+                </p>
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="w-full px-4 py-3 rounded-lg text-gray-900 mb-3"
+                />
+                <button className="w-full bg-white text-primary font-bold py-3 rounded-lg hover:scale-105 transition">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+
+          </aside>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Blogs;

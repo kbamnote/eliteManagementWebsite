@@ -1,122 +1,71 @@
 #root {
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
-/* Modern button styles - Green Theme */
-.btn-primary {
-  background-color: #035642; /* Deep green */
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(3, 86, 66, 0.2);
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.btn-primary:hover {
-  background-color: #048E6C; /* Medium teal-green */
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px rgba(4, 142, 108, 0.3);
-}
-
-.btn-secondary {
-  background-color: #E6F3EF; /* Very light teal-green */
-  color: #035642; /* Deep green */
-  border: 1px solid #DDEAE6; /* Subtle green border */
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background-color: #D4ECE5; /* Slightly darker green tint */
-  transform: translateY(-2px);
-}
-
-/* Card styles */
-.card-modern {
-  background: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 1px solid #DDEAE6; /* Very subtle green border */
-}
-
-.card-modern:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
-}
-
-/* Section spacing */
-.section-spacing {
-  padding: 5rem 1rem;
-}
-
-@media (min-width: 768px) {
-  .section-spacing {
-    padding: 7rem 2rem;
-  }
-}
-
-/* Gradient text - Green Theme */
-.text-gradient {
-  background: linear-gradient(90deg, #035642, #048E6C, #023F32);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Animation utilities */
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
+@keyframes logo-spin {
   from {
-    opacity: 0;
-    transform: translateY(10px);
+    transform: rotate(0deg);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
 
-/* Responsive utilities */
-@media (max-width: 768px) {
-  .hide-mobile {
-    display: none;
-  }
+@media (prefers-reduced-motion: no-preference) { * { animation-duration: 4s !important; animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94) !important; } }
+
+.card {
+  padding: 2em;
 }
 
-@media (min-width: 769px) {
-  .hide-desktop {
-    display: none;
-  }
+.read-the-docs {
+  color: #888;
 }
 
-/* Color utility classes */
-.bg-primary { background-color: #F2F8F6; } /* Soft off-white with green tint */
-.bg-secondary { background-color: #E6F3EF; } /* Very light teal-green */
-.bg-accent { background-color: #048E6C; } /* Teal-green */
-.bg-dark { background-color: #023F32; } /* Dark green */
-.bg-white { background-color: #FFFFFF; } /* White */
+/* Pause animation on hover */
+.animate-marquee:hover {
+  animation-play-state:running;
+}
 
-.text-primary { color: #023F32; } /* Dark green */
-.text-secondary { color: #3E4F4B; } /* Soft green-gray */
-.text-accent { color: #048E6C; } /* Teal-green */
-.text-white { color: #FFFFFF; } /* White */
-.text-muted { color: #3E4F4B; opacity: 0.7; } /* Muted text */
+.animate-marquee2:hover {
+  animation-play-state: paused;
+}
 
-.border-subtle { border: 1px solid #DDEAE6; } /* Very subtle green border */
-.border-accent { border: 1px solid #048E6C; } /* Teal-green border */
 
-.shadow-subtle { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
-.shadow-hover { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+@keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+          opacity: 0;
+        }

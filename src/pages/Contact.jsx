@@ -1,378 +1,279 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { 
-  MapPin, 
-  Phone, 
-  Mail,
-  Clock,
-  Send
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
+import { useState } from 'react';
+import { Phone, Mail, MapPin, Clock, Code, Database, Cloud, Smartphone } from 'lucide-react';
+import ScrollAnimation from '../components/ScrollAnimation';
+import Footer from '../components/Footer';
+import { apiPost } from '../utils/api';
 
-export default function Contact() {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    
+    setLoading(true);
+    setSubmitStatus(null);
+    
+    try {
+      // Submit form data using our API utility
+      const response = await apiPost('/contact', formData);
+      
+      // Reset form on success
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+      
+      setSubmitStatus({ type: 'success', message: 'Thank you! Our admissions team will contact you within 24 hours.' });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus({ type: 'error', message: 'Failed to submit form. Please try again.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
+  const contactInfo = [
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: 'Admissions Hotline',
+      content: '+91 99589 13539',
+      description: 'Mon-Sat 8:00 AM - 8:00 PM IST'
+    },
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: 'Email Support',
+      content: 'admissions@techbootcamps.in',
+      description: 'Response within 12 hours'
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      title: 'Training Center',
+      content: 'Gurgaon, Haryana',
+      description: 'India - 122001'
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: 'Support Hours',
+      content: '24/7 Chat Support',
+      description: 'Live chat available all week'
+    }
+  ];
+
+  
   return (
-    <AnimatedPageWrapper>
-      {/* Enhanced Hero Section */}
-        <motion.section 
-          className="relative py-20 overflow-hidden bg-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              <motion.h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <span className="text-primary">Get In </span>
-                <span className="text-accent">Touch</span>
-              </motion.h1>
-              <motion.p 
-                className="mt-6 text-xl text-secondary font-medium max-w-2xl mx-auto leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                Have questions or want to learn more? Reach out to us and our team will get back to you as soon as possible.
-              </motion.p>
-            </div>
-          </div>
-        </motion.section>
+    <div className="min-h-screen bg-muted">
+     {/* Hero Banner */}
+<ScrollAnimation>
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-        {/* Enhanced Contact Info & Form */}
-        <motion.section 
-          className="py-20 bg-white"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Enhanced Contact Information */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl font-black mb-8 text-primary">Contact Information</h2>
-                
-                <div className="space-y-6">
-                  <motion.div 
-                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    whileHover={{ scale: 1.02 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
-                      <MapPin className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="ml-6">
-                      <h3 className="text-xl font-black text-primary mb-2">Our Location</h3>
-                      <p className="text-secondary font-medium">
-                        123 Education Street<br />
-                        San Francisco, CA 94103<br />
-                        United States
-                      </p>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    whileHover={{ scale: 1.02 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
-                      <Phone className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="ml-6">
-                      <h3 className="text-xl font-black text-primary mb-2">Phone Number</h3>
-                      <p className="text-secondary font-medium">
-                        +1 (555) 123-4567<br />
-                        +1 (555) 987-6543
-                      </p>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    whileHover={{ scale: 1.02 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
-                      <Mail className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="ml-6">
-                      <h3 className="text-xl font-black text-primary mb-2">Email Address</h3>
-                      <p className="text-secondary font-medium">
-                        info@elitemanagement.com<br />
-                        support@elitemanagement.com
-                      </p>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    className="flex items-start bg-secondary rounded-3xl p-6 shadow-subtle border-2 border-subtle transform transition-all duration-300 hover:-translate-y-1"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    whileHover={{ scale: 1.02 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center flex-shrink-0 shadow-subtle">
-                      <Clock className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="ml-6">
-                      <h3 className="text-xl font-black text-primary mb-2">Working Hours</h3>
-                      <p className="text-secondary font-medium">
-                        Monday - Friday: 9:00 AM - 6:00 PM<br />
-                        Saturday: 10:00 AM - 4:00 PM<br />
-                        Sunday: Closed
-                      </p>
-                    </div>
-                  </motion.div>
-                </div>
-                
-                {/* Enhanced Map Placeholder */}
-                <motion.div 
-                  className="mt-8 rounded-3xl overflow-hidden border-2 border-subtle bg-secondary h-80 flex items-center justify-center shadow-subtle"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.7 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="text-center p-8">
-                    <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 shadow-subtle">
-                      <MapPin className="w-10 h-10 text-primary" />
-                    </div>
-                    <h3 className="text-2xl font-black text-primary mb-2">Interactive Map</h3>
-                    <p className="text-secondary mb-4 font-medium">Our location on Google Maps</p>
-                    <button className="px-8 py-3 bg-accent text-white rounded-xl hover:bg-dark transition-all duration-300 font-bold shadow-subtle transform hover:scale-105">
-                      View on Map
-                    </button>
-                  </div>
-                </motion.div>
-              </motion.div>
-              
-              {/* Enhanced Contact Form */}
-              <motion.div
-                className="bg-secondary rounded-3xl p-8 shadow-subtle border-2 border-subtle"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl font-black mb-8 text-accent">Send us a Message</h2>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    viewport={{ once: true }}
-                  >
-                    <label htmlFor="name" className="block text-sm font-bold text-primary mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 shadow-subtle font-medium"
-                      placeholder="Enter your full name"
-                    />
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    viewport={{ once: true }}
-                  >
-                    <label htmlFor="email" className="block text-sm font-bold text-primary mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 shadow-subtle font-medium"
-                      placeholder="Enter your email address"
-                    />
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    viewport={{ once: true }}
-                  >
-                    <label htmlFor="subject" className="block text-sm font-bold text-primary mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 shadow-subtle font-medium"
-                      placeholder="Enter subject"
-                    />
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    viewport={{ once: true }}
-                  >
-                    <label htmlFor="message" className="block text-sm font-bold text-primary mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-4 bg-white border-2 border-subtle rounded-xl text-primary placeholder-secondary focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300 resize-none shadow-subtle font-medium"
-                      placeholder="Enter your message"
-                    ></textarea>
-                  </motion.div>
-                  
-                  <motion.button
-                    type="submit"
-                    className="w-full px-6 py-4 bg-accent text-white font-black rounded-xl hover:bg-dark transition-all duration-300 shadow-subtle flex items-center justify-center transform hover:scale-105"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.7 }}
-                    whileHover={{ y: -2 }}
-                    viewport={{ once: true }}
-                  >
-                    Send Message
-                    <Send className="ml-2 w-5 h-5" />
-                  </motion.button>
-                </form>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
+    {/* Background Image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center bg-black/90"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d')",
+      }}
+    />
 
-        {/* Enhanced FAQ Section */}
-        <motion.section 
-          className="py-20 bg-secondary"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+    {/* Content */}
+    <div className="relative z-10 text-center px-6 max-w-4xl">
+      <span className="inline-block mb-6 px-6 py-2 rounded-full bg-white/10 text-white text-sm tracking-widest uppercase">
+        Admissions Open
+      </span>
+
+      <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+        Ready to <span className="text-gradient">Start Your Journey?</span>
+      </h1>
+
+      <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-10">
+        Get in touch with our admissions team to explore bootcamp details,
+        scholarship opportunities, and career-focused learning paths.
+      </p>
+
+      {/* CTA Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <button className="px-10 py-4 rounded-xl bg-white text-primary font-bold text-lg hover:scale-105 hover:shadow-xl transition-all">
+          Talk to Admissions
+        </button>
+
+        <button className="px-10 py-4 rounded-xl border border-white/40 text-white font-semibold text-lg hover:bg-white/10 transition-all">
+          View Programs
+        </button>
+      </div>
+    </div>
+
+  </section>
+</ScrollAnimation>
+
+
+
+      {/* Contact Content */}
+      <div className="py-12 px-4">
+        <div className="max-w-7xl mx-auto">
+          <ScrollAnimation>
             <div className="text-center mb-16">
-              <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4 text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <span className="text-primary">Frequently Asked </span>
-                <span className="text-accent">Questions</span>
-              </motion.h2>
-              <motion.p 
-                className="mt-4 text-xl text-secondary font-medium"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                Find answers to common questions about our courses and services
-              </motion.p>
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Get Bootcamp Info</h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Speak with our career counselors about course details, placement records, and flexible payment options.
+              </p>
             </div>
-            
-            <div className="space-y-6">
-              {[
-                {
-                  question: 'How do I enroll in a course?',
-                  answer: 'You can enroll in any course by clicking the "Enroll Now" button on the course page. You\'ll need to create an account if you don\'t have one already, and then proceed to payment.'
-                },
-                {
-                  question: 'What payment methods do you accept?',
-                  answer: 'We accept all major credit cards including Visa, MasterCard, and American Express. We also support PayPal and bank transfers for select regions.'
-                },
-                {
-                  question: 'Can I get a refund if I\'m not satisfied?',
-                  answer: 'Yes, we offer a 30-day money-back guarantee on all courses. If you\'re not satisfied with your purchase, contact our support team within 30 days for a full refund.'
-                },
-                {
-                  question: 'How long do I have access to course materials?',
-                  answer: 'Once enrolled, you have lifetime access to all course materials, including future updates and additions to the course content.'
-                }
-              ].map((faq, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white rounded-3xl p-8 border-2 border-subtle shadow-subtle transform transition-all duration-300 hover:-translate-y-1"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                  viewport={{ once: true }}
-                >
-                  <h3 className="text-xl font-black text-primary mb-3">{faq.question}</h3>
-                  <p className="text-secondary font-medium">{faq.answer}</p>
-                </motion.div>
-              ))}
+          </ScrollAnimation>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Information */}
+            <div>
+              <ScrollAnimation>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">Contact Details</h2>
+              </ScrollAnimation>
+              
+              <div className="space-y-6 mb-12">
+                {contactInfo.map((info, index) => (
+                  <ScrollAnimation key={index} animation="fade-up" delay={index * 100}>
+                    <div className="group flex items-start p-6 bg-card border border-border rounded-2xl hover:shadow-xl hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+                      <div className="bg-gradient-to-br from-primary to-accent text-primary-foreground p-4 rounded-xl mr-6 flex-shrink-0 group-hover:scale-110 transition-transform">
+                        {info.icon}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <h3 className="text-xl font-bold text-foreground mb-1">{info.title}</h3>
+                        <p className="text-primary font-semibold text-lg mb-1 truncate">{info.content}</p>
+                        <p className="text-muted-foreground text-sm">{info.description}</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div>
+              <ScrollAnimation>
+                <div className="sticky top-24 bg-card rounded-3xl shadow-2xl border border-border/50 p-8 lg:p-10">
+                  <div className="text-center mb-8">
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Quick Enquiry</h2>
+                    <p className="text-muted-foreground text-lg">
+                      Fill out 30 seconds form → Get callback from counselor
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-foreground font-semibold mb-3 text-sm uppercase tracking-wide">Full Name *</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-5 py-4 bg-background border-2 border-input rounded-xl focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all duration-300 text-lg"
+                          placeholder="Your full name"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-foreground font-semibold mb-3 text-sm uppercase tracking-wide">Email / WhatsApp *</label>
+                        <input
+                          type="text"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-5 py-4 bg-background border-2 border-input rounded-xl focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all duration-300 text-lg"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-foreground font-semibold mb-3 text-sm uppercase tracking-wide">Phone Number</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="w-full px-5 py-4 bg-background border-2 border-input rounded-xl focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all duration-300 text-lg"
+                          placeholder="+91 98765 43210"
+                        />
+                      </div>
+                      
+                    </div>
+
+                    <div>
+                      <label className="block text-foreground font-semibold mb-3 text-sm uppercase tracking-wide">Message (Optional)</label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        rows="4"
+                        className="w-full px-5 py-4 bg-background border-2 border-input rounded-xl focus:ring-4 focus:ring-primary/20 focus:border-primary transition-all duration-300 text-lg resize-vertical"
+                        placeholder="Any specific questions about course, fees, or placement?"
+                      ></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-bold py-5 px-8 rounded-2xl text-xl shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 border-2 border-transparent hover:border-primary/50 disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {loading ? 'Submitting...' : 'Get Free Counseling Call →'}
+                    </button>
+                                          
+                    {/* Status Message */}
+                    {submitStatus && (
+                      <div className={`mt-4 p-4 rounded-xl text-center ${submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                        {submitStatus.message}
+                      </div>
+                    )}
+                  </form>
+
+                  {/* Trust Indicators */}
+                  <div className="mt-8 pt-8 border-t border-border grid grid-cols-3 gap-6 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-primary mb-1">94%</div>
+                      <div className="text-xs text-muted-foreground uppercase tracking-wide">Placement Rate</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary mb-1">28K+</div>
+                      <div className="text-xs text-muted-foreground uppercase tracking-wide">Graduates</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary mb-1">Rs 25LPA</div>
+                      <div className="text-xs text-muted-foreground uppercase tracking-wide">Avg Package</div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollAnimation>
             </div>
           </div>
-        </motion.section>
-      </AnimatedPageWrapper>
-    );
-  }
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Contact;

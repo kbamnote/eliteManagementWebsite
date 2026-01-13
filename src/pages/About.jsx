@@ -1,333 +1,444 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import { 
-  Users, 
-  Award, 
-  Globe,
-  Target,
-  Lightbulb,
-  Heart
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-import CountUp from 'react-countup';
-import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
+import { useState, useEffect } from "react";
+import Footer from '../components/Footer';
+import CountUp from "../components/CountUp";
+import ScrollAnimation from "../components/ScrollAnimation";
 
-const teamMembers = [
+const About = () => {
+  const [activeTab, setActiveTab] = useState("vision");
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const values = [
+    { 
+      title: "Excellence", 
+      description: "We maintain excellence in all our courses and learning experiences.",
+      icon: "⚡"
+    },
+    { 
+      title: "Innovation", 
+      description: "We continuously innovate to provide the best learning methods.",
+      icon: "🚀"
+    },
+    { 
+      title: "Accessibility", 
+      description: "We make quality education accessible to everyone.",
+      icon: "🌍"
+    },
+    { 
+      title: "Growth", 
+      description: "We foster personal and professional growth for all learners.",
+      icon: "📈"
+    },
+  ];
+
+ const stats = [
+  { value: 12000, label: "Students Trained" },
+  { value: 150, label: "Expert Mentors" },
+  { value: 300, label: "Courses Offered" },
+  { value: 95, label: "Placement Success (%)" },
+];
+
+  const journey = [
   {
-    name: 'Alex Johnson',
-    role: 'Founder & CEO',
-    bio: 'Former tech executive with 15+ years of experience in education technology.',
-    image: 'team-1'
+    year: "2011",
+    title: "Foundation",
+    desc: "Elite Management was established with a vision to deliver quality education."
   },
   {
-    name: 'Sarah Williams',
-    role: 'Chief Academic Officer',
-    bio: 'PhD in Education with expertise in curriculum development and learning science.',
-    image: 'team-2'
+    year: "2014",
+    title: "Course Expansion",
+    desc: "Expanded into professional and career-focused training programs."
   },
   {
-    name: 'Michael Chen',
-    role: 'Head of Technology',
-    bio: 'Full-stack developer and cloud architect with passion for educational platforms.',
-    image: 'team-3'
+    year: "2018",
+    title: "Industry Partnerships",
+    desc: "Collaborated with industry leaders to deliver practical learning."
   },
   {
-    name: 'Priya Sharma',
-    role: 'Director of Operations',
-    bio: 'Operations specialist focused on student success and platform optimization.',
-    image: 'team-4'
+    year: "2022",
+    title: "Digital Transformation",
+    desc: "Introduced hybrid and online learning platforms."
+  },
+  {
+    year: "2025",
+    title: "Pan-India Presence",
+    desc: "Reached thousands of learners across the country."
   }
 ];
 
-const values = [
-  {
-    icon: Target,
-    title: 'Excellence',
-    description: 'We strive for the highest standards in education and service delivery.'
-  },
-  {
-    icon: Heart,
-    title: 'Student-Centered',
-    description: 'Everything we do is focused on empowering student success and growth.'
-  },
-  {
-    icon: Lightbulb,
-    title: 'Innovation',
-    description: 'We embrace cutting-edge technology to enhance learning experiences.'
-  }
-];
 
-export default function About() {
   return (
-    <AnimatedPageWrapper>
-        {/* Enhanced Hero Section */}
-        <motion.section 
-          className="relative py-20 overflow-hidden bg-secondary"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="absolute inset-0 z-0">
-            <div className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></div>
-          </div>
+    <div className="min-h-screen bg-muted">
+
+      {/* ENHANCED HERO SECTION */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background with Parallax */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-black/80" />
+          <img
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
+            alt="Elite Management"
+            className="w-full h-full object-cover opacity-30"
+            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+          />
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <h1 className="text-5xl md:text-6xl font-black tracking-tight mb-6 leading-tight text-primary">
-                  <span className="text-primary">About </span>
-                  <span className="block text-4xl md:text-5xl font-black text-accent mt-2">
-                    Elite Management
-                  </span>
-                </h1>
-                <p className="mt-6 text-xl text-secondary font-medium max-w-2xl leading-relaxed">
-                  We're on a mission to democratize education and empower learners worldwide with accessible, high-quality courses.
-                </p>
-              </motion.div>
-              
-              <motion.div 
-                className="relative"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <div className="relative rounded-3xl overflow-hidden shadow-subtle border-2 border-subtle">
-                  <div className="bg-primary aspect-video flex items-center justify-center relative">
-                    {/* Decorative gradient overlays */}
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(212, 236, 229,0.1)_0%,rgba(212, 236, 229,0)_70%)]"></div>
-                    
-                    <div className="text-center p-8 relative z-10">
-                      <div className="w-24 h-24 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                        <Globe className="w-12 h-12 text-white" />
-                      </div>
-                      <h3 className="text-2xl font-black text-primary mb-2">Global Learning Platform</h3>
-                      <p className="mt-2 text-secondary font-medium">Connecting learners and educators worldwide</p>
-                    </div>
-                  </div>
+         
+        </div>
+
+        
+
+        {/* Content */}
+        <div className="relative z-10 text-center max-w-5xl px-6">
+          <span className="inline-block mb-6 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm tracking-widest uppercase font-semibold animate-fade-in">
+            About Elite Management
+          </span>
+
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-tight mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Shaping Futures Through <br />
+            <span className="text-blue-600">Quality Education</span>
+          </h1>
+
+        
+
+          <div className="flex gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <button className="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 hover:scale-105 transition-all shadow-xl">
+              Explore Courses
+            </button>
+            <button className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-lg font-semibold hover:bg-white/20 transition-all">
+              Learn More
+            </button>
+          </div>
+        </div>
+
+       
+        {/* Bottom gradient fade */}
+      </section>
+
+      {/* ================= STATS SECTION ================= */}
+<section className="py-24 px-4 bg-background">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+      {stats.map((stat, i) => (
+        <div
+          key={i}
+          className="text-center group cursor-pointer"
+        >
+          <h3 className="text-5xl md:text-6xl font-extrabold text-primary mb-4 transition-transform group-hover:scale-110">
+            <CountUp end={stat.value} />
+          </h3>
+
+          <p className="text-muted-foreground text-lg font-medium">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* WELCOME SECTION - Enhanced */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Our Story
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Welcome to Elite Management
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              Founded in 2011, Elite Management has evolved into a premier educational institution,
+              bridging the gap between academic knowledge and practical industry skills.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur-xl opacity-25 group-hover:opacity-50 transition" />
+              <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
+                alt="Elite Learning"
+                className="relative rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform"
+              />
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-6">
+                Our Academy Story
+              </h3>
+              <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+                With over a decade of experience, we've built a reputation for excellence,
+                innovation, and outcome-driven education.
+              </p>
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                Today, we continue to evolve with industry trends while maintaining our
+                commitment to quality learning and career success.
+              </p>
+
+              <div className="grid grid-cols-3 gap-6">
+                <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-primary transition">
+                  <div className="text-3xl font-bold text-primary">500+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Courses</div>
                 </div>
-              </motion.div>
+                <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-accent transition">
+                  <div className="text-3xl font-bold text-accent">100+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Companies</div>
+                </div>
+                <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-primary transition">
+                  <div className="text-3xl font-bold text-primary">50+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Countries</div>
+                </div>
+              </div>
             </div>
           </div>
-        </motion.section>
-        
-        {/* Enhanced Mission & Vision */}
-        <motion.section 
-          className="py-20 bg-white"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+        </div>
+      </section>
+
+     {/* ================= JOURNEY TIMELINE ================= */}
+<section className="py-28 px-4 bg-background">
+  <div className="max-w-6xl mx-auto">
+    
+    {/* Heading */}
+    <ScrollAnimation animation="fade-up">
+      <div className="text-center mb-20">
+        <span className="inline-block px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-5">
+          Our Journey
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          Milestones of Excellence
+        </h2>
+        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+          A decade-long journey of innovation, growth, and educational impact
+        </p>
+      </div>
+    </ScrollAnimation>
+
+    {/* Timeline */}
+    <div className="relative">
+      
+      {/* Center Line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-accent to-primary hidden md:block" />
+
+      {journey.map((item, i) => (
+        <ScrollAnimation
+          key={i}
+          animation={i % 2 === 0 ? "fade-left" : "fade-right"}
+          delay={i * 120}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <motion.div
-                className="bg-secondary rounded-3xl p-8 shadow-subtle border-2 border-subtle hover:shadow-hover transition-all duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                whileHover={{ y: -5 }}
-                viewport={{ once: true }}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-6">
-                  <Target className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="text-4xl font-black mb-6 text-accent">
-                  Our Mission
-                </h2>
-                <p className="text-secondary text-lg leading-relaxed mb-6 font-medium">
-                  To provide accessible, high-quality education to learners everywhere, breaking down barriers to knowledge and empowering individuals to reach their full potential through innovative online learning experiences.
-                </p>
-                <div className="mt-4 pt-4 border-t-2 border-subtle">
-                  <p className="text-accent italic font-semibold">"Education is the most powerful weapon which you can use to change the world." - Nelson Mandela</p>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                className="bg-secondary rounded-3xl p-8 shadow-subtle border-2 border-subtle hover:shadow-hover transition-all duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                whileHover={{ y: -5 }}
-                viewport={{ once: true }}
-              >
-                <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-6">
-                  <Globe className="w-8 h-8 text-primary" />
-                </div>
-                <h2 className="text-4xl font-black mb-6 text-accent">
-                  Our Vision
-                </h2>
-                <p className="text-secondary text-lg leading-relaxed mb-6 font-medium">
-                  To become the world's leading online learning platform, where anyone, anywhere can access the education they need to build the career they've always wanted, fostering a global community of lifelong learners.
-                </p>
-                <div className="mt-4 pt-4 border-t-2 border-subtle">
-                  <p className="text-accent italic font-semibold">Creating a borderless world of education</p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-        
-        {/* Enhanced Values */}
-        <motion.section 
-          className="py-20 bg-secondary"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4 text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <span className="text-primary">Our Core </span>
-                <span className="text-accent">Values</span>
-              </motion.h2>
-              <motion.p 
-                className="mt-4 text-xl text-secondary font-medium"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                The principles that guide everything we do
-              </motion.p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {values.map((value, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white rounded-3xl p-8 border-2 border-subtle hover:border-accent transition-all duration-300 group text-center shadow-subtle transform hover:-translate-y-2"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.05 }}
-                  viewport={{ once: true }}
+          <div className="relative mb-20">
+            <div
+              className={`flex flex-col md:flex-row items-center ${
+                i % 2 === 0 ? "" : "md:flex-row-reverse"
+              }`}
+            >
+              {/* Card */}
+              <div className="flex-1 md:px-8">
+                <div
+                  className={`group bg-card border border-border rounded-2xl p-8 transition-all duration-500
+                    hover:border-primary hover:shadow-2xl hover:-translate-y-2
+                    ${i % 2 === 0 ? "md:text-right" : "md:text-left"}
+                  `}
                 >
-                  <div className="w-20 h-20 rounded-2xl bg-secondary flex items-center justify-center mx-auto group-hover:bg-accent transition-all duration-300 mb-6 shadow-md">
-                    <value.icon className="w-10 h-10 text-primary" />
+                  <div className="text-6xl font-extrabold text-primary/80 mb-4 group-hover:text-primary transition-colors">
+                    {item.year}
                   </div>
-                  <h3 className="text-2xl font-black text-primary mb-3">{value.title}</h3>
-                  <p className="text-secondary font-medium">{value.description}</p>
-                </motion.div>
+
+                  <h3 className="text-2xl font-bold text-foreground mb-3">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* Dot */}
+              <div className="hidden md:flex relative z-10 items-center justify-center">
+                <div className="w-6 h-6 dash-full bg-primary border-4 border-background shadow-xl " />
+              </div>
+
+              <div className="flex-1" />
+            </div>
+          </div>
+        </ScrollAnimation>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* LEARNING ENHANCEMENT */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              What We Offer
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Learning Enhancement
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Helping professionals advance through structured, practical education.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Skill Development", desc: "Industry-aligned skill building programs", icon: "🎯" },
+              { title: "Expert Instruction", desc: "Learn from real-world professionals", icon: "👨‍🏫" },
+              { title: "Career Growth", desc: "Clear learning paths with outcomes", icon: "📈" },
+            ].map((item, index) => (
+              <div key={index} className="group">
+                <div className="bg-card border border-border rounded-2xl p-8 text-center hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all">
+                  <div className="text-6xl mb-6">{item.icon}</div>
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl font-bold mx-auto mb-6">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-lg">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VISION & MISSION */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Our Purpose
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+              Vision & Mission
+            </h2>
+          </div>
+
+          <div className="flex justify-center mb-8">
+            <div className="bg-muted rounded-2xl p-2 flex gap-2 border border-border">
+              {["vision", "mission"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-8 py-4 rounded-xl font-semibold transition-all ${
+                    activeTab === tab
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {tab === "vision" ? "Our Vision" : "Our Mission"}
+                </button>
               ))}
             </div>
           </div>
-        </motion.section>
-        
-        {/* Enhanced Team */}
-        <motion.section 
-          className="py-20 bg-white"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <motion.h2 
-                className="text-4xl md:text-5xl font-black mb-4 text-primary"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <span className="text-primary">Meet Our </span>
-                <span className="text-accent">Team</span>
-              </motion.h2>
-              <motion.p 
-                className="mt-4 text-xl text-secondary font-medium"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                The passionate people behind our success
-              </motion.p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-secondary rounded-3xl overflow-hidden border-2 border-subtle hover:border-accent transition-all duration-300 group shadow-subtle transform hover:-translate-y-2"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.05 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="p-6">
-                    <div className="w-24 h-24 rounded-full bg-accent flex items-center justify-center mx-auto mb-6 border-4 border-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      <Users className="w-12 h-12 text-white" />
-                    </div>
-                    <h3 className="text-xl font-black text-center text-primary">{member.name}</h3>
-                    <p className="text-accent text-center font-bold mt-2">{member.role}</p>
-                    <p className="text-secondary text-center mt-3 text-sm font-medium">{member.bio}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+
+          <div className="bg-card border border-border rounded-3xl shadow-2xl p-12 hover:border-primary transition-all">
+            {activeTab === "vision" ? (
+              <div>
+                <div className="text-7xl mb-6 text-center">🎯</div>
+                <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed text-center">
+                  To become a leading institution that transforms ambition into
+                  achievement through education.
+                </p>
+              </div>
+            ) : (
+              <div>
+                <div className="text-7xl mb-6 text-center">🚀</div>
+                <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed text-center">
+                  To deliver practical, personalized learning experiences that
+                  empower career success.
+                </p>
+              </div>
+            )}
           </div>
-        </motion.section>
-        
-        {/* Enhanced Stats */}
-        <motion.section 
-          className="py-20 bg-accent relative overflow-hidden"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          {/* Decorative elements */}
-          <div className="absolute top-10 right-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
-          <div className="absolute bottom-10 left-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></div>
-          
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-                Our Impact in <span className="bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">Numbers</span>
+        </div>
+      </section>
+
+      {/* CORE VALUES */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              What Drives Us
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Our Core Values
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Principles that guide everything we do
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="group">
+                <div className="bg-card border border-border rounded-2xl p-8 hover:border-primary hover:shadow-2xl hover:-translate-y-2 transition-all h-full">
+                  <div className="text-6xl mb-6">{value.icon}</div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">{value.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-3xl opacity-20" />
+            <div className="relative bg-card border-2 border-primary/20 rounded-3xl p-12 md:p-16 text-center hover:border-primary/50 transition-all">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Ready to Transform Your Future?
               </h2>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {[
-                { number: 10000, label: 'Students Enrolled', icon: Users, suffix: '+' },
-                { number: 200, label: 'Courses Available', icon: Award, suffix: '+' },
-                { number: 50, label: 'Expert Instructors', icon: Users, suffix: '+' },
-                { number: 95, label: 'Job Placement Rate', icon: Target, suffix: '%' }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center bg-white/10 backdrop-blur-sm rounded-3xl p-6 shadow-subtle border-2 border-white/20 transform transition-all duration-300 hover:-translate-y-2 hover:bg-white/20"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-4xl md:text-5xl font-black text-white mb-2">
-                    <CountUp end={stat.number} suffix={stat.suffix} duration={2.5} />
-                  </div>
-                  <div className="text-lg font-bold text-white/90">{stat.label}</div>
-                </motion.div>
-              ))}
+              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Join thousands of successful professionals who chose Elite Management for their career transformation.
+              </p>
+              <button className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">
+                Start Your Journey Today
+              </button>
             </div>
           </div>
-        </motion.section>
-      </AnimatedPageWrapper>
-    );
-  }
+        </div>
+      </section>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
+            <Footer />
+
+    </div>
+  );
+};
+
+export default About;

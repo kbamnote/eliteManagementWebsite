@@ -1,0 +1,103 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'indigo-dark': '#1e3a8a',
+        'indigo-darker': '#312e81',
+        'emerald-light': '#10b981',
+        'emerald-bright': '#34d399',
+        // Corporate Blue Palette
+        primary: 'hsl(var(--primary))',
+        'primary-foreground': 'hsl(var(--primary-foreground))',
+        secondary: 'hsl(var(--secondary))',
+        'secondary-foreground': 'hsl(var(--secondary-foreground))',
+        accent: 'hsl(var(--accent))',
+        'accent-foreground': 'hsl(var(--accent-foreground))',
+        destructive: 'hsl(var(--destructive))',
+        'destructive-foreground': 'hsl(var(--destructive-foreground))',
+        muted: 'hsl(var(--muted))',
+        'muted-foreground': 'hsl(var(--muted-foreground))',
+        popover: 'hsl(var(--popover))',
+        'popover-foreground': 'hsl(var(--popover-foreground))',
+        card: 'hsl(var(--card))',
+        'card-foreground': 'hsl(var(--card-foreground))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+      },
+      animation: {
+        marquee: 'marquee 30s linear infinite',
+        marquee2: 'marquee2 30s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
+    },
+  },
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        ':root': {
+          '--primary': '217 91% 60%',
+          '--primary-foreground': '0 0% 100%',
+          '--secondary': '215 25% 27%',
+          '--secondary-foreground': '210 40% 98%',
+          '--accent': '199 89% 48%',
+          '--accent-foreground': '210 40% 98%',
+          '--destructive': '0 84.2% 60.2%',
+          '--destructive-foreground': '210 40% 98%',
+          '--muted': '210 40% 96.1%',
+          '--muted-foreground': '215.4 16.3% 46.9%',
+          '--popover': '0 0% 100%',
+          '--popover-foreground': '222.2 84% 4.9%',
+          '--card': '0 0% 100%',
+          '--card-foreground': '222.2 84% 4.9%',
+          '--background': '0 0% 100%',
+          '--foreground': '222.2 84% 4.9%',
+          '--border': '214.3 31.8% 91.4%',
+          '--input': '214.3 31.8% 91.4%',
+          '--ring': '221.2 83.2% 53.3%',
+          '--radius': '0.75rem',
+          '--font-display': "'Outfit', sans-serif",
+          '--font-body': "'Plus Jakarta Sans', sans-serif",
+        },
+        '.dark': {
+          '--background': '222.2 84% 4.9%',
+          '--foreground': '210 40% 98%',
+          '--card': '222.2 84% 4.9%',
+          '--card-foreground': '210 40% 98%',
+          '--popover': '222.2 84% 4.9%',
+          '--popover-foreground': '210 40% 98%',
+          '--primary': '217.2 91.2% 59.8%',
+          '--primary-foreground': '222.2 47.4% 11.2%',
+          '--secondary': '217.2 32.6% 17.5%',
+          '--secondary-foreground': '210 40% 98%',
+          '--muted': '217.2 32.6% 17.5%',
+          '--muted-foreground': '215 20.2% 65.1%',
+          '--accent': '217.2 32.6% 17.5%',
+          '--accent-foreground': '210 40% 98%',
+          '--destructive': '0 62.8% 30.6%',
+          '--destructive-foreground': '210 40% 98%',
+          '--border': '217.2 32.6% 17.5%',
+          '--input': '217.2 32.6% 17.5%',
+          '--ring': '224.3 76.3% 48%',
+        },
+      });
+    },
+  ],
+}
+

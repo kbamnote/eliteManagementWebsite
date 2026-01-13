@@ -1,477 +1,240 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
-/* Global Styles - Green Theme */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======================================================
+   ROOT VARIABLES – CORPORATE BLUE SYSTEM
+====================================================== */
+:root {
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 215 25% 27%;
+  --secondary-foreground: 210 40% 98%;
+
+  --accent: 199 89% 48%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221.2 83.2% 53.3%;
+
+  --radius: 0.75rem;
+
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ======================================================
+   DARK MODE (OPTIONAL FALLBACK)
+====================================================== */
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --secondary: 217.2 32.6% 17.5%;
+  --muted: 217.2 32.6% 17.5%;
+  --accent: 217.2 32.6% 17.5%;
+}
+
+/* ======================================================
+   BASE RESET
+====================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #F2F8F6; /* Soft off-white with green tint */
-  color: #3E4F4B; /* Soft green-gray for body text */
-  font-family: 'Helvetica Now', 'Helvetica Neue', 'Helvetica', -apple-system, 
-    BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
   margin: 0;
   padding: 0;
-  cursor: none !important;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* Disable default cursor globally except for inputs */
-* {
-  cursor: none !important;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
 
-/* Allow text cursor for input elements */
-input, textarea, select {
-  cursor: text !important;
+/* ======================================================
+   LAYOUT UTILITIES
+====================================================== */
+.container-custom {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
 
-/* Allow text cursor for contenteditable elements */
-[contenteditable] {
-  cursor: text !important;
-}
-
-/* Reset cursor styles for mobile devices */
-@media (max-width: 768px) {
-  *, body {
-    cursor: auto !important;
-  }
-  
-  input, textarea, select, [contenteditable] {
-    cursor: text !important;
-  }
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6,
-.heading-font {
-  font-family: 'Helvetica Now', 'Helvetica Neue', 'Helvetica', -apple-system,
-    BlinkMacSystemFont, sans-serif;
-  color: #023F32; /* Dark green for headings */
-  font-weight: 700;
-}
-
-h1 {
-  font-size: 3rem;
-  line-height: 1.2;
-}
-
-h2 {
-  font-size: 2.5rem;
-  line-height: 1.3;
-}
-
-h3 {
-  font-size: 2rem;
-  line-height: 1.4;
-}
-
-h4 {
-  font-size: 1.5rem;
-  line-height: 1.5;
-}
-
-p {
-  font-size: 1.125rem;
-  margin-bottom: 1rem;
-}
-
-/* Links */
-a {
-  color: #048E6C; /* Teal-green for links */
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1rem;
-}
-
-a:hover {
-  color: #035642; /* Deep green on hover */
-  text-decoration: underline;
-}
-
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background-color: #035642; /* Deep green */
-  color: #FFFFFF; /* White text */
-}
-
-.btn-primary:hover {
-  background-color: #048E6C; /* Medium teal-green on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(3, 86, 66, 0.2);
-}
-
-.btn-secondary {
-  background-color: #E6F3EF; /* Very light teal-green */
-  color: #035642; /* Deep green text */
-  border: 1px solid #DDEAE6; /* Subtle green border */
-}
-
-.btn-secondary:hover {
-  background-color: #D4ECE5; /* Slightly darker green tint on hover */
-  transform: translateY(-2px);
-}
-
-/* Header & Navigation */
-.header {
-  background-color: #E6F3EF; /* Very light teal-green */
-  padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.nav-link {
-  color: #023F32; /* Dark green */
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  background-color: #D4ECE5; /* Slightly darker green tint on hover */
-  color: #035642; /* Deep green */
-}
-
-/* Cards */
-.card {
-  background-color: #FFFFFF; /* White background */
-  border: 1px solid #DDEAE6; /* Very subtle green border */
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
-}
-
-.card-title {
-  color: #023F32; /* Dark green */
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-.card-text {
-  color: #3E4F4B; /* Soft green-gray */
-  margin-bottom: 1rem;
-}
-
-/* Sections */
-.section {
-  padding: 5rem 1rem;
+.section-padding {
+  padding-block: 4rem;
 }
 
 @media (min-width: 768px) {
-  .section {
-    padding: 7rem 2rem;
+  .section-padding {
+    padding-block: 6rem;
   }
 }
 
-.section-heading {
-  color: #023F32; /* Dark green */
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-/* Highlight/Active States */
-.highlight {
-  color: #048E6C; /* Teal-green */
-}
-
-.active {
-  color: #048E6C; /* Teal-green */
-  font-weight: 600;
-}
-
-/* Dividers */
-.divider {
-  border-top: 1px solid #DDEAE6; /* Very subtle green border */
-  margin: 2rem 0;
-}
-
-/* Utility Classes */
-.bg-primary {
-  background-color: #F2F8F6; /* Soft off-white with green tint */
-}
-
-.bg-secondary {
-  background-color: #E6F3EF; /* Very light teal-green */
-}
-
-.text-primary {
-  color: #023F32; /* Dark green */
-}
-
-.text-secondary {
-  color: #3E4F4B; /* Soft green-gray */
-}
-
-.text-accent {
-  color: #048E6C; /* Teal-green */
-}
-
-.border-subtle {
-  border: 1px solid #DDEAE6; /* Very subtle green border */
-}
-
-.shadow-subtle {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.shadow-hover {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Animations */
-.transition-all {
-  transition: all 0.3s ease;
-}
-
-.transform-hover:hover {
-  transform: translateY(-5px);
-}
-
-/* Form Elements */
-input, textarea, select {
-  background-color: #FFFFFF; /* White */
-  border: 1px solid #DDEAE6; /* Very subtle green border */
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  color: #3E4F4B; /* Soft green-gray */
-  width: 100%;
-  transition: all 0.3s ease;
-}
-
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: #048E6C; /* Teal-green */
-  box-shadow: 0 0 0 3px rgba(4, 142, 108, 0.1);
-}
-
-/* Lists */
-ul, ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-li {
-  margin-bottom: 0.5rem;
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.5rem;
-}
-
-/* Flip Card Styles */
-.flip-card-container {
-  perspective: 1500px;
-  margin: 0 auto;
-  width: 220px;
-  height: 300px;
-}
-
-.flip-card {
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
-  transform-style: preserve-3d;
-}
-
-.flip-card-container:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 1.5rem;
-  padding: 24px;
-  overflow: hidden;
-}
-
-.flip-card-front {
-  background: linear-gradient(135deg, #035642 0%, #048E6C 100%);
-  color: white;
-}
-
-.flip-card-back {
-  background: linear-gradient(135deg, #E6F3EF 0%, #F2F8F6 100%);
-  color: #023F32;
-  transform: rotateY(180deg);
-}
-
-.flip-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-}
-
-.flip-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-align: center;
-  margin: 0 0 1rem 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.flip-text {
-  font-size: 1rem;
-  font-weight: 400;
-  text-align: center;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Add decorative elements */
-.flip-card-front::before,
-.flip-card-back::before {
-  content: '';
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.flip-card-front::before {
-  top: -50px;
-  right: -50px;
-}
-
-.flip-card-back::before {
-  bottom: -80px;
-  left: -30px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.25rem;
-  }
-  
-  h2 {
-    font-size: 2rem;
-  }
-  
-  h3 {
-    font-size: 1.75rem;
-  }
-  
-  .section {
-    padding: 3rem 1rem;
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-block: 8rem;
   }
 }
 
-/* Book Card Styles */
-.book-card-wrapper {
-  perspective: 2000px;
-  display: inline-block;
+/* ======================================================
+   TEXT & BUTTON UTILITIES
+====================================================== */
+.text-gradient {
+  background: linear-gradient(to right, #2563eb, #06b6d4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.book {
-  position: relative;
-  border-radius: 10px;
-  width: 220px;
-  height: 300px;
-  background-color: whitesmoke;
-  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
-  transform: preserve-3d;
-  perspective: 2000px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  margin: 0 auto;
+button,
+a {
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.cover {
-  top: 0;
-  position: absolute;
-  background: linear-gradient(135deg, #035642, #048E6C);
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.5s;
-  transform-origin: left;
-  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
+/* ======================================================
+   HOVER EFFECTS
+====================================================== */
+.hover-lift {
+  will-change: transform;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.book:hover .cover {
-  transition: all 0.5s;
-  transform: rotateY(-80deg);
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
 }
 
-.front-text, .back-text {
-  font-size: 20px;
-  font-weight: bolder;
-  text-align: center;
-  padding: 20px;
+/* ======================================================
+   SCROLL ANIMATION SYSTEM (OPTIMIZED)
+====================================================== */
+.scroll-animate {
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
+  transition-property: opacity, transform;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
-.back-text {
-  padding: 20px;
-  color: #023F32;
+.scroll-animate.show {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
-/* Custom Scrollbar */
+/* Animation Variants */
+.scroll-animate[data-animation="fade-up"] {
+  transform: translate3d(0, 40px, 0);
+}
+
+.scroll-animate[data-animation="fade-down"] {
+  transform: translate3d(0, -40px, 0);
+}
+
+.scroll-animate[data-animation="fade-left"] {
+  transform: translate3d(-40px, 0, 0);
+}
+
+.scroll-animate[data-animation="fade-right"] {
+  transform: translate3d(40px, 0, 0);
+}
+
+.scroll-animate[data-animation="zoom-in"] {
+  transform: scale(0.92);
+}
+
+/* ======================================================
+   KEYFRAME ANIMATIONS (HERO / TEXT)
+====================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* ======================================================
+   SCROLLBAR (CLEAN & MODERN)
+====================================================== */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F2F8F6; /* Soft off-white with green tint */
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D4ECE5; /* Slightly darker green tint */
-  border-radius: 4px;
+  background: #2563eb;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #048E6C; /* Teal-green */
+  background: #1e40af;
+}
+
+/* ======================================================
+   ACCESSIBILITY
+====================================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

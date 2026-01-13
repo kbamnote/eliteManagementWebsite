@@ -1,16 +1,87 @@
-# React + Vite
+# Elite Learning Academy - Vite + React App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a Vite + React application for Elite Learning Academy, optimized for Vercel deployment with proper SPA routing, environment-based API handling, and best practices for production deployment.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 with Vite 7
+- React Router DOM for client-side routing
+- Responsive design with Tailwind CSS
+- Optimized for Vercel deployment
+- Environment-based API configuration
+- Proper SPA routing with fallback for refresh
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Expanding the ESLint configuration
+2. Copy the environment variables file:
+   ```bash
+   cp .env.example .env
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Deployment to Vercel
+
+This project is configured for seamless deployment to Vercel:
+
+1. The `vercel.json` file handles SPA routing by redirecting all routes to `/`
+2. Environment variables are properly configured for different environments
+3. The application is optimized for production builds
+
+## Vercel Configuration
+
+The `vercel.json` file contains:
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
+```
+
+This ensures that all routes are handled by the React Router, preventing 404 errors on page refresh.
+
+## Environment Variables
+
+Environment variables are handled using Vite's built-in environment variable support:
+
+- Variables prefixed with `VITE_` are exposed to the client-side application
+- Use `.env` files for local development
+- Set environment variables in the Vercel dashboard for production
+
+## API Configuration
+
+The application includes an API utility module (`src/utils/api.js`) that handles:
+
+- Environment-based API base URLs
+- Consistent request/response handling
+- Error handling and logging
+- Standardized HTTP methods
+
+## Production Optimizations
+
+- Chunk splitting for vendor libraries
+- Optimized bundle sizes
+- SPA routing fallback handling
+- Clean URLs configuration
+
+## Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run lint` - Run ESLint
+- `npm run preview` - Preview production build locally

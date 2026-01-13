@@ -1,480 +1,442 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import {
-  Users,
-  Award,
-  Globe,
-  Target,
-  Lightbulb,
-  Heart
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-import CountUp from 'react-countup';
-import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
-import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations.jsx';
-import CompanyImg from '../assets/Untitled design (1).png';
+import { useState, useEffect } from "react";
+import Footer from '../components/Footer';
+import CountUp from "../components/CountUp";
+import ScrollAnimation from "../components/ScrollAnimation";
 
-const teamMembers = [
+const About = () => {
+  const [activeTab, setActiveTab] = useState("vision");
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const values = [
+    { 
+      title: "Excellence", 
+      description: "We maintain excellence in all our courses and learning experiences.",
+      icon: "⚡"
+    },
+    { 
+      title: "Innovation", 
+      description: "We continuously innovate to provide the best learning methods.",
+      icon: "🚀"
+    },
+    { 
+      title: "Accessibility", 
+      description: "We make quality education accessible to everyone.",
+      icon: "🌍"
+    },
+    { 
+      title: "Growth", 
+      description: "We foster personal and professional growth for all learners.",
+      icon: "📈"
+    },
+  ];
+
+ const stats = [
+  { value: 12000, label: "Students Trained" },
+  { value: 150, label: "Expert Mentors" },
+  { value: 300, label: "Courses Offered" },
+  { value: 95, label: "Placement Success (%)" },
+];
+
+  const journey = [
   {
-    name: 'Alex Johnson',
-    role: 'Founder & CEO',
-    bio: 'Former tech executive with 15+ years of experience in education technology.',
-    image: 'team-1'
+    year: "2011",
+    title: "Foundation",
+    desc: "Elite Management was established with a vision to deliver quality education."
   },
   {
-    name: 'Sarah Williams',
-    role: 'Chief Academic Officer',
-    bio: 'PhD in Education with expertise in curriculum development and learning science.',
-    image: 'team-2'
+    year: "2014",
+    title: "Course Expansion",
+    desc: "Expanded into professional and career-focused training programs."
   },
   {
-    name: 'Michael Chen',
-    role: 'Head of Technology',
-    bio: 'Full-stack developer and cloud architect with passion for educational platforms.',
-    image: 'team-3'
+    year: "2018",
+    title: "Industry Partnerships",
+    desc: "Collaborated with industry leaders to deliver practical learning."
   },
   {
-    name: 'Priya Sharma',
-    role: 'Director of Operations',
-    bio: 'Operations specialist focused on student success and platform optimization.',
-    image: 'team-4'
+    year: "2022",
+    title: "Digital Transformation",
+    desc: "Introduced hybrid and online learning platforms."
+  },
+  {
+    year: "2025",
+    title: "Pan-India Presence",
+    desc: "Reached thousands of learners across the country."
   }
 ];
 
-const values = [
-  {
-    icon: Target,
-    title: 'Excellence',
-    description: 'We strive for the highest standards in education and service delivery.'
-  },
-  {
-    icon: Heart,
-    title: 'Student-Centered',
-    description: 'Everything we do is focused on empowering student success and growth.'
-  },
-  {
-    icon: Lightbulb,
-    title: 'Innovation',
-    description: 'We embrace cutting-edge technology to enhance learning experiences.'
-  }
-];
 
-export default function About() {
   return (
-    <AnimatedPageWrapper>
-      {/* Enhanced Hero Section */}
-      <ParallaxElement
-        className="relative content-center overflow-hidden bg-secondary"
-      >
-        <div className="absolute inset-0 z-0">
-          <ParallaxElement speed={0.3} className="absolute top-10 right-10 w-72 h-72 bg-accent rounded-full opacity-20 blur-3xl"></ParallaxElement>
-          <ParallaxElement speed={0.5} className="absolute bottom-10 left-10 w-64 h-64 bg-accent rounded-full opacity-20 blur-3xl"></ParallaxElement>
+    <div className="min-h-screen bg-muted">
+
+      {/* ENHANCED HERO SECTION */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background with Parallax */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-black/80" />
+          <img
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
+            alt="Elite Management"
+            className="w-full h-full object-cover opacity-30"
+            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+          />
+          
+         
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 md:py-24 lg:py-24">
-          {/* Small label */}
-          <AnimatedOnScroll
-            className="text-center"
-            direction="up"
-            delay={0}
-          >
-            <span className="inline-flex items-center px-4 py-1 rounded-full bg-primary/5 text-primary text-xs font-semibold tracking-wide">
-              About Elite Management
+        
+        {/* Content */}
+        <div className="relative z-10 text-center max-w-5xl px-6">
+          <span className="inline-block mb-6 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm tracking-widest uppercase font-semibold animate-fade-in">
+            About Elite Management
+          </span>
+
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-tight mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Shaping Futures Through <br />
+            <span className="text-blue-600">Quality Education</span>
+          </h1>
+
+        
+          <div className="flex gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <button className="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 hover:scale-105 transition-all shadow-xl">
+              Explore Courses
+            </button>
+            <button className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-lg font-semibold hover:bg-white/20 transition-all">
+              Learn More
+            </button>
+          </div>
+        </div>
+
+       
+        {/* Bottom gradient fade */}
+      </section>
+
+      {/* ================= STATS SECTION ================= */}
+<section className="py-24 px-4 bg-background">
+  <div className="max-w-7xl mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+      {stats.map((stat, i) => (
+        <div
+          key={i}
+          className="text-center group cursor-pointer"
+        >
+          <h3 className="text-5xl md:text-6xl font-extrabold text-primary mb-4 transition-transform group-hover:scale-110">
+            <CountUp end={stat.value} />
+          </h3>
+
+          <p className="text-muted-foreground text-lg font-medium">
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* WELCOME SECTION - Enhanced */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Our Story
             </span>
-          </AnimatedOnScroll>
-
-          {/* Main heading */}
-          <AnimatedOnScroll
-            className="text-center mt-4 mb-10"
-            direction="up"
-            delay={0.1}
-          >
-            <h1 className="text-4xl md:text-5xl font-black tracking-tight leading-tight text-primary">
-              Empowering careers with
-              <span className="block text-accent mt-2">industry‑ready education</span>
-            </h1>
-          </AnimatedOnScroll>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Image side */}
-            <AnimatedOnScroll
-              className="relative"
-              direction="right"
-              delay={0.4}
-            >
-              <div className="absolute -top-6 -right-6 h-32 w-32 bg-primary/10 blur-3xl rounded-full" />
-
-              <div className="relative rounded-3xl overflow-hidden shadow-subtle border border-primary/10 bg-white">
-                <img
-                  src={CompanyImg}
-                  alt="Elite Management Campus"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Small stat card */}
-              <div className="absolute -bottom-6 left-6 bg-[lavender] rounded-2xl shadow-lg px-4 py-3 border border-primary/10">
-                <p className="text-xs text-secondary" style={{ margin: 1 }}>Learners placed</p>
-                <p className="text-lg font-semibold text-primary" style={{ margin: 0 }}>1,500+ globally</p>
-              </div>
-            </AnimatedOnScroll>
-
-            {/* Text side */}
-            <AnimatedOnScroll
-              className="space-y-6"
-              direction="left"
-              delay={0.2}
-            >
-              <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-tight text-primary">
-                Elite Management
-              </h2>
-
-              <p className="text-base md:text-lg text-secondary font-medium max-w-2xl leading-relaxed">
-                We&apos;re on a mission to democratize education and empower learners worldwide
-                with accessible, high‑quality courses.
-              </p>
-
-              <ul className="mt-4 space-y-3 text-sm md:text-base text-secondary">
-                <li className="flex gap-3">
-                  <span className="mt-1 h-6 w-6 flex items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    1
-                  </span>
-                  <div>
-                    <p className="font-semibold">Industry‑aligned curriculum</p>
-                    <p className="text-xs md:text-sm text-secondary/80">
-                      Programs designed with inputs from experienced professionals.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-6 w-6 flex items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    2
-                  </span>
-                  <div>
-                    <p className="font-semibold">Hands‑on learning</p>
-                    <p className="text-xs md:text-sm text-secondary/80">
-                      Real projects that help learners build a strong portfolio.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-6 w-6 flex items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                    3
-                  </span>
-                  <div>
-                    <p className="font-semibold">Career support</p>
-                    <p className="text-xs md:text-sm text-secondary/80">
-                      Guidance, mentoring, and placement assistance for job‑ready graduates.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </AnimatedOnScroll>
-          </div>
-        </div>
-
-      </ParallaxElement>
-
-      {/* Enhanced Mission & Vision */}
-      <AnimatedOnScroll
-        className="lg:py-20 md:py-20 bg-white"
-        direction="up"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-
-            {/* Mission */}
-            <AnimatedOnScroll
-              className="relative group bg-secondary rounded-3xl p-8 lg:p-10 shadow-subtle border border-subtle/70
-                 hover:shadow-hover hover:-translate-y-2 transition-all duration-300 overflow-hidden"
-              direction="up"
-              delay={0.2}
-            >
-              {/* glow */}
-              <div className="pointer-events-none absolute -top-24 -right-20 h-40 w-40 rounded-full bg-primary/15 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* icon */}
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                <Target className="w-12 h-12 text-primary" />
-              </div>
-
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-accent">
-                Our Mission
-              </h2>
-
-              <p className="text-base md:text-lg text-secondary/90 leading-relaxed font-medium">
-                To provide accessible, high‑quality education to learners everywhere, breaking down barriers
-                to knowledge and empowering individuals to reach their full potential through innovative
-                online learning experiences.
-              </p>
-
-              {/* bottom bar */}
-              <div className="mt-6 pt-5 border-t border-subtle/60 flex items-center justify-between gap-4">
-                <p className="text-sm md:text-base text-accent italic font-semibold">
-                  "Education is the most powerful weapon which you can use to change the world."
-                </p>
-                <span className="hidden md:inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                  Nelson&nbsp;Mandela
-                </span>
-              </div>
-            </AnimatedOnScroll>
-
-            {/* Vision */}
-            <AnimatedOnScroll
-              className="relative group bg-secondary rounded-3xl p-8 lg:p-10 shadow-subtle border border-subtle/70
-                 hover:shadow-hover hover:-translate-y-2 transition-all duration-300 overflow-hidden"
-              direction="up"
-              delay={0.35}
-            >
-              {/* glow */}
-              <div className="pointer-events-none absolute -bottom-24 -left-20 h-40 w-40 rounded-full bg-primary/15 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
-                <Globe className="w-12 h-12 text-primary" />
-              </div>
-
-              <h2 className="text-3xl md:text-4xl font-black mb-4 text-accent">
-                Our Vision
-              </h2>
-
-              <p className="text-base md:text-lg text-secondary/90 leading-relaxed font-medium">
-                To become the world&apos;s leading online learning platform, where anyone, anywhere can access
-                the education they need to build the career they&apos;ve always wanted, fostering a global
-                community of lifelong learners.
-              </p>
-
-              <div className="mt-6 pt-5 border-t border-subtle/60 flex items-center justify-between gap-4">
-                <p className="text-sm md:text-base text-accent italic font-semibold">
-                  Creating a borderless world of education.
-                </p>
-                <span className="hidden md:inline-flex px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                  Future‑ready learning
-                </span>
-              </div>
-            </AnimatedOnScroll>
-          </div>
-        </div>
-
-      </AnimatedOnScroll>
-
-      {/* Enhanced Values */}
-      <AnimatedOnScroll
-        className="lg:py-20 md:py-20 bg-secondary"
-        direction="up"
-      >
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <AnimatedOnScroll
-              className="text-4xl md:text-5xl font-black mb-4 text-primary"
-              direction="up"
-              delay={0}
-            >
-              <span className="text-primary">Our Core </span>
-              <span className="text-accent">Values</span>
-            </AnimatedOnScroll>
-
-            <AnimatedOnScroll
-              className="mt-2 text-base md:text-lg text-secondary font-medium"
-              direction="up"
-              delay={0.1}
-            >
-              The principles that guide everything we do.
-            </AnimatedOnScroll>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Welcome to Elite Management
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              Founded in 2011, Elite Management has evolved into a premier educational institution,
+              bridging the gap between academic knowledge and practical industry skills.
+            </p>
           </div>
 
-          {/* Cards */}
-          <StaggerContainer staggerDelay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {values.map((value, index) => (
-                <StaggerItem key={index} delay={0.2 + index * 0.1}>
-                  <motion.div
-                    className="relative bg-white rounded-3xl p-8 border border-subtle/70
-                       shadow-subtle h-full hover:shadow-hover group text-center
-                       transition-all duration-300"
-                    whileHover={{ y: -8, scale: 1.02 }}
-                  >
-                    {/* subtle top accent */}
-                    <div className="pointer-events-none absolute inset-x-10 -top-10 h-10 rounded-full bg-accent/5 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    {/* icon */}
-                    <div className="w-18 h-18 md:w-20 md:h-20 rounded-2xl bg-secondary flex items-center justify-center mx-auto mb-6
-                            group-hover:bg-accent/90 transition-all duration-300 shadow-md">
-                      <value.icon className="w-9 h-9 md:w-10 md:h-10 text-primary group-hover:text-white transition-colors duration-300" />
-                    </div>
-
-                    <h3 className="text-xl md:text-2xl font-black text-primary mb-3">
-                      {value.title}
-                    </h3>
-
-                    <p className="text-sm md:text-base text-secondary font-medium leading-relaxed">
-                      {value.description}
-                    </p>
-
-                    {/* pill at bottom */}
-                    <div className="mt-5 pt-4 border-t border-subtle/60">
-                      <span className="inline-flex px-3 py-1 rounded-full bg-secondary/60 text-xs font-semibold text-primary/90">
-                        Guided by this value every day
-                      </span>
-                    </div>
-                  </motion.div>
-                </StaggerItem>
-              ))}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl blur-xl opacity-25 group-hover:opacity-50 transition" />
+              <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
+                alt="Elite Learning"
+                className="relative rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform"
+              />
             </div>
-          </StaggerContainer>
+
+            <div>
+              <h3 className="text-3xl font-bold text-foreground mb-6">
+                Our Academy Story
+              </h3>
+              <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+                With over a decade of experience, we've built a reputation for excellence,
+                innovation, and outcome-driven education.
+              </p>
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                Today, we continue to evolve with industry trends while maintaining our
+                commitment to quality learning and career success.
+              </p>
+
+              <div className="grid grid-cols-3 gap-6">
+                <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-primary transition">
+                  <div className="text-3xl font-bold text-primary">500+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Courses</div>
+                </div>
+                <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-accent transition">
+                  <div className="text-3xl font-bold text-accent">100+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Companies</div>
+                </div>
+                <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-primary transition">
+                  <div className="text-3xl font-bold text-primary">50+</div>
+                  <div className="text-muted-foreground text-sm mt-1">Countries</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-      </AnimatedOnScroll>
+     {/* ================= JOURNEY TIMELINE ================= */}
+<section className="py-28 px-4 bg-background">
+  <div className="max-w-6xl mx-auto">
+    
+    {/* Heading */}
+    <ScrollAnimation animation="fade-up">
+      <div className="text-center mb-20">
+        <span className="inline-block px-5 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-5">
+          Our Journey
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          Milestones of Excellence
+        </h2>
+        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+          A decade-long journey of innovation, growth, and educational impact
+        </p>
+      </div>
+    </ScrollAnimation>
 
-      {/* Enhanced Team */}
-      <AnimatedOnScroll
-        className="lg:py-20 md:py-20 bg-white"
-        direction="up"
-      >
+    {/* Timeline */}
+    <div className="relative">
+      
+      {/* Center Line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary via-accent to-primary hidden md:block" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-          {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <AnimatedOnScroll
-              className="text-4xl md:text-5xl font-black mb-4 text-primary"
-              direction="up"
-              delay={0}
+      {journey.map((item, i) => (
+        <ScrollAnimation
+          key={i}
+          animation={i % 2 === 0 ? "fade-left" : "fade-right"}
+          delay={i * 120}
+        >
+          <div className="relative mb-20">
+            <div
+              className={`flex flex-col md:flex-row items-center ${
+                i % 2 === 0 ? "" : "md:flex-row-reverse"
+              }`}
             >
-              <span className="text-primary">Meet Our </span>
-              <span className="text-accent">Team</span>
-            </AnimatedOnScroll>
+              {/* Card */}
+              <div className="flex-1 md:px-8">
+                <div
+                  className={`group bg-card border border-border rounded-2xl p-8 transition-all duration-500
+                    hover:border-primary hover:shadow-2xl hover:-translate-y-2
+                    ${i % 2 === 0 ? "md:text-right" : "md:text-left"}
+                  `}
+                >
+                  <div className="text-6xl font-extrabold text-primary/80 mb-4 group-hover:text-primary transition-colors">
+                    {item.year}
+                  </div>
 
-            <AnimatedOnScroll
-              className="mt-2 text-base md:text-lg text-secondary font-medium"
-              direction="up"
-              delay={0.1}
-            >
-              The passionate people behind our success.
-            </AnimatedOnScroll>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-muted-foreground text-lg leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+
+              {/* Dot */}
+              <div className="hidden md:flex relative z-10 items-center justify-center">
+                <div className="w-6 h-6 dash-full bg-primary border-4 border-background shadow-xl " />
+              </div>
+
+              <div className="flex-1" />
+            </div>
+          </div>
+        </ScrollAnimation>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* LEARNING ENHANCEMENT */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              What We Offer
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Learning Enhancement
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Helping professionals advance through structured, practical education.
+            </p>
           </div>
 
-          {/* Cards */}
-          <StaggerContainer staggerDelay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {teamMembers.map((member, index) => (
-                <StaggerItem key={index} delay={0.2 + index * 0.1}>
-                  <motion.div
-                    key={index}
-                    className="relative bg-secondary h-full rounded-3xl overflow-hidden border border-subtle/70
-                       shadow-subtle group transition-all duration-300"
-                    whileHover={{ y: -8, scale: 1.02 }}
-                  >
-                    {/* top accent */}
-                    <div className="pointer-events-none absolute inset-x-10 -top-10 h-10 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="p-7 pb-8">
-                      {/* avatar / icon */}
-                      <div className="relative mb-6 flex justify-center">
-                        <div className="w-24 h-24 rounded-full bg-accent flex items-center justify-center
-                                border-4 border-[#494949] shadow-lg transition-transform duration-300
-                                group-hover:scale-105">
-                          <Users className="w-12 h-12 text-[#494949]" />
-                        </div>
-                      </div>
-
-                      <h3 className="text-lg md:text-xl font-black text-center text-primary">
-                        {member.name}
-                      </h3>
-
-                      <p className="text-accent text-center font-semibold mt-1 text-sm md:text-base">
-                        {member.role}
-                      </p>
-
-                      <p className="text-secondary text-center mt-3 text-xs md:text-sm font-medium leading-relaxed">
-                        {member.bio}
-                      </p>
-
-                      {/* social / tag row (optional placeholder) */}
-                      <div className="mt-5 flex items-center justify-center gap-2">
-                        <span className="inline-flex px-3 py-1 rounded-full bg-white/70 text-[11px] font-semibold text-primary/90">
-                          Dedicated mentor
-                        </span>
-                      </div>
-                    </div>
-                  </motion.div>
-                </StaggerItem>
-              ))}
-            </div>
-          </StaggerContainer>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { title: "Skill Development", desc: "Industry-aligned skill building programs", icon: "🎯" },
+              { title: "Expert Instruction", desc: "Learn from real-world professionals", icon: "👨‍🏫" },
+              { title: "Career Growth", desc: "Clear learning paths with outcomes", icon: "📈" },
+            ].map((item, index) => (
+              <div key={index} className="group">
+                <div className="bg-card border border-border rounded-2xl p-8 text-center hover:border-primary hover:shadow-xl hover:-translate-y-2 transition-all">
+                  <div className="text-6xl mb-6">{item.icon}</div>
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary text-2xl font-bold mx-auto mb-6">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-lg">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-      </AnimatedOnScroll>
-
-      {/* Enhanced Stats */}
-      <AnimatedOnScroll
-        className="lg:py-20 md:py-20 bg-accent relative overflow-hidden"
-        direction="up"
-      >
-        {/* Decorative elements */}
-        <ParallaxElement speed={0.3} className="absolute top-10 right-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></ParallaxElement>
-        <ParallaxElement speed={0.5} className="absolute bottom-10 left-10 w-64 h-64 bg-white rounded-full opacity-5 blur-3xl"></ParallaxElement>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 lg:py-24">
-          {/* Heading */}
+      {/* VISION & MISSION */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <AnimatedOnScroll
-              className="text-4xl md:text-5xl font-black text-dark mb-3"
-              direction="up"
-              delay={0}
-            >
-              Our Impact in{" "}
-              <span className="bg-gradient-to-r from-white via-accent to-white bg-clip-text">
-                Numbers
-              </span>
-            </AnimatedOnScroll>
-            <AnimatedOnScroll
-              className="text-sm md:text-base text-dark/80 font-medium"
-              direction="up"
-              delay={0.1}
-            >
-              A quick snapshot of how we&apos;re changing careers.
-            </AnimatedOnScroll>
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Our Purpose
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+              Vision & Mission
+            </h2>
           </div>
 
-          {/* Stats */}
-          <StaggerContainer staggerDelay={0.1}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-              {[{ number: 10000, label: "Students Enrolled", icon: Users, suffix: "+" },
-              { number: 200, label: "Courses Available", icon: Award, suffix: "+" },
-              { number: 50, label: "Expert Instructors", icon: Users, suffix: "+" },
-              { number: 95, label: "Job Placement Rate", icon: Target, suffix: "%" },
-              ].map((stat, index) => (
-                <StaggerItem key={index} delay={index * 0.1}>
-                  <motion.div
-                    key={index}
-                    className="relative text-center bg-white/10 backdrop-blur-md rounded-3xl p-6 md:p-7
-                       shadow-subtle border border-dark/20 transition-all duration-300
-                       hover:bg-white/16 hover:shadow-hover"
-                    whileHover={{ y: -6, scale: 1.02 }}
-                  >
-                    {/* glow accent */}
-                    <div className="pointer-events-none absolute inset-x-8 -top-10 h-10 rounded-full bg-accent/25 blur-2xl opacity-0 group-hover:opacity-100" />
-
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/15 flex items-center justify-center mx-auto mb-4">
-                      <stat.icon className="w-7 h-7 md:w-8 md:h-8 text-dark" />
-                    </div>
-
-                    <div className="text-3xl md:text-4xl font-black text-dark mb-5 leading-none">
-                      <CountUp end={stat.number} suffix={stat.suffix} duration={2.5} />
-                    </div>
-
-                    <div className="text-xs md:text-sm font-semibold text-dark/85 tracking-wide uppercase mt-1">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                </StaggerItem>
+          <div className="flex justify-center mb-8">
+            <div className="bg-muted rounded-2xl p-2 flex gap-2 border border-border">
+              {["vision", "mission"].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-8 py-4 rounded-xl font-semibold transition-all ${
+                    activeTab === tab
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {tab === "vision" ? "Our Vision" : "Our Mission"}
+                </button>
               ))}
             </div>
-          </StaggerContainer>
-        </div>
+          </div>
 
-      </AnimatedOnScroll>
-    </AnimatedPageWrapper>
+          <div className="bg-card border border-border rounded-3xl shadow-2xl p-12 hover:border-primary transition-all">
+            {activeTab === "vision" ? (
+              <div>
+                <div className="text-7xl mb-6 text-center">🎯</div>
+                <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed text-center">
+                  To become a leading institution that transforms ambition into
+                  achievement through education.
+                </p>
+              </div>
+            ) : (
+              <div>
+                <div className="text-7xl mb-6 text-center">🚀</div>
+                <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed text-center">
+                  To deliver practical, personalized learning experiences that
+                  empower career success.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* CORE VALUES */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              What Drives Us
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Our Core Values
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Principles that guide everything we do
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="group">
+                <div className="bg-card border border-border rounded-2xl p-8 hover:border-primary hover:shadow-2xl hover:-translate-y-2 transition-all h-full">
+                  <div className="text-6xl mb-6">{value.icon}</div>
+                  <h3 className="text-2xl font-bold text-foreground mb-4">{value.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-3xl opacity-20" />
+            <div className="relative bg-card border-2 border-primary/20 rounded-3xl p-12 md:p-16 text-center hover:border-primary/50 transition-all">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Ready to Transform Your Future?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Join thousands of successful professionals who chose Elite Management for their career transformation.
+              </p>
+              <button className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">
+                Start Your Journey Today
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
+            <Footer />
+
+    </div>
   );
-}
+};
+
+export default About;

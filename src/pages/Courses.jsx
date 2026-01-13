@@ -1,837 +1,433 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import {
-  BookOpen,
-  Search,
-  Filter,
-  ChevronDown,
-  ArrowUpDown,
-  GraduationCap,
-  Users,
-  DollarSign,
-  Star,
-  Clock, Code2, LineChart, PenTool, Briefcase, Gauge
-} from 'lucide-react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import FlipCard from '../components/FlipCard';
-import BookCard from '../components/BookCard';
-import AnimatedPageWrapper from '../components/AnimatedPageWrapper';
-import { AnimatedOnScroll, StaggerContainer, StaggerItem, ParallaxElement } from '../hooks/useScrollAnimations.jsx';
+import { useState} from 'react';
+import Footer from '../components/Footer';
 
-const allCourses = [
-  {
-    id: 1,
-    title: 'Complete Web Development Bootcamp',
-    instructor: 'John Smith',
-    rating: 4.8,
-    students: 12500,
-    duration: '24 weeks',
-    level: 'Beginner',
-    price: 89,
-    category: 'Programming',
-    image: 'web-dev'
-  },
-  {
-    id: 2,
-    title: 'Data Science with Python',
-    instructor: 'Sarah Johnson',
-    rating: 4.9,
-    students: 9800,
-    duration: '18 weeks',
-    level: 'Intermediate',
-    price: 129,
-    category: 'Data Science',
-    image: 'data-science'
-  },
-  {
-    id: 3,
-    title: 'UI/UX Design Masterclass',
-    instructor: 'Michael Chen',
-    rating: 4.7,
-    students: 7600,
-    duration: '12 weeks',
-    level: 'Beginner',
-    price: 79,
-    category: 'Design',
-    image: 'design'
-  },
-  {
-    id: 4,
-    title: 'Cloud Computing with AWS',
-    instructor: 'David Wilson',
-    rating: 4.6,
-    students: 5400,
-    duration: '16 weeks',
-    level: 'Advanced',
-    price: 149,
-    category: 'Cloud',
-    image: 'cloud'
-  },
-  {
-    id: 5,
-    title: 'Digital Marketing Strategy',
-    instructor: 'Emma Rodriguez',
-    rating: 4.8,
-    students: 11200,
-    duration: '10 weeks',
-    level: 'Beginner',
-    price: 69,
-    category: 'Marketing',
-    image: 'marketing'
-  },
-  {
-    id: 6,
-    title: 'Mobile App Development with React Native',
-    instructor: 'Alex Thompson',
-    rating: 4.7,
-    students: 8300,
-    duration: '20 weeks',
-    level: 'Intermediate',
-    price: 99,
-    category: 'Programming',
-    image: 'mobile'
-  },
-  {
-    id: 7,
-    title: 'Machine Learning Fundamentals',
-    instructor: 'Dr. Priya Sharma',
-    rating: 4.9,
-    students: 6700,
-    duration: '22 weeks',
-    level: 'Advanced',
-    price: 159,
-    category: 'AI',
-    image: 'ai'
-  },
-  {
-    id: 8,
-    title: 'Cybersecurity Essentials',
-    instructor: 'Robert Davis',
-    rating: 4.6,
-    students: 4500,
-    duration: '14 weeks',
-    level: 'Intermediate',
-    price: 119,
-    category: 'Security',
-    image: 'security'
-  }
-];
+const Courses = () => {
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [scrollY, setScrollY] = useState(0);
 
-const categories = [
-  'All Categories',
-  'Programming',
-  'Data Science',
-  'Design',
-  'Cloud',
-  'Marketing',
-  'AI',
-  'Security'
-];
+  
+  const courseCategories = [
+    { id: 'all', name: 'All Courses', icon: '📚' },
+    { id: 'management', name: 'Management', icon: '📊' },
+    { id: 'leadership', name: 'Leadership', icon: '👔' },
+    { id: 'marketing', name: 'Marketing', icon: '📱' },
+    { id: 'finance', name: 'Finance', icon: '💰' },
+    { id: 'hr', name: 'HR Management', icon: '👥' }
+  ];
 
-const levels = ['All Levels', 'Beginner', 'Intermediate', 'Advanced'];
-
-export default function Courses() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const [selectedLevel, setSelectedLevel] = useState('All Levels');
-  const [sortBy, setSortBy] = useState('popular');
-
-  // Animation controls for filters section
-  const filtersControls = useAnimation();
-  const [filtersRef, filtersInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  // Animation controls for courses grid
-  const coursesControls = useAnimation();
-  const [coursesRef, coursesInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  // Trigger animations when elements come into view
-  useEffect(() => {
-    if (filtersInView) {
-      filtersControls.start({ opacity: 1, y: 0 });
+  const courses = [
+    {
+      id: 1,
+      title: 'Strategic Management',
+      category: 'management',
+      instructor: 'Dr. Sarah Johnson',
+      duration: '12 weeks',
+      level: 'Advanced',
+      rating: 4.8,
+      students: 1250,
+      price: 299,
+      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Master strategic planning and implementation techniques for business success.',
+      tags: ['Strategy', 'Planning', 'Leadership']
+    },
+    {
+      id: 2,
+      title: 'Leadership Excellence',
+      category: 'leadership',
+      instructor: 'Prof. Michael Chen',
+      duration: '8 weeks',
+      level: 'Intermediate',
+      rating: 4.9,
+      students: 980,
+      price: 249,
+      image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Develop essential leadership skills for modern business environments.',
+      tags: ['Leadership', 'Communication', 'Team Management']
+    },
+    {
+      id: 3,
+      title: 'Digital Marketing Mastery',
+      category: 'marketing',
+      instructor: 'Emma Rodriguez',
+      duration: '10 weeks',
+      level: 'Beginner',
+      rating: 4.7,
+      students: 1500,
+      price: 199,
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Comprehensive digital marketing strategies for the modern era.',
+      tags: ['SEO', 'Social Media', 'Content Marketing']
+    },
+    {
+      id: 4,
+      title: 'Financial Management',
+      category: 'finance',
+      instructor: 'Dr. Robert Williams',
+      duration: '14 weeks',
+      level: 'Advanced',
+      rating: 4.6,
+      students: 870,
+      price: 349,
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f',
+      description: 'Advanced financial planning and management techniques.',
+      tags: ['Finance', 'Investment', 'Analysis']
+    },
+    {
+      id: 5,
+      title: 'HR Management Essentials',
+      category: 'hr',
+      instructor: 'Dr. Lisa Anderson',
+      duration: '6 weeks',
+      level: 'Beginner',
+      rating: 4.8,
+      students: 1100,
+      price: 179,
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Essential HR management skills for modern workplaces.',
+      tags: ['HR', 'Recruitment', 'Employee Relations']
+    },
+    {
+      id: 6,
+      title: 'Project Management',
+      category: 'management',
+      instructor: 'James Wilson',
+      duration: '9 weeks',
+      level: 'Intermediate',
+      rating: 4.7,
+      students: 1320,
+      price: 229,
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+      description: 'Master project planning, execution, and delivery techniques.',
+      tags: ['Project Management', 'Planning', 'Execution']
     }
-    if (coursesInView) {
-      coursesControls.start({ opacity: 1, y: 0 });
+  ];
+
+  const filteredCourses = selectedCategory === 'all' 
+    ? courses 
+    : courses.filter(course => course.category === selectedCategory);
+
+  const handleEnroll = (courseId) => {
+    if (!enrolledCourses.includes(courseId)) {
+      setEnrolledCourses([...enrolledCourses, courseId]);
+      alert('Successfully enrolled in the course!');
     }
-  }, [filtersInView, coursesInView, filtersControls, coursesControls]);
+  };
 
-  const filteredCourses = allCourses.filter(course => {
-    const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.instructor.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'All Categories' || course.category === selectedCategory;
-    const matchesLevel = selectedLevel === 'All Levels' || course.level === selectedLevel;
-
-    return matchesSearch && matchesCategory && matchesLevel;
-  });
-
-  const sortedCourses = [...filteredCourses].sort((a, b) => {
-    if (sortBy === 'popular') return b.students - a.students;
-    if (sortBy === 'rating') return b.rating - a.rating;
-    if (sortBy === 'price-low') return a.price - b.price;
-    if (sortBy === 'price-high') return b.price - a.price;
-    return 0;
-  });
-
-  // Stats for the hero section
-  const totalCourses = allCourses.length;
-  const totalStudents = allCourses.reduce((sum, course) => sum + course.students, 0);
-  const avgRating = (allCourses.reduce((sum, course) => sum + course.rating, 0) / allCourses.length).toFixed(1);
+  const renderStars = (rating) => {
+    return [...Array(5)].map((_, i) => (
+      <span key={i} className={i < rating ? 'text-yellow-500' : 'text-muted-foreground'}>★</span>
+    ));
+  };
 
   return (
-    <AnimatedPageWrapper>
-      {/* Enhanced Hero Section */}
-      <ParallaxElement
-        className="relative overflow-hidden bg-secondary"
-      >
-        <div className="absolute inset-0 z-0">
-          <ParallaxElement speed={0.3} className="absolute top-0 right-0 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20"></ParallaxElement>
-          <ParallaxElement speed={0.5} className="absolute bottom-0 left-0 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-20"></ParallaxElement>
+    <div className="max-h-screen ">
+      
+      {/* ENHANCED HERO BANNER */}
+      <section className="relative h-[100vh] flex items-center justify-center overflow-hidden">
+        {/* Background with Parallax */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-black opacity-90" />
+          <img
+            src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1920&q=80"
+            alt="Courses"
+            className="w-full h-full object-cover opacity-30"
+            style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+          />
+          
+          {/* Animated gradient orbs */}
+          <div className="absolute top-20 right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 lg:py-24">
-          <div className="text-center max-w-4xl mx-auto">
 
-            {/* Heading */}
-            <AnimatedOnScroll
-              className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-primary"
-              direction="up"
-              delay={0.2}
-            >
-              <span className="text-primary pt-3` ">Expand Your </span>
-              <span className="block text-5xl md:text-6xl lg:text-7xl font-black text-accent mt-2 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                Knowledge
-              </span>
-            </AnimatedOnScroll>
+       
+        {/* Content */}
+        <div className="relative z-10 text-center px-6 max-w-5xl">
+          <span className="inline-block mb-6 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm tracking-widest uppercase font-semibold animate-fade-in">
+            Explore Our Courses
+          </span>
 
-            {/* Subheading */}
-            <AnimatedOnScroll
-              className="text-xl md:text-2xl text-secondary font-medium max-w-3xl mx-auto mb-8"
-              direction="up"
-              delay={0.35}
-            >
-              Discover hundreds of expert‑led courses designed to help you master new skills and advance your career.
-            </AnimatedOnScroll>
+          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            Transform Your Career <br />
+            <span className="text-blue-600">With Expert Training</span>
+          </h1>
 
-            {/* CTA row */}
-            <AnimatedOnScroll
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-              direction="up"
-              delay={0.45}
-            >
-              <button className="px-8 py-3 rounded-full text-white text-sm md:text-base font-semibold shadow-subtle hover:shadow-hover hover:-translate-y-0.5 transition-all duration-300" style={{ backgroundColor: '#048e6c' }}>
-                Browse Courses
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            Choose from 500+ expertly designed courses to master new skills and advance your professional journey
+          </p>
+        </div>
+
+        {/* Bottom gradient fade */}
+      </section>
+
+      {/* COURSE CATEGORIES */}
+      <section className="py-20 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Browse by Category
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Explore Course Categories</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Choose from a wide range of expertly designed courses to advance your career
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
+            {courseCategories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`group px-6 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+                  selectedCategory === category.id
+                    ? 'bg-primary text-primary-foreground shadow-xl scale-105'
+                    : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary hover:shadow-lg hover:-translate-y-1'
+                }`}
+              >
+                <span className="text-2xl">{category.icon}</span>
+                {category.name}
               </button>
-              <button className="px-8 py-3 rounded-full border border-subtle bg-white text-primary text-sm md:text-base font-semibold hover:border-accent hover:text-accent transition-all duration-300">
-                Download Brochure
-              </button>
-            </AnimatedOnScroll>
-
-            {/* Stats cards */}
-            <StaggerContainer staggerDelay={0.1}>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-4">
-                {/* Courses */}
-                <StaggerItem delay={0.6}>
-                  <div className="relative bg-white rounded-2xl p-6 shadow-subtle border border-subtle/70 
-                    hover:border-accent hover:shadow-hover transition-all duration-300 group overflow-hidden">
-                    {/* soft glow */}
-                    <div className="pointer-events-none absolute inset-x-10 -top-10 h-10 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-secondary to-secondary/70
-                        group-hover:from-accent group-hover:to-accent/80
-                        flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                        <GraduationCap className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" />
-                      </div>
-                      <div className="ml-4 text-left">
-                        <p className="text-2xl font-black text-accent leading-none">{totalCourses}+</p>
-                        <p className="text-secondary font-bold text-[11px] uppercase tracking-[0.12em] mt-1">
-                          Courses
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="mt-3 text-xs text-secondary/80 font-medium">
-                      Learn at your own pace with structured, outcome‑driven programs.
-                    </p>
-
-                    <div className="mt-4 pt-3 border-t border-subtle/60">
-                      <span className="inline-flex px-3 py-1 rounded-full bg-secondary/60 text-[10px] font-semibold text-primary/90">
-                        Updated monthly with new content
-                      </span>
-                    </div>
-                  </div>
-                </StaggerItem>
-
-                {/* Students */}
-                <StaggerItem delay={0.7}>
-                  <div className="relative bg-white rounded-2xl p-6 shadow-subtle border border-subtle/70 
-                    hover:border-accent hover:shadow-hover transition-all duration-300 group overflow-hidden">
-                    <div className="pointer-events-none absolute inset-x-10 -top-10 h-10 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-secondary to-secondary/70
-                        group-hover:from-accent group-hover:to-accent/80
-                        flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                        <Users className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" />
-                      </div>
-                      <div className="ml-4 text-left">
-                        <p className="text-2xl font-black text-accent leading-none">
-                          {Math.round(totalStudents / 1000)}K+
-                        </p>
-                        <p className="text-secondary font-bold text-[11px] uppercase tracking-[0.12em] mt-1">
-                          Students
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="mt-3 text-xs text-secondary/80 font-medium">
-                      Join a vibrant community of learners from across the globe.
-                    </p>
-
-                    <div className="mt-4 pt-3 border-t border-subtle/60">
-                      <span className="inline-flex px-3 py-1 rounded-full bg-secondary/60 text-[10px] font-semibold text-primary/90">
-                        24/7 access to all lessons
-                      </span>
-                    </div>
-                  </div>
-                </StaggerItem>
-
-                {/* Rating */}
-                <StaggerItem delay={0.8}>
-                  <div className="relative bg-white rounded-2xl p-6 shadow-subtle border border-subtle/70 
-                    hover:border-accent hover:shadow-hover transition-all duration-300 group overflow-hidden">
-                    <div className="pointer-events-none absolute inset-x-10 -top-10 h-10 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-secondary to-secondary/70
-                        group-hover:from-accent group-hover:to-accent/80
-                        flex items-center justify-center flex-shrink-0 transition-all duration-300">
-                        <DollarSign className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" />
-                      </div>
-                      <div className="ml-4 text-left">
-                        <p className="text-2xl font-black text-accent leading-none">{avgRating}</p>
-                        <p className="text-secondary font-bold text-[11px] uppercase tracking-[0.12em] mt-1">
-                          Avg. Rating
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="mt-3 text-xs text-secondary/80 font-medium">
-                      Learners consistently rate our courses highly for clarity and value.
-                    </p>
-
-                    <div className="mt-4 pt-3 border-t border-subtle/60">
-                      <span className="inline-flex px-3 py-1 rounded-full bg-secondary/60 text-[10px] font-semibold text-primary/90">
-                        Based on verified reviews
-                      </span>
-                    </div>
-                  </div>
-                </StaggerItem>
-              </div>
-            </StaggerContainer>
-          </div>
-        </div>
-
-      </ParallaxElement>
-
-      {/* Course Categories Flip Cards */}
-      <AnimatedOnScroll
-        className=" bg-secondary"
-        direction="up"
-      >
-        <section className="bg-secondary/20 lg:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Explore by Category */}
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <AnimatedOnScroll
-                className="inline-flex items-center px-3 py-1 rounded-full bg-secondary/60 text-accent text-xs font-semibold tracking-wide mb-4"
-                direction="up"
-                delay={0.4}
-              >
-                Learn what matters
-              </AnimatedOnScroll>
-
-              <AnimatedOnScroll
-                className="text-3xl md:text-4xl font-black mb-3 text-primary"
-                direction="up"
-                delay={0.5}
-              >
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Explore by Category
-                </span>
-              </AnimatedOnScroll>
-
-              <AnimatedOnScroll
-                className="text-base md:text-lg text-secondary font-medium"
-                direction="up"
-                delay={0.6}
-              >
-                Discover courses tailored to your interests and career goals.
-              </AnimatedOnScroll>
-            </div>
-
-            {/* Cards grid */}
-            <StaggerContainer staggerDelay={0.1}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-stretch">
-                <div className="flex justify-center lg:justify-start">
-                  <CategoryCard
-                    icon={<Code2 className="w-6 h-6" />}
-                    title="Programming"
-                    chips={["Web", "Mobile", "Backend"]}
-                    description="JavaScript, Python, React, and more."
-                  />
-                </div>
-
-                <div className="flex justify-center">
-                  <CategoryCard
-                    icon={<LineChart className="w-6 h-6" />}
-                    title="Data Science"
-                    chips={["Analytics", "ML", "SQL"]}
-                    description="Python, R, SQL, and Big Data."
-                  />
-                </div>
-
-                <div className="flex justify-center">
-                  <CategoryCard
-                    icon={<PenTool className="w-6 h-6" />}
-                    title="Design"
-                    chips={["UI/UX", "Branding", "Prototyping"]}
-                    description="Figma, Adobe Suite, and more."
-                  />
-                </div>
-
-                <div className="flex justify-center lg:justify-end">
-                  <CategoryCard
-                    icon={<Briefcase className="w-6 h-6" />}
-                    title="Business"
-                    chips={["Marketing", "Leadership", "Finance"]}
-                    description="Digital Marketing, Management, Strategy."
-                  />
-                </div>
-              </div>
-            </StaggerContainer>
-          </div>
-        </section>
-
-
-      </AnimatedOnScroll>
-
-      {/* Enhanced Filters Section */}
-      <AnimatedOnScroll
-        className="py-8 bg-white border-b-2 border-subtle top-0 z-20 shadow-subtle backdrop-blur-sm bg-white/95"
-        direction="up"
-        delay={0.3}
-      >
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-          <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-end relative">
-
-            {/* Enhanced Search */}
-            <AnimatedOnScroll
-              className="relative flex-1 group"
-              direction="up"
-              delay={0.2}
-            >
-              <div className="relative bg-gradient-to-r from-white/80 to-white/60 backdrop-blur-xl border border-white/40 shadow-xl rounded-2xl p-1 group-hover:shadow-2xl group-hover:border-accent/50 transition-all duration-500">
-                <input
-                  type="text"
-                  placeholder="Search courses..."
-                  className="w-full pl-6 pr-16 py-5 bg-white/70 backdrop-blur-sm border-0 rounded-xl text-lg font-semibold text-primary placeholder:text-secondary/80 focus:placeholder:text-secondary/50 focus:bg-white focus:backdrop-blur-none shadow-inner focus:shadow-xl focus:ring-4 focus:ring-accent/20 focus:ring-offset-2 focus:ring-offset-transparent transition-all duration-400"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <motion.div
-                  className="absolute right-5 top-1/2 -translate-y-1/2 bg-gradient-to-br from-accent/10 to-primary/10 rounded-full p-3 group-hover:scale-110 transition-transform duration-300"
-                // animate={{ rotate: 360 }}
-                // transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                >
-                  {/* Search Bar Icon */}
-                  <Search className="w-5 h-5 text-accent drop-shadow-sm" />
-                </motion.div>
-                {/* Floating label - left aligned */}
-                {/* <motion.span
-                  className="absolute -top-3 left-5 px-3 py-1 bg-gradient-to-r from-accent to-primary text-xs font-bold text-dark rounded-full shadow-lg"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  Quick Search
-                </motion.span> */}
-              </div>
-
-            </AnimatedOnScroll>
-
-            {/* Category Filter */}
-            <AnimatedOnScroll
-              className="relative w-full lg:w-auto lg:flex-1 max-w-xs"
-              direction="up"
-              delay={0.3}
-            >
-              <label className="block text-xs font-bold text-primary/90 uppercase tracking-wider mb-2.5">Category</label>
-              <div className="relative group">
-                <div className="bg-gradient-to-r from-white/80 via-white/60 to-white/80 backdrop-blur-xl border border-white/40 shadow-lg rounded-xl p-1 hover:shadow-xl hover:border-accent/30 transition-all duration-300">
-                  <select
-                    className="appearance-none w-full bg-white/90 backdrop-blur-sm pl-5 pr-12 py-5 border-0 rounded-lg text-primary font-semibold text-base shadow-sm hover:shadow-md focus:shadow-xl focus:ring-4 focus:ring-accent/20 focus:ring-offset-2 focus:ring-offset-transparent transition-all duration-400"
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                  >
-                    {categories.map(category => (
-                      <option key={category} value={category} className="bg-white/95 text-primary font-semibold">
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                  <motion.div
-                    className="absolute right-4 top-1/2 -translate-y-1/2"
-                    animate={{ rotate: selectedCategory ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Filter className="w-5 h-5 text-accent drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
-                  </motion.div>
-                </div>
-              </div>
-            </AnimatedOnScroll>
-
-            {/* Level Filter */}
-            <AnimatedOnScroll
-              className="relative w-full lg:w-auto lg:flex-1 max-w-xs"
-              direction="up"
-              delay={0.35}
-            >
-              <label className="block text-xs font-bold text-primary/90 uppercase tracking-wider mb-2.5">Level</label>
-              <div className="relative group">
-                <div className="bg-gradient-to-r from-white/80 via-white/60 to-white/80 backdrop-blur-xl border border-white/40 shadow-lg rounded-xl p-1 hover:shadow-xl hover:border-accent/30 transition-all duration-300">
-                  <select
-                    className="appearance-none w-full bg-white/90 backdrop-blur-sm pl-5 pr-12 py-5 border-0 rounded-lg text-primary font-semibold text-base shadow-sm hover:shadow-md focus:shadow-xl focus:ring-4 focus:ring-accent/20 focus:ring-offset-2 focus:ring-offset-transparent transition-all duration-400"
-                    value={selectedLevel}
-                    onChange={(e) => setSelectedLevel(e.target.value)}
-                  >
-                    {levels.map(level => (
-                      <option key={level} value={level} className="bg-white/95 text-primary font-semibold">
-                        {level}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-accent drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
-                </div>
-              </div>
-            </AnimatedOnScroll>
-
-            {/* Sort By */}
-            <AnimatedOnScroll
-              className="relative w-full lg:w-auto lg:flex-1 max-w-xs"
-              direction="up"
-              delay={0.4}
-            >
-              <label className="block text-xs font-bold text-primary/90 uppercase tracking-wider mb-2.5">Sort By</label>
-              <div className="relative group">
-                <div className="bg-gradient-to-r from-accent/5 to-primary/5 backdrop-blur-xl border-2 border-accent/20 shadow-xl rounded-xl p-1 hover:shadow-2xl hover:border-accent/40 transition-all duration-400">
-                  <select
-                    className="appearance-none w-full bg-gradient-to-r from-white via-white/90 to-white pl-5 pr-12 py-5 border-0 rounded-lg text-primary font-bold text-base shadow-sm hover:shadow-md focus:shadow-2xl focus:ring-4 focus:ring-accent/30 focus:ring-offset-2 focus:ring-offset-accent/10 transition-all duration-400"
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                  >
-                    <option value="popular" className="bg-white/95 text-primary font-semibold">Most Popular</option>
-                    <option value="rating" className="bg-white/95 text-primary font-semibold">Highest Rated</option>
-                    <option value="price-low" className="bg-white/95 text-primary font-semibold">Price: Low → High</option>
-                    <option value="price-high" className="bg-white/95 text-primary font-semibold">Price: High → Low</option>
-                  </select>
-                  <ArrowUpDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-accent drop-shadow-sm group-hover:scale-110 transition-transform duration-200" />
-                </div>
-              </div>
-            </AnimatedOnScroll>
-
-          </div>
-        </div>
-
-      </AnimatedOnScroll>
-
-      {/* Enhanced Courses Grid */}
-      <AnimatedOnScroll
-        className="py-20 bg-secondary"
-        direction="up"
-        delay={0.6}
-      >
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-          {/* Premium Stats Header */}
-          <AnimatedOnScroll className="flex flex-wrap gap-6 mb-12 lg:mb-20" direction="up" delay={0.6}>
-            <motion.div
-              className="glass-card p-4 lg:p-6 rounded-2xl flex items-center gap-3 shadow-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-accent to-primary rounded-xl flex items-center justify-center shadow-lg">
-                <BookOpen className="w-7 h-7 text-dark" />
-              </div>
-              <div>
-                <h2 className="text-3xl lg:text-4xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-secondary">
-                  {sortedCourses.length} Course{sortedCourses.length !== 1 ? 's' : ''}
-                </h2>
-                <p className="text-secondary text-sm font-medium">Expertly curated selection</p>
-              </div>
-            </motion.div>
-
-            {/* Quick Stats */} 
-            <div className="flex gap-6 flex-1 justify-end items-center">
-              {/* Animated Rating Stat */}
-              <motion.div
-                className="glass-card group relative p-4 lg:p-5 rounded-2xl shadow-xl backdrop-blur-xl border border-white/20 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/20 transition-all duration-500 overflow-hidden"
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 0.4, type: "spring", stiffness: 300 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-              >
-                {/* Glow orb */}
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-amber-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
-
-                <div className="relative z-10 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-xl flex items-center justify-center shadow-lg drop-shadow-xl">
-                    <Star className="w-5 h-5 text-white drop-shadow-sm" />
-                  </div>
-                  <div>
-                    <div className="text-2xl lg:text-3xl font-black bg-gradient-to-r from-primary via-yellow-500 to-accent bg-clip-text text-transparent">
-                      4.8
-                    </div>
-                    <div className="text-xs uppercase tracking-wider font-bold text-secondary/80">Avg Rating</div>
-                  </div>
-                </div>
-
-                {/* Sparkle badge */}
-                <motion.div
-                  className="absolute bottom-2 right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full shadow-lg flex items-center justify-center"
-                  animate={{ rotate: [0, 180, 360] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                >
-                  <Star className="w-3 h-3 text-white" />
-                </motion.div>
-              </motion.div>
-
-              {/* Animated Students Stat */}
-              <motion.div
-                className="glass-card group relative p-4 lg:p-5 rounded-2xl shadow-xl backdrop-blur-xl border border-white/20 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/20 transition-all duration-500 overflow-hidden"
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 300 }}
-                whileHover={{ scale: 1.05, y: -2 }}
-              >
-                {/* Glow orb */}
-                <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-emerald-400/20 to-teal-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
-
-                <div className="relative z-10 flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center shadow-lg drop-shadow-xl">
-                    <Users className="w-5 h-5 text-white drop-shadow-sm" />
-                  </div>
-                  <div>
-                    <div className="text-2xl lg:text-3xl font-black bg-gradient-to-r from-primary via-emerald-500 to-accent bg-clip-text text-transparent">
-                      12K+
-                    </div>
-                    <div className="text-xs uppercase tracking-wider font-bold text-secondary/80">Students</div>
-                  </div>
-                </div>
-
-                {/* Pulsing dot */}
-                <motion.div
-                  className="absolute bottom-2 left-3 w-3 h-3 bg-emerald-400 rounded-full shadow-lg"
-                  animate={{ scale: [1, 1.3, 1] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                />
-              </motion.div>
-            </div>
-
-          </AnimatedOnScroll>
-
-          {sortedCourses.length === 0 ? (
-            /* Dynamic Empty State with Category Chips */
-            <AnimatedOnScroll className="glass-card py-20 px-12 max-w-3xl mx-auto text-center shadow-2xl" direction="up" delay={0.8}>
-              <motion.div
-                className="w-28 h-28 bg-gradient-to-br from-secondary/30 to-accent/20 rounded-3xl flex items-center justify-center mx-auto mb-8 backdrop-blur-xl shadow-2xl"
-                animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.05, 1] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <BookOpen className="w-16 h-16 text-primary drop-shadow-lg" />
-              </motion.div>
-              <motion.h3
-                className="text-3xl lg:text-4xl font-black text-primary mb-4 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                No courses match your search
-              </motion.h3>
-              <p className="text-xl text-secondary mb-8 font-medium max-w-md mx-auto leading-relaxed">
-                Discover amazing courses. Try popular categories below.
-              </p>
-
-              {/* Interactive Category Suggestions */}
-              <div className="flex flex-wrap gap-3 justify-center mb-10">
-                {['React Native', 'Tailwind CSS', 'Java Spring', 'UI/UX Design'].map((cat, i) => (
-                  <motion.button
-                    key={cat}
-                    className="glass-card px-6 py-3 rounded-full font-semibold text-primary hover:bg-accent/20 hover:scale-105 backdrop-blur-xl transition-all duration-300 border border-accent/30 shadow-lg"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.98 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 + i * 0.1 }}
-                    onClick={() => {/* Handle category filter */ }}
-                  >
-                    {cat}
-                  </motion.button>
-                ))}
-              </div>
-
-              <motion.button
-                className="group relative px-8 py-4 bg-gradient-to-r from-accent to-primary text-white rounded-2xl font-bold text-lg shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1.4 }}
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedCategory('All Categories');
-                  setSelectedLevel('All Levels');
-                }}
-              >
-                <span>Clear All Filters</span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20 -skew-x-12 transform group-hover:translate-x-2 transition-transform duration-500"
-                  initial={{ x: -100 }}
-                  animate={{ x: '100%' }}
-                />
-              </motion.button>
-            </AnimatedOnScroll>
-          ) : (
-            /* Enhanced Glassmorphism Grid */
-            <StaggerContainer staggerDelay={0.08}>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
-                {sortedCourses.map((course, index) => (
-                  <StaggerItem key={course.id} delay={1 + index * 0.08}>
-                    <motion.div
-                      className="group relative"
-                      whileHover={{ y: -12, rotateX: 5, rotateY: 5 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    >
-                      <FlipCard
-                        frontTitle={
-                          <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-xl font-black">
-                            {course.title}
-                          </span>
-                        }
-                        frontText={
-                          <span className="text-secondary font-semibold bg-gradient-to-r from-secondary/50 to-accent/50 bg-clip-text text-transparent">
-                            by {course.instructor}
-                          </span>
-                        }
-                        backTitle={
-                          <span className="text-2xl font-black text-primary drop-shadow-lg">
-                            Course Details
-                          </span>
-                        }
-                        backText={
-                          <div className="space-y-3 text-lg">
-                            <div className="flex items-center gap-2 text-accent font-bold">
-                              <Users className="w-5 h-5" />
-                              {course.students.toLocaleString()} students
-                            </div>
-                            <div className="flex items-center gap-2 text-secondary">
-                              <Clock className="w-5 h-5" />
-                              {course.duration}
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Gauge className="w-5 h-5 text-accent" />
-                              <span className="font-bold text-primary">{course.level}</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-yellow-500 font-bold">
-                              <Star className="w-5 h-5 fill-current" />
-                              {course.rating}/5
-                            </div>
-                          </div>
-                        }
-                        icon={
-                          <div className="w-16 h-16 bg-gradient-to-br from-accent/20 to-primary/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-xl group-hover:bg-accent/40 transition-all duration-500 border-2 border-accent/30">
-                            <BookOpen className="w-10 h-10 text-white group-hover:text-white transition-colors duration-300 drop-shadow-lg" />
-                          </div>
-                        }
-                        className="glass-card h-[320px] shadow-2xl backdrop-blur-xl border border-white/20 hover:border-accent/50 hover:shadow-3xl hover:shadow-accent/25 transition-all duration-500 group-hover:scale-[1.02] overflow-hidden relative"
-                      />
-
-                      {/* Progress Badge */}
-                      <motion.div
-                        className="absolute -top-3 right-4 w-20 h-10 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full text-white text-xs font-bold flex items-center justify-center shadow-lg drop-shadow-xl"
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: 1.2 + index * 0.08, type: "spring" }}
-                      >
-                        New
-                      </motion.div>
-                    </motion.div>
-                  </StaggerItem>
-                ))}
-              </div>
-            </StaggerContainer>
-          )}
-        </div>
-
-      </AnimatedOnScroll>
-    </AnimatedPageWrapper>
-  );
-}
-
-
-function CategoryCard({ icon, title, chips, description }) {
-  return (
-    <StaggerItem>
-      <div className="w-full max-w-[260px] ">
-        <motion.div
-          className="relative bg-white rounded-2xl p-6 shadow-subtle border border-subtle/70
-                          hover:border-accent hover:shadow-hover transition-all duration-300
-                          group overflow-hidden cursor-pointer "
-          whileHover={{ y: -8, scale: 1.02 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        >
-          {/* soft corner light */}
-          <div className="pointer-events-none absolute -top-10 -right-10 h-24 w-24 rounded-full bg-accent/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center
-                            text-primary group-hover:bg-accent group-hover:text-white transition-all duration-300">
-              {icon}
-            </div>
-            <h4 className="text-lg font-black text-primary">{title}</h4>
-          </div>
-
-          <div className="flex flex-wrap gap-1 mb-3">
-            {chips.map((chip) => (
-              <span
-                key={chip}
-                className="px-2 py-1 rounded-full bg-secondary/70 text-[11px] font-semibold text-primary/90"
-              >
-                {chip}
-              </span>
             ))}
           </div>
 
-          <p className="text-xs text-secondary/80 font-medium">
-            {description}
-          </p>
-
-          <div className="mt-4 pt-3 border-t border-subtle/60 flex items-center justify-between text-[11px] text-secondary/80">
-            <span className="font-semibold">View courses</span>
-            <span className="inline-flex items-center text-accent font-semibold group-hover:translate-x-1 transition-transform duration-300">
-              Start now
-              <span className="ml-1">→</span>
-            </span>
+          {/* COURSE GRID */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredCourses.map((course, index) => (
+              <div 
+                key={course.id} 
+                className="group bg-card border border-border rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={course.image} 
+                    alt={course.title} 
+                    className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                      {course.level}
+                    </span>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full flex items-center gap-1">
+                    <span className="text-yellow-500 text-lg">★</span>
+                    <span className="font-bold text-foreground">{course.rating}</span>
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {course.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{course.description}</p>
+                  
+                  <div className="flex items-center text-sm text-muted-foreground mb-4 gap-2">
+                    <span className="text-primary">👨‍🏫</span>
+                    <span className="font-medium">{course.instructor}</span>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {course.tags.slice(0, 3).map((tag, index) => (
+                      <span key={index} className="bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex justify-between items-center mb-6 text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <span>⏱️</span>
+                      <span>{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span>👥</span>
+                      <span>{course.students} students</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center pt-4 border-t border-border">
+                    <span className="text-3xl font-bold text-primary">${course.price}</span>
+                    <button 
+                      onClick={() => handleEnroll(course.id)}
+                      disabled={enrolledCourses.includes(course.id)}
+                      className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                        enrolledCourses.includes(course.id)
+                          ? 'bg-green-600 text-white cursor-not-allowed'
+                          : 'bg-primary hover:bg-primary/90 text-primary-foreground hover:scale-105 shadow-lg'
+                      }`}
+                    >
+                      {enrolledCourses.includes(course.id) ? '✓ Enrolled' : 'Enroll Now'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </motion.div>
-      </div>
-    </StaggerItem>
+        </div>
+      </section>
+
+      {/* FEATURED COURSES SECTION */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Top Rated
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Featured Courses</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Our most popular and highly-rated courses chosen by thousands of students
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {courses.slice(0, 3).map((course, index) => (
+              <div 
+                key={course.id} 
+                className={`group bg-card border-2 border-border rounded-3xl shadow-xl p-8 hover:shadow-2xl hover:border-primary transition-all duration-500 ${index === 1 ? 'md:scale-105' : 'hover:scale-105'}`}
+              >
+                <div className="text-center">
+                  <div className="relative mb-6 overflow-hidden rounded-2xl">
+                    <img 
+                      src={course.image} 
+                      alt={course.title} 
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {index === 1 && (
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold">
+                          🏆 BEST SELLER
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {course.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{course.description}</p>
+                  
+                  <div className="flex justify-center items-center mb-6 gap-2">
+                    <div className="flex text-yellow-500 text-lg">
+                      {renderStars(Math.floor(course.rating))}
+                    </div>
+                    <span className="text-muted-foreground font-semibold">({course.rating})</span>
+                  </div>
+                  
+                  <div className="mb-6 flex justify-center gap-6 text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <span>⏱️</span>
+                      <span className="text-sm">{course.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span>👥</span>
+                      <span className="text-sm">{course.students}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6">
+                    <span className="text-3xl font-bold text-primary">${course.price}</span>
+                  </div>
+                  
+                  <button 
+                    onClick={() => handleEnroll(course.id)}
+                    disabled={enrolledCourses.includes(course.id)}
+                    className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${
+                      enrolledCourses.includes(course.id)
+                        ? 'bg-green-600 text-white cursor-not-allowed'
+                        : 'bg-primary hover:bg-primary/90 text-primary-foreground hover:scale-105 shadow-lg'
+                    }`}
+                  >
+                    {enrolledCourses.includes(course.id) ? '✓ Enrolled' : 'Start Learning'}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+              Our Benefits
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Why Choose Our Courses?</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              We provide the highest quality education with industry experts and practical learning
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: '👨‍🏫', title: 'Expert Instructors', desc: 'Learn from industry professionals with real-world experience' },
+              { icon: '⚡', title: 'Flexible Learning', desc: 'Study at your own pace with 24/7 access' },
+              { icon: '🎓', title: 'Certification', desc: 'Earn certificates to boost your career' },
+              { icon: '💼', title: 'Career Support', desc: 'Get career guidance and job placement assistance' }
+            ].map((feature, index) => (
+              <div 
+                key={index} 
+                className="group text-center bg-card border border-border rounded-2xl p-8 hover:border-primary hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="text-6xl mb-6 group-hover:scale-110 transition-transform">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-4">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-24 px-4 bg-muted">
+        <div className="max-w-5xl mx-auto">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent blur-3xl opacity-20" />
+            <div className="relative bg-card border-2 border-primary/20 rounded-3xl p-12 md:p-16 text-center hover:border-primary/50 transition-all">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+                Ready to Start Learning?
+              </h2>
+              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Join over 10,000 students who are already transforming their careers with Elite Management
+              </p>
+              <button className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">
+                Browse All Courses
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+          opacity: 0;
+        }
+      `}</style>
+    </div>
   );
-}
+};
+
+export default Courses;

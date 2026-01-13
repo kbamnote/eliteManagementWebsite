@@ -1,175 +1,139 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
-  HomeIcon,
-  BookOpenIcon,
-  UserIcon,
-  PhoneIcon,
-  BriefcaseIcon,
-  NewspaperIcon,
-  ChartBarIcon,
-  TwitterIcon,
-  FacebookIcon,
-  LinkedinIcon,
-  InstagramIcon,
-} from 'lucide-react';
-import webPlacement from '../assets/WebPlacement.webp';
+  Phone,
+  Mail,
+  MapPin,
+  Linkedin,
+  Instagram,
+  Facebook,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-const navItems = [
-  { name: 'Home', path: '/', icon: HomeIcon },
-  { name: 'About', path: '/about', icon: UserIcon },
-  { name: 'Courses', path: '/courses', icon: BookOpenIcon },
-  { name: 'Career', path: '/career-counseling', icon: BriefcaseIcon },
-  { name: 'Placement', path: '/placements', icon: ChartBarIcon },
-  { name: 'Blogs', path: '/blogs', icon: NewspaperIcon },
-  { name: 'Contact', path: '/contact', icon: PhoneIcon },
-];
+const Footer = () => {
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-export default function Footer() {
   return (
-    <footer className=" bg-[#E6F3EF]" style={{ minHeight: '300px', backgroundImage: `url(${webPlacement})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
-          <div className="col-span-1 md:col-span-2">
-            <motion.h3
-              className="text-2xl font-black pb-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              style={{ color: 'white' }}
-            >
-              Elite Management
-            </motion.h3>
-            <p className="text-white" style={{ margin: 0 }}>Providing quality education since 2025</p>
-            <motion.p
-              className="mt-4 text-white max-w-md font-medium"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              style={{ margin: 0 }}
-            >
-              Empowering students with quality education and career guidance. Join thousands of successful learners today.
-            </motion.p>
+<footer className="bg-gradient-to-b from-[#0F172A] to-[#020617] text-white pt-20 pb-8">
+  <div className="max-w-7xl mx-auto px-4">
 
-            {/* Social Media Links */}
-            <motion.div
-              className="flex space-x-4 mt-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              {[
-                { name: 'twitter', icon: TwitterIcon },
-                { name: 'facebook', icon: FacebookIcon },
-                { name: 'linkedin', icon: LinkedinIcon },
-                { name: 'instagram', icon: InstagramIcon },
-              ].map(({ name, icon: Icon }, index) => (
-                <motion.a
-                  key={name}
-                  href="#"
-                  className="w-11 h-11 rounded-full bg-[#F2F8F6] backdrop-blur-sm border-2 border-white/30 flex items-center justify-center
-                 text-white hover:bg-accent hover:text-white hover:border-accent transition-all duration-300
-                 shadow-subtle hover:shadow-hover"
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <Icon className="w-5 h-5" />
-                </motion.a>
-              ))}
-            </motion.div>
+    {/* ================= TOP GRID ================= */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14 mb-16">
 
+      {/* BRAND */}
+      <div>
+        <div className="flex items-center mb-6">
+          <div className="bg-gradient-to-br from-primary to-accent rounded-full w-11 h-11 flex items-center justify-center mr-3 shadow-lg">
+            <span className="text-white text-xl font-bold">EM</span>
           </div>
-
-          <div>
-            <h4 className="text-sm font-black uppercase tracking-wider text-white mb-1">
-              Quick Links
-            </h4>
-            <div className="w-12 h-1 bg-white rounded-full mb-4"></div>
-            <ul className="mt-4 space-y-3" style={{ padding: 0 }}>
-              {navItems.slice(0, 4).map((item, index) => (
-                <motion.li
-                  key={item.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <Link
-                    to={item.path}
-                    className="text-white hover:text-accent transition-colors duration-300 flex items-center font-medium group"
-                  >
-                    {/* <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300">-</span> */}
-                    {item.name}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-black uppercase tracking-wider text-white mb-1">
-              More
-            </h4>
-            <div className="w-12 h-1 bg-white rounded-full mb-4"></div>
-            <ul className="mt-4 space-y-3" style={{ padding: 0 }}>
-              {navItems.slice(4).map((item, index) => (
-                <motion.li
-                  key={item.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                >
-                  <Link
-                    to={item.path}
-                    className="text-white hover:text-accent transition-colors duration-300 flex items-center font-medium group"
-                  >
-                    {/* <span className="w-2 h-2 bg-accent rounded-full mr-2 group-hover:scale-125 transition-transform duration-300"></span> */}
-                    {item.name}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
+          <h3 className="text-xl font-bold tracking-wide text-white">
+            Elite Managements
+          </h3>
         </div>
 
-        <motion.div
-          className="mt-8 border-t-2 border-white/30 pt-8 flex flex-col md:flex-row justify-between items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <motion.p
-            className="text-white text-sm font-medium"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            © {new Date().getFullYear()} Elite Management. All rights reserved.
-          </motion.p>
-          <motion.div
-            className="mt-4 md:mt-0 flex space-x-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <motion.a
-              href="#"
-              className="text-white hover:text-accent transition-colors duration-300 font-bold"
-              whileHover={{ x: 5 }}
+        <p className="text-white/70 leading-relaxed mb-6">
+          Empowering learners with industry-driven education and career-focused
+          skills since 2011.
+        </p>
+
+        <div className="flex items-center gap-4">
+          {[{icon: Linkedin, url: "https://www.linkedin.com/company/elitemanagement"}, {icon: Instagram, url: "https://www.instagram.com/elitemanagement"}, {icon: Facebook, url: "https://www.facebook.com/elitemanagement"}].map((social, i) => (
+            <a
+              key={i}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center
+                         hover:bg-primary hover:text-white transition-all duration-300"
             >
-              Privacy Policy
-            </motion.a>
-            <motion.a
-              href="#"
-              className="text-white hover:text-accent transition-colors duration-300 font-bold"
-              whileHover={{ x: 5 }}
-            >
-              Terms of Service
-            </motion.a>
-          </motion.div>
-        </motion.div>
+              <social.icon size={18} />
+            </a>
+          ))}
+        </div>
       </div>
-    </footer>
+
+      {/* QUICK LINKS */}
+      <div>
+        <h4 className="text-lg font-semibold mb-6 text-white">Quick Links</h4>
+        <ul className="space-y-3">
+          {[
+            { name: "Home", path: "/" },
+            { name: "About Us", path: "/about" },
+            { name: "Courses", path: "/courses" },
+            { name: "Placements", path: "/placements" },
+            { name: "Blogs", path: "/blogs" },
+            { name: "Contact Us", path: "/contact" },
+          ].map((link, i) => (
+            <li key={i}>
+              <Link
+                to={link.path}
+                onClick={handleLinkClick}
+                className="text-white/70 hover:text-primary transition-colors duration-300"
+              >
+                {link.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* COURSES */}
+      <div>
+        <h4 className="text-lg font-semibold mb-6 text-white">Courses</h4>
+        <ul className="space-y-3">
+          {[
+            { name: "Management", path: "/courses#management" },
+            { name: "Leadership", path: "/courses#leadership" },
+            { name: "Marketing", path: "/courses#marketing" },
+            { name: "Finance", path: "/courses#finance" },
+            { name: "HR Management", path: "/courses#hr" },
+          ].map((course, i) => (
+            <li key={i}>
+              <Link
+                to={course.path}
+                onClick={handleLinkClick}
+                className="text-white/70 hover:text-primary transition-colors duration-300"
+              >
+                {course.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* CONTACT */}
+      <div>
+        <h4 className="text-lg font-semibold mb-6 text-white">Contact</h4>
+        <div className="space-y-4 text-white/70">
+          <div className="flex items-center gap-3">
+            <Phone size={18} className="text-primary" />
+            <span>+91 97308 93320</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Mail size={18} className="text-primary" />
+            <span>support@elitemanagement.in</span>
+          </div>
+
+          <div className="flex items-start gap-3">
+            <MapPin size={18} className="text-primary mt-1" />
+            <span>Sadar chaoni , Nagpur , Maharashtra , India </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* ================= BOTTOM BAR ================= */}
+    <div className="border-t border-white/10 pt-6 text-center">
+      <p className="text-sm text-white/60">
+        © {new Date().getFullYear()} Elite Management. All rights reserved.
+      </p>
+    </div>
+
+  </div>
+</footer>
+
   );
-}
+};
+
+export default Footer;

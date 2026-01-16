@@ -115,7 +115,7 @@ const Placements = () => {
                 Proven Results
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Bootcamp Impact</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-foreground max-w-3xl mx-auto">
                 Thousands of students launched successful tech careers with our industry-focused training
               </p>
             </div>
@@ -132,7 +132,7 @@ const Placements = () => {
                     {stat.value}
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-2">{stat.title}</h3>
-                  <p className="text-muted-foreground">{stat.description}</p>
+                  <p className="text-foreground">{stat.description}</p>
                 </div>
               </ScrollAnimation>
             ))}
@@ -149,7 +149,7 @@ const Placements = () => {
                 Featured Graduates
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Success Stories</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-foreground max-w-3xl mx-auto">
                 Real students, real companies, real career breakthroughs
               </p>
             </div>
@@ -184,10 +184,10 @@ const Placements = () => {
                       <p className="text-foreground font-semibold">{story.position}</p>
                     </div>
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="text-muted-foreground">🏢</span>
-                      <p className="text-muted-foreground font-medium">{story.company}</p>
+                      <span className="text-foreground">🏢</span>
+                      <p className="text-foreground font-medium">{story.company}</p>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed">{story.story}</p>
+                    <p className="text-foreground leading-relaxed">{story.story}</p>
                   </div>
                 </div>
               </ScrollAnimation>
@@ -205,7 +205,7 @@ const Placements = () => {
                 Student Voices
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">What Graduates Say</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-foreground max-w-3xl mx-auto">
                 Authentic reviews from students who transformed their careers
               </p>
             </div>
@@ -223,7 +223,7 @@ const Placements = () => {
                     />
                     <div>
                       <h4 className="font-bold text-foreground text-lg">{testimonial.name}</h4>
-                      <p className="text-muted-foreground text-sm">{testimonial.role}</p>
+                      <p className="text-foreground text-sm">{testimonial.role}</p>
                     </div>
                   </div>
                   
@@ -231,13 +231,13 @@ const Placements = () => {
                     {'★'.repeat(5)}
                   </div>
                   
-                  <p className="text-muted-foreground italic text-lg mb-4 leading-relaxed">
+                  <p className="text-foreground italic text-lg mb-4 leading-relaxed">
                     "{testimonial.content}"
                   </p>
                   
                   <div className="flex items-center gap-2 pt-4 border-t border-border">
                     <span className="text-primary">📚</span>
-                    <span className="text-sm text-muted-foreground font-medium">{testimonial.course}</span>
+                    <span className="text-sm text-foreground font-medium">{testimonial.course}</span>
                   </div>
                 </div>
               </ScrollAnimation>
@@ -255,7 +255,7 @@ const Placements = () => {
                 Your Journey
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Bootcamp Roadmap</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-foreground max-w-3xl mx-auto">
                 Structured path from beginner to job-ready professional
               </p>
             </div>
@@ -277,7 +277,7 @@ const Placements = () => {
                     {step.step}
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
+                  <p className="text-foreground leading-relaxed">{step.desc}</p>
                 </div>
               </ScrollAnimation>
             ))}
@@ -294,7 +294,7 @@ const Placements = () => {
                 Specializations
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Tech Tracks</h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-foreground max-w-3xl mx-auto">
                 Choose your specialization and launch your tech career
               </p>
             </div>
@@ -317,7 +317,7 @@ const Placements = () => {
                   <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
                     {category.name}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">{category.desc}</p>
+                  <p className="text-foreground leading-relaxed">{category.desc}</p>
                 </div>
               </ScrollAnimation>
             ))}
@@ -335,7 +335,7 @@ const Placements = () => {
                 <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                   Launch Your Tech Career Today
                 </h2>
-                <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                <p className="text-xl text-foreground mb-10 max-w-2xl mx-auto">
                   Join 28K+ students who became job-ready developers, data scientists and cloud engineers
                 </p>
                 <button className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">

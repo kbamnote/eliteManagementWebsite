@@ -1,7 +1,7 @@
 const TestimonialCard = ({ name, role, company, rating, content }) => {
   const renderStars = (rating) => {
     return [...Array(5)].map((_, i) => (
-      <span key={i} className={i < rating ? 'text-foreground' : 'text-muted-foreground'}>★</span>
+      <span key={i} className={i < rating ? 'text-foreground' : 'text-foreground'}>★</span>
     ));
   };
 
@@ -11,10 +11,10 @@ const TestimonialCard = ({ name, role, company, rating, content }) => {
         <div className="text-2xl mb-4">
           {renderStars(rating)}
         </div>
-        <p className="text-muted-foreground italic mb-6">"{content}"</p>
+        <p className="text-foreground italic mb-6">"{content}"</p>
         <div className="border-t pt-6">
           <h4 className="font-bold text-foreground">{name}</h4>
-          <p className="text-muted-foreground text-sm">{role}, {company}</p>
+          <p className="text-foreground text-sm">{role}, {company}</p>
         </div>
       </div>
     </div>

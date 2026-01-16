@@ -34,7 +34,7 @@ const Services = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Comprehensive Learning Programs
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               Our diverse course offerings ensure you can find the right program for your career goals
             </p>
           </div>

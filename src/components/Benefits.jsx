@@ -36,7 +36,7 @@ const Benefits = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Why Learn With Us
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               We provide comprehensive learning solutions that make the educational journey seamless and effective
             </p>
           </div>
@@ -52,7 +52,7 @@ const Benefits = () => {
                   {benefit.icon}
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-4">{benefit.title}</h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
+                <p className="text-foreground">{benefit.description}</p>
               </div>
             </ScrollAnimation>
           ))}

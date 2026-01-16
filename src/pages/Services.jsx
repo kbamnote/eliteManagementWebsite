@@ -55,7 +55,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">Inspiring Staffing Solutions</h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            <p className="text-xl text-foreground max-w-4xl mx-auto">
               We offer a comprehensive suite of HR services designed to meet the diverse needs of both job seekers and employers, 
               ensuring successful outcomes at every stage of the recruitment process.
             </p>
@@ -71,8 +71,8 @@ const Services = () => {
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-2xl font-bold text-foreground mb-4">{service.title}</h3>
-                <p className="text-muted-foreground mb-6">{service.description}</p>
-                <div className="text-sm text-muted-foreground">
+                <p className="text-foreground mb-6">{service.description}</p>
+                <div className="text-sm text-foreground">
                   <p>{service.details}</p>
                 </div>
               </div>
@@ -86,7 +86,7 @@ const Services = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">Our Service Process</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               A streamlined approach to delivering exceptional HR solutions
             </p>
           </div>
@@ -103,7 +103,7 @@ const Services = () => {
                   {step.step}
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.desc}</p>
+                <p className="text-foreground">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -119,23 +119,23 @@ const Services = () => {
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center text-primary-foreground text-sm mr-4 mt-1">✓</div>
-                  <span className="text-muted-foreground">Industry expertise with over a decade of experience</span>
+                  <span className="text-foreground">Industry expertise with over a decade of experience</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center text-primary-foreground text-sm mr-4 mt-1">✓</div>
-                  <span className="text-muted-foreground">Personalized approach tailored to your needs</span>
+                  <span className="text-foreground">Personalized approach tailored to your needs</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center text-primary-foreground text-sm mr-4 mt-1">✓</div>
-                  <span className="text-muted-foreground">Extensive network of qualified professionals</span>
+                  <span className="text-foreground">Extensive network of qualified professionals</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center text-primary-foreground text-sm mr-4 mt-1">✓</div>
-                  <span className="text-muted-foreground">Quality assurance and ongoing support</span>
+                  <span className="text-foreground">Quality assurance and ongoing support</span>
                 </li>
                 <li className="flex items-start">
                   <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center text-primary-foreground text-sm mr-4 mt-1">✓</div>
-                  <span className="text-muted-foreground">Transparent and efficient processes</span>
+                  <span className="text-foreground">Transparent and efficient processes</span>
                 </li>
               </ul>
             </div>

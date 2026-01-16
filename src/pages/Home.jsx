@@ -16,7 +16,7 @@ const Home = () => {
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-foreground mb-6">Why Choose Elite Management?</h2>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+              <p className="text-xl text-foreground max-w-4xl mx-auto">
                 We provide the highest quality education with industry experts and practical learning experiences that make a real difference in your career.
               </p>
             </div>
@@ -25,22 +25,22 @@ const Home = () => {
               <div className="bg-card rounded-xl shadow-lg p-8 text-center hover-lift transition-all duration-300">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary text-2xl font-bold mx-auto mb-6">1</div>
                 <h3 className="text-xl font-bold text-foreground mb-4">Expert Instructors</h3>
-                <p className="text-muted-foreground">Learn from industry professionals with real-world experience.</p>
+                <p className="text-foreground">Learn from industry professionals with real-world experience.</p>
               </div>
               <div className="bg-card rounded-xl shadow-lg p-8 text-center hover-lift transition-all duration-300">
                 <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center text-accent text-2xl font-bold mx-auto mb-6">2</div>
                 <h3 className="text-xl font-bold text-foreground mb-4">Practical Learning</h3>
-                <p className="text-muted-foreground">Apply concepts through real-world projects and case studies.</p>
+                <p className="text-foreground">Apply concepts through real-world projects and case studies.</p>
               </div>
               <div className="bg-card rounded-xl shadow-lg p-8 text-center hover-lift transition-all duration-300">
                 <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center text-primary text-2xl font-bold mx-auto mb-6">3</div>
                 <h3 className="text-xl font-bold text-foreground mb-4">Flexible Schedule</h3>
-                <p className="text-muted-foreground">Study at your own pace with 24/7 access to materials.</p>
+                <p className="text-foreground">Study at your own pace with 24/7 access to materials.</p>
               </div>
               <div className="bg-card rounded-xl shadow-lg p-8 text-center hover-lift transition-all duration-300">
                 <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center text-accent text-2xl font-bold mx-auto mb-6">4</div>
                 <h3 className="text-xl font-bold text-foreground mb-4">Career Support</h3>
-                <p className="text-muted-foreground">Get guidance and support for your professional development.</p>
+                <p className="text-foreground">Get guidance and support for your professional development.</p>
               </div>
             </div>
           </div>

@@ -32,14 +32,14 @@ const Testimonials = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Student Success Stories
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
+          <p className="text-xl text-foreground mb-8">
             What Our Students Say
           </p>
           <div className="flex justify-center items-center space-x-4">
             {[...Array(5)].map((_, i) => (
               <span key={i} className="text-2xl text-foreground">★</span>
             ))}
-            <span className="ml-4 text-muted-foreground">Based on 5000+ reviews</span>
+            <span className="ml-4 text-foreground">Based on 5000+ reviews</span>
           </div>
         </div>
 

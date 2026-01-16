@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import Footer from '../components/Footer';
 import CountUp from "../components/CountUp";
 import ScrollAnimation from "../components/ScrollAnimation";
+import { ArrowRight , ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+
 
 const About = () => {
   const [activeTab, setActiveTab] = useState("vision");
@@ -81,7 +84,7 @@ const About = () => {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-black/80" />
           <img
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80"
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998"
             alt="Elite Management"
             className="w-full h-full object-cover opacity-30"
             style={{ transform: `translateY(${scrollY * 0.3}px)` }}
@@ -104,9 +107,13 @@ const About = () => {
 
         
           <div className="flex gap-4 justify-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <button className="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-white/90 hover:scale-105 transition-all shadow-xl">
-              Explore Courses
-            </button>
+              <Link
+  to="/courses"
+  className="inline-block px-8 py-4 bg-white text-primary rounded-lg font-semibold 
+             hover:bg-white/90 hover:scale-105 transition-all shadow-xl"
+>
+  Explore Courses
+</Link>
             <button className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white rounded-lg font-semibold hover:bg-white/20 transition-all">
               Learn More
             </button>
@@ -130,7 +137,7 @@ const About = () => {
             <CountUp end={stat.value} />
           </h3>
 
-          <p className="text-muted-foreground text-lg font-medium">
+          <p className="text-foreground text-lg font-medium">
             {stat.label}
           </p>
         </div>
@@ -144,13 +151,13 @@ const About = () => {
       <section className="py-24 px-4 bg-muted">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+            <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-bold mb-4">
               Our Story
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Welcome to Elite Management
             </h2>
-            <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+            <p className="text-xl text-foreground max-w-4xl mx-auto">
               Founded in 2011, Elite Management has evolved into a premier educational institution,
               bridging the gap between academic knowledge and practical industry skills.
             </p>
@@ -170,11 +177,11 @@ const About = () => {
               <h3 className="text-3xl font-bold text-foreground mb-6">
                 Our Academy Story
               </h3>
-              <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+              <p className="text-foreground text-lg mb-6 leading-relaxed">
                 With over a decade of experience, we've built a reputation for excellence,
                 innovation, and outcome-driven education.
               </p>
-              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+              <p className="text-foreground text-lg mb-8 leading-relaxed">
                 Today, we continue to evolve with industry trends while maintaining our
                 commitment to quality learning and career success.
               </p>
@@ -182,15 +189,15 @@ const About = () => {
               <div className="grid grid-cols-3 gap-6">
                 <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-primary transition">
                   <div className="text-3xl font-bold text-primary">500+</div>
-                  <div className="text-muted-foreground text-sm mt-1">Courses</div>
+                  <div className="text-foreground text-sm mt-1">Courses</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-accent transition">
                   <div className="text-3xl font-bold text-accent">100+</div>
-                  <div className="text-muted-foreground text-sm mt-1">Companies</div>
+                  <div className="text-foreground text-sm mt-1">Companies</div>
                 </div>
                 <div className="text-center p-4 bg-card rounded-xl border border-border hover:border-primary transition">
                   <div className="text-3xl font-bold text-primary">50+</div>
-                  <div className="text-muted-foreground text-sm mt-1">Countries</div>
+                  <div className="text-foreground text-sm mt-1">Countries</div>
                 </div>
               </div>
             </div>
@@ -211,7 +218,7 @@ const About = () => {
         <h2 className="text-4xl md:text-5xl font-bold text-foreground">
           Milestones of Excellence
         </h2>
-        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+        <p className="mt-4 text-lg text-foreground max-w-3xl mx-auto">
           A decade-long journey of innovation, growth, and educational impact
         </p>
       </div>
@@ -251,16 +258,21 @@ const About = () => {
                     {item.title}
                   </h3>
 
-                  <p className="text-muted-foreground text-lg leading-relaxed">
+                  <p className="text-foreground text-lg leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
               </div>
 
-              {/* Dot */}
-              <div className="hidden md:flex relative z-10 items-center justify-center">
-                <div className="w-6 h-6 dash-full bg-primary border-4 border-background shadow-xl " />
-              </div>
+              {/* Arrow */}
+<div className="hidden md:flex relative z-10 items-center justify-center w-10">
+  {i % 2 === 0 ? (
+    <ArrowLeft className="w-6 h-6 text-primary  drop-shadow-xl" />
+  ) : (
+    <ArrowRight className="w-6 h-6 text-primary drop-shadow-xl" />
+  )}
+</div>
+
 
               <div className="flex-1" />
             </div>
@@ -282,7 +294,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Learning Enhancement
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               Helping professionals advance through structured, practical education.
             </p>
           </div>
@@ -302,7 +314,7 @@ const About = () => {
                   <h3 className="text-2xl font-bold text-foreground mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground text-lg">{item.desc}</p>
+                  <p className="text-foreground text-lg">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -331,7 +343,7 @@ const About = () => {
                   className={`px-8 py-4 rounded-xl font-semibold transition-all ${
                     activeTab === tab
                       ? "bg-primary text-primary-foreground shadow-lg"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-foreground hover:text-foreground"
                   }`}
                 >
                   {tab === "vision" ? "Our Vision" : "Our Mission"}
@@ -344,17 +356,19 @@ const About = () => {
             {activeTab === "vision" ? (
               <div>
                 <div className="text-7xl mb-6 text-center">🎯</div>
-                <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed text-center">
-                  To become a leading institution that transforms ambition into
-                  achievement through education.
+                <p className="text-foreground text-xl md:text-2xl leading-relaxed text-center">
+                  To become India's most trusted education and career transformation platform, 
+                  empowering millions of learners to unlock their full potential and achieve 
+                  extraordinary professional success through innovative learning solutions.
                 </p>
               </div>
             ) : (
               <div>
                 <div className="text-7xl mb-6 text-center">🚀</div>
-                <p className="text-muted-foreground text-xl md:text-2xl leading-relaxed text-center">
-                  To deliver practical, personalized learning experiences that
-                  empower career success.
+                <p className="text-foreground text-xl md:text-2xl leading-relaxed text-center">
+                  To bridge the gap between aspiration and achievement by providing 
+                  industry-relevant education, personalized career guidance, and 
+                  comprehensive placement support that transforms lives and builds futures.
                 </p>
               </div>
             )}
@@ -372,7 +386,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Our Core Values
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               Principles that guide everything we do
             </p>
           </div>
@@ -383,7 +397,7 @@ const About = () => {
                 <div className="bg-card border border-border rounded-2xl p-8 hover:border-primary hover:shadow-2xl hover:-translate-y-2 transition-all h-full">
                   <div className="text-6xl mb-6">{value.icon}</div>
                   <h3 className="text-2xl font-bold text-foreground mb-4">{value.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                  <p className="text-foreground leading-relaxed">{value.description}</p>
                 </div>
               </div>
             ))}
@@ -400,7 +414,7 @@ const About = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Ready to Transform Your Future?
               </h2>
-              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-foreground mb-10 max-w-2xl mx-auto">
                 Join thousands of successful professionals who chose Elite Management for their career transformation.
               </p>
               <button className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">

@@ -187,7 +187,7 @@ const Blogs = () => {
                   </div>
 
                   <div className="p-6">
-                    <div className="flex items-center text-xs text-muted-foreground mb-3 gap-2">
+                    <div className="flex items-center text-xs text-foreground mb-3 gap-2">
                       <span>{post.date}</span>
                       <span>•</span>
                       <span>{post.readTime}</span>
@@ -197,12 +197,12 @@ const Blogs = () => {
                       {post.title}
                     </h2>
 
-                    <p className="text-muted-foreground mb-6">
+                    <p className="text-foreground mb-6">
                       {post.excerpt}
                     </p>
 
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-sm text-foreground">
                         By {post.author}
                       </span>
                       <button className="text-primary font-semibold hover:underline">
@@ -265,7 +265,7 @@ const Blogs = () => {
                       <h4 className="text-sm font-semibold hover:text-primary cursor-pointer">
                         {post.title}
                       </h4>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-foreground">
                         {post.date}
                       </p>
                     </div>

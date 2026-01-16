@@ -117,7 +117,7 @@ const Courses = () => {
 
   const renderStars = (rating) => {
     return [...Array(5)].map((_, i) => (
-      <span key={i} className={i < rating ? 'text-yellow-500' : 'text-muted-foreground'}>★</span>
+      <span key={i} className={i < rating ? 'text-yellow-500' : 'text-foreground'}>★</span>
     ));
   };
 
@@ -169,7 +169,7 @@ const Courses = () => {
               Browse by Category
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Explore Course Categories</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               Choose from a wide range of expertly designed courses to advance your career
             </p>
           </div>
@@ -182,7 +182,7 @@ const Courses = () => {
                 className={`group px-6 py-4 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${
                   selectedCategory === category.id
                     ? 'bg-primary text-primary-foreground shadow-xl scale-105'
-                    : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:border-primary hover:shadow-lg hover:-translate-y-1'
+                    : 'bg-card border border-border text-foreground hover:text-foreground hover:border-primary hover:shadow-lg hover:-translate-y-1'
                 }`}
               >
                 <span className="text-2xl">{category.icon}</span>
@@ -220,9 +220,9 @@ const Courses = () => {
                   <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {course.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{course.description}</p>
+                  <p className="text-foreground mb-4 leading-relaxed">{course.description}</p>
                   
-                  <div className="flex items-center text-sm text-muted-foreground mb-4 gap-2">
+                  <div className="flex items-center text-sm text-foreground mb-4 gap-2">
                     <span className="text-primary">👨‍🏫</span>
                     <span className="font-medium">{course.instructor}</span>
                   </div>
@@ -235,7 +235,7 @@ const Courses = () => {
                     ))}
                   </div>
                   
-                  <div className="flex justify-between items-center mb-6 text-muted-foreground">
+                  <div className="flex justify-between items-center mb-6 text-foreground">
                     <div className="flex items-center gap-1">
                       <span>⏱️</span>
                       <span>{course.duration}</span>
@@ -275,7 +275,7 @@ const Courses = () => {
               Top Rated
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Featured Courses</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               Our most popular and highly-rated courses chosen by thousands of students
             </p>
           </div>
@@ -305,16 +305,16 @@ const Courses = () => {
                   <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {course.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">{course.description}</p>
+                  <p className="text-foreground mb-6 leading-relaxed">{course.description}</p>
                   
                   <div className="flex justify-center items-center mb-6 gap-2">
                     <div className="flex text-yellow-500 text-lg">
                       {renderStars(Math.floor(course.rating))}
                     </div>
-                    <span className="text-muted-foreground font-semibold">({course.rating})</span>
+                    <span className="text-foreground font-semibold">({course.rating})</span>
                   </div>
                   
-                  <div className="mb-6 flex justify-center gap-6 text-muted-foreground">
+                  <div className="mb-6 flex justify-center gap-6 text-foreground">
                     <div className="flex items-center gap-1">
                       <span>⏱️</span>
                       <span className="text-sm">{course.duration}</span>
@@ -355,7 +355,7 @@ const Courses = () => {
               Our Benefits
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Why Choose Our Courses?</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               We provide the highest quality education with industry experts and practical learning
             </p>
           </div>
@@ -375,7 +375,7 @@ const Courses = () => {
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-4">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
+                <p className="text-foreground leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -391,7 +391,7 @@ const Courses = () => {
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Ready to Start Learning?
               </h2>
-              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-foreground mb-10 max-w-2xl mx-auto">
                 Join over 10,000 students who are already transforming their careers with Elite Management
               </p>
               <button className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 hover:scale-105 transition-all shadow-xl">

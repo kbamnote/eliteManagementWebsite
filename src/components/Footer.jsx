@@ -126,7 +126,7 @@ const Footer = () => {
     {/* ================= BOTTOM BAR ================= */}
     <div className="border-t border-white/10 pt-6 text-center">
       <p className="text-sm text-white/60">
-        © {new Date().getFullYear()} Elite Management. All rights reserved.
+        © {new Date().getFullYear()} Elite Management. All rights reserved. @ Designed by <a href="https://www.eeetechnologies.in" target="_blank" rel="noopener noreferrer">EEE TECHNOLOGIES</a>
       </p>
     </div>
 

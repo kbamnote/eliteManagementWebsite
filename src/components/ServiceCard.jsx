@@ -17,7 +17,7 @@ const ServiceCard = ({ icon, title, description, image, delay = 0 }) => {
         </div>
       </div>
       <div className="p-6">
-        <p className="text-muted-foreground">{description}</p>
+        <p className="text-foreground">{description}</p>
       </div>
     </div>
   );

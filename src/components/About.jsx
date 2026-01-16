@@ -12,7 +12,7 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Strategic Learning, Personalized Growth
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-foreground max-w-3xl mx-auto">
               At Elite Management, we bridge the gap between knowledge and practical application, 
               fostering growth and success through our comprehensive educational programs.
             </p>
@@ -25,11 +25,11 @@ const About = () => {
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 Excellence in Education
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-foreground mb-6">
                 Founded in 2011, Elite Management has evolved into a premier educational institution, 
                 specializing in connecting passionate learners with expert instructors to foster growth and success.
               </p>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-foreground mb-6">
                 Our commitment to excellence and personalized approach has made us a trusted partner for 
                 professionals seeking to advance their careers through quality education.
               </p>
@@ -69,7 +69,7 @@ const About = () => {
                   to achieve their professional goals and make a positive impact in their fields."
                 </p>
                 <h4 className="text-lg font-bold text-foreground">Educational Director</h4>
-                <p className="text-muted-foreground">Elite Management</p>
+                <p className="text-foreground">Elite Management</p>
               </div>
             </div>
           </div>

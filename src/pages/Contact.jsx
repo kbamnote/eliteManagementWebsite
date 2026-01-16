@@ -135,7 +135,7 @@ const Contact = () => {
           <ScrollAnimation>
             <div className="text-center mb-16">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Get Bootcamp Info</h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-foreground max-w-3xl mx-auto">
                 Speak with our career counselors about course details, placement records, and flexible payment options.
               </p>
             </div>
@@ -158,7 +158,7 @@ const Contact = () => {
                       <div className="min-w-0 flex-1">
                         <h3 className="text-xl font-bold text-foreground mb-1">{info.title}</h3>
                         <p className="text-primary font-semibold text-lg mb-1 truncate">{info.content}</p>
-                        <p className="text-muted-foreground text-sm">{info.description}</p>
+                        <p className="text-foreground text-sm">{info.description}</p>
                       </div>
                     </div>
                   </ScrollAnimation>
@@ -172,7 +172,7 @@ const Contact = () => {
                 <div className="sticky top-24 bg-card rounded-3xl shadow-2xl border border-border/50 p-8 lg:p-10">
                   <div className="text-center mb-8">
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Quick Enquiry</h2>
-                    <p className="text-muted-foreground text-lg">
+                    <p className="text-foreground text-lg">
                       Fill out 30 seconds form → Get callback from counselor
                     </p>
                   </div>
@@ -252,15 +252,15 @@ const Contact = () => {
                   <div className="mt-8 pt-8 border-t border-border grid grid-cols-3 gap-6 text-center">
                     <div>
                       <div className="text-2xl font-bold text-primary mb-1">94%</div>
-                      <div className="text-xs text-muted-foreground uppercase tracking-wide">Placement Rate</div>
+                      <div className="text-xs text-foreground uppercase tracking-wide">Placement Rate</div>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary mb-1">28K+</div>
-                      <div className="text-xs text-muted-foreground uppercase tracking-wide">Graduates</div>
+                      <div className="text-xs text-foreground uppercase tracking-wide">Graduates</div>
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-primary mb-1">Rs 25LPA</div>
-                      <div className="text-xs text-muted-foreground uppercase tracking-wide">Avg Package</div>
+                      <div className="text-xs text-foreground uppercase tracking-wide">Avg Package</div>
                     </div>
                   </div>
                 </div>
